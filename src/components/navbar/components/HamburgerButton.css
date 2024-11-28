@@ -1,0 +1,86 @@
+/* Botón de hamburguesa */
+.hamburger {
+  display: none; /* Oculto por defecto, solo se muestra en mobile */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger:hover {
+  opacity: 0.8;
+}
+
+/* Barras del botón */
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: var(--foreground-color); /* Asegúrate de definir esta variable */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animaciones del botón al abrir */
+.hamburger.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menú de navegación */
+.nav-links {
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+  background: var(--background-color); /* Asegúrate de definir esta variable */
+  padding: 10px 0;
+  position: absolute;
+  top: 100%; /* Justo debajo del navbar */
+  left: 0;
+  z-index: 5;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+/* Menú visible al abrir */
+.nav-links.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Estilos generales del menú */
+.nav-item {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--foreground-color); /* Asegúrate de definir esta variable */
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--highlight-color); /* Define este color para el hover */
+}
+
+/* Mostrar botón de hamburguesa en mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+}

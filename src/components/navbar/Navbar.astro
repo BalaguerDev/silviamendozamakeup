@@ -1,0 +1,40 @@
+---
+import { navLinks } from "../../constants/navLinks.js";
+import HamburgerButton from "./components/HamburgerButton.astro";
+import './Navbar.css';
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logotipo centrado -->
+    <a href="/" class="logo">
+      <img
+        src="/images/logo/logo-silvia-mendoza.png"
+        alt="Logotipo Silvia Mendoza"
+      />
+    </a>
+
+    <!-- Botón de hamburguesa para móvil -->
+    <HamburgerButton />
+  </div>
+
+  <!-- Menú de navegación (debajo del logo en desktop, desplegable en mobile) -->
+  <ul class="nav-links">
+    {navLinks.map(({ name, href }) => (
+      <li class="nav-item">
+        <a href={href} class="nav-link">{name}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script type="module">
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const body = document.body;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    body.classList.toggle('no-scroll', isOpen);
+  });
+</script>

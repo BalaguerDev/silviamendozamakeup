@@ -1,0 +1,90 @@
+/* Estilos generales */
+body.no-scroll {
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--background-color);
+  color: #fff;
+  position: relative;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo img {
+  width: 180px;
+}
+
+/* Menú de navegación */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 10px 0;
+  gap: 20px;
+  width: 100%;
+  background: transparent;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%);
+}
+
+.nav-links.open {
+  transform: translateY(0);
+}
+
+.nav-item {
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  transform: translateY(0);
+  flex-direction: row;
+  position: static;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links.open {
+  transform: translateY(0);
+}
+
+.nav-link:hover {
+  color: var(--highlight-color);
+}
+
+
+
+/* Estilos para móvil */
+@media (max-width: 768px) {
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .nav-links {
+    flex-direction: column;
+    background: var(--background-color);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+    transform: translateY(0);
+  }
+}

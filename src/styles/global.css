@@ -42,10 +42,12 @@ main {
     max-width: 1600px;
     margin: 0 auto;
     padding: var(--main-padding);
+    background:black;
 }
 
 footer {
-    position: relative;
+    width: 100vw;
+    position: absolute;
     bottom: 0;
     padding: var(--main-padding);
     color: var(--background);
