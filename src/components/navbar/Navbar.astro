@@ -1,0 +1,54 @@
+---
+import { navLinks } from "../../constants/navLinks";
+
+import "./Navbar.css";
+---
+<nav class="navbar">
+  <div class="navbar__container">
+    <a href="/" class="navbar__logo">
+      <img
+        src="/images/logo/logo-silvia-mendoza.svg"
+        alt="Silvia Mendoza Make Up and Barcelona"
+      />
+    </a>
+
+    <button
+      aria-expanded="false"
+      type="button"
+      id="menu-toggle"
+      class="navbar__toggle group"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="navbar__links" id="navbar-links">
+      {navLinks.map(({href, name}) => (
+        <li class="navbar__item">
+          <a href={href} class={`navbar__link ${href === '/novias' ? 'noviaLink' : '' }`} >
+            {name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle") as HTMLButtonElement | null;
+    const navbarLinks = document.getElementById("navbar-links") as HTMLUListElement | null;
+
+    if (!menuToggle || !navbarLinks) {
+      console.error("Elementos necesarios no encontrados en el DOM");
+      return;
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+      navbarLinks.classList.toggle("navbar__links--open");
+    });
+  });
+</script>
