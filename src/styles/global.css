@@ -37,31 +37,25 @@ footer {
     box-sizing: border-box;
 }
 
-.container {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 20px;
-    flex: 1;
-}
-
 main {
     flex: 1;
-    /* El contenido principal ocupa el espacio disponible */
+    margin: 0 auto;
+}
+.container{
+    padding:20px;
+    max-width:1600px
 }
 
 footer {
-    width: 100vw;
-    position: absolute;
-    bottom: 0;
     padding: var(--main-padding);
-    color: #2c2c2c ;
+    color: var(--background);
     background: var(--primary-color);
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1)
 }
 
 footer p {
-    color: #2c2c2c ;
+    color: var(--background);
 }
 
 
@@ -101,7 +95,7 @@ a {
     text-align: justify;
 }
 
- button {
+/* button {
     font-size: 16px;
     padding: 10px 15px;
     color: #fff;
@@ -114,9 +108,10 @@ a {
 
 button:hover {
     background-color: #b3783f;
-}
+} */
 
 @media (max-width: 768px) {
+
     h1 {
         font-size: calc(var(--font-size-h1) / 2);
         /* Ajusta el tamaño en función del tamaño base */
