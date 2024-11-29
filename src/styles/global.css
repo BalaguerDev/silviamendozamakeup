@@ -37,25 +37,30 @@ footer {
     box-sizing: border-box;
 }
 
-main {
-    flex: 1;
+.container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: var(--main-padding);
+    padding: 0 20px;
+    flex: 1;
+}
+
+main {
+    flex: 1;
+    /* El contenido principal ocupa el espacio disponible */
 }
 
 footer {
     position: relative;
     bottom: 0;
     padding: var(--main-padding);
-    color: var(--background);
+    color: #2c2c2c ;
     background: var(--primary-color);
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1)
 }
 
 footer p {
-    color: var(--background);
+    color: #2c2c2c ;
 }
 
 
@@ -95,7 +100,7 @@ a {
     text-align: justify;
 }
 
-button {
+ button {
     font-size: 16px;
     padding: 10px 15px;
     color: #fff;
