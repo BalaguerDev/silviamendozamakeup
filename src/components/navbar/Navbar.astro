@@ -1,15 +1,21 @@
 ---
+import { Image } from "astro:assets";
 import { navLinks } from "../../constants/navLinks";
-
 import "./Navbar.css";
+
+const currentPath = Astro.url.pathname;
 ---
+
 <nav class="navbar">
   <div class="navbar__container">
     <a href="/" class="navbar__logo">
-      <img
-        src="/images/logo/logo-silvia-mendoza.svg"
-        alt="Silvia Mendoza Make Up and Barcelona"
-      />
+      <Image
+      src="/images/logo/logo-silvia-mendoza.svg"
+      alt="Silvia Mendoza Make Up and Barcelona"
+      width={200} 
+      height={50}
+      class="navbar__logo-img"
+    />
     </a>
 
     <button
@@ -24,11 +30,26 @@ import "./Navbar.css";
     </button>
 
     <ul class="navbar__links" id="navbar-links">
-      {navLinks.map(({href, name}) => (
+      {navLinks.map(({ href, name }) => (
         <li class="navbar__item">
-          <a href={href} class={`navbar__link ${href === '/novias' ? 'noviaLink' : '' }`} >
+          <a
+            href={href}
+            class="navbar__link"
+          >
             {name}
           </a>
+
+          {currentPath === href ? (
+            <div
+              class="linkYes "
+              transition:name="menu-line"
+
+            ></div>
+          ) : (
+            <div
+              class="linkNo"
+            ></div>
+          )}
         </li>
       ))}
     </ul>
@@ -36,9 +57,13 @@ import "./Navbar.css";
 </nav>
 
 <script>
- document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.getElementById("menu-toggle") as HTMLButtonElement | null;
-    const navbarLinks = document.getElementById("navbar-links") as HTMLUListElement | null;
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById(
+      "menu-toggle",
+    ) as HTMLButtonElement | null;
+    const navbarLinks = document.getElementById(
+      "navbar-links",
+    ) as HTMLUListElement | null;
 
     if (!menuToggle || !navbarLinks) {
       console.error("Elementos necesarios no encontrados en el DOM");

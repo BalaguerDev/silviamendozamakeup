@@ -4,19 +4,36 @@
     top:0;
     justify-content: space-between;
     align-items: center;
-    color: var(--primary-color);
-    background: #333;
+    background: var(--primary-color);
     padding: 0 20px;
 }
 
 .promoBar p{
+    margin-left: 50px;
+    margin-right: 50px;
     font-size: 12px !important;
     display: flex;
     align-items: center;
+    color: var(--text-color);
 }
+
 .promoBar p img{
     width: 12px !important;
     height: 12px;
-    margin-right: 10px;
+    margin-right: 5px;
 
 }
+
+@media (max-width: 768px) {
+    .promoBar p{
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 12px !important;
+        display: flex;
+        align-items: center;
+        color: #333;
+    }
+    .mobileInvisible{
+        display:none !important;
+    }
+  }
