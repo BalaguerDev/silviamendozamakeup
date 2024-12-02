@@ -1,0 +1,112 @@
+.sobre-mi-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre-mi-image {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+    padding: 10px;
+    max-width: 100%;
+}
+
+.content-sobre-mi {
+    flex: 1;
+}
+
+.title-about {
+    text-align: center;
+}
+
+.subtitle {
+    margin: 1.5rem 0 1rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.reasons-list li,
+.additional-services li {
+    margin-bottom: 1rem;
+    list-style: none;
+}
+
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.button.primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    transition: background-color 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.button.primary:hover {
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.button.secondary {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button.secondary:hover {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    ;
+    color: var(--text-color);
+}
+
+span {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .sobre-mi-image {
+        height: 300px;
+        width: 300px;
+        border: 2px solid var(--primary-color);
+        border-radius: 300px;
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+    .subtitle {
+        text-align: center !important;
+    }
+
+    .reasons-list li,
+    .additional-services li, .sobre-mi-container p {
+        font-size: 12px;
+    }
+
+    .button.primary,
+    .button.secondary {
+        width: 50%;
+        height: auto;
+    }
+
+}

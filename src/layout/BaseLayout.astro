@@ -1,7 +1,9 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/navbar/Navbar.astro";
 import PromoBar from "../components/promoBar/PromoBar.astro";
 import "../styles/global.css";
+import Footer from "../components/footer/Footer.astro";
 // import Navbar from '../components/navbar/Navbar.astro'
 const {
     title = "Maquillaje y Peinados para Novias en Barcelona con Silvia Mendoza",
@@ -17,6 +19,8 @@ const {
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
         <title>{title}</title>
+        <ClientRouter  />
+
     </head>
 
     <body>
@@ -29,11 +33,6 @@ const {
             <slot />
         </main>
 
-        <footer>
-            <p>
-                &copy; 2024 Sílvia Mendoza Make Up. Todos los derechos
-                reservados.
-            </p>
-        </footer>
+          <Footer/>
     </body>
 </html>

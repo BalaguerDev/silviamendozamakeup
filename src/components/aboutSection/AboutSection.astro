@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import { reasonsToChoose, additionalServices } from "../../constants/aboutSection";
+import './AboutSection.css';
+---
+
+<div class="container sobre-mi-container">
+        <Image
+            src="/images/homepage/aboutme/Maquilladora-profesional-para-novias-en-barcelona.webp"
+            alt="Silvia Mendoza Make Up and Barcelona"
+            width={400}
+            height={400}
+            class="sobre-mi-image"
+        />
+    <div class="content-sobre-mi">
+        <h2 class="title-about">Tu maquilladora y asesora de imagen en Barcelona</h2>
+        <p>Encantada de darte la bienvenida. 👋😊</p>
+        <p>
+            ¿Buscas un <span>maquillaje de novia a medida</span> y un 
+            <span>peinado de ensueño</span> en Barcelona? Soy Silvia Mendoza,
+            tu experta en belleza nupcial. Con más de 10 años de experiencia, he
+            ayudado a cientos de novias a lucir radiantes y sentirse seguras en el
+            día más importante de sus vidas.
+        </p>
+
+        <h3 class="subtitle">¿Por qué elegirme para tu gran día?</h3>
+        <ul class="reasons-list">
+            {reasonsToChoose.map(({ title, description }) => (
+                <li>
+                    <span>{title}</span> {description}
+                </li>
+            ))}
+        </ul>
+
+        <h3 class="subtitle">¿Qué más puedo ofrecerte?</h3>
+        <ul class="additional-services">
+            {additionalServices.map(({ title, description }) => (
+                <li>
+                    <span>{title}</span> {description}
+                </li>
+            ))}
+        </ul>
+
+        <h3 class="subtitle">¿Hablamos de tu próximo evento?</h3>
+        <p>
+            Reserva tu cita ahora y déjame ayudarte a lucir radiante en tu próximo evento.
+        </p>
+        <div class="button-group">
+            <a href="https://wa.me/601532809" class="button primary">Reservar cita</a>
+            <a href="https://silviamendozamakeup.com/collections/cursos" class="button secondary">
+                Ver cursos
+            </a>
+        </div>
+    </div>
+</div>

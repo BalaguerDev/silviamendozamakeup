@@ -3,6 +3,7 @@
     --primary-color: #d0954e;
     --foreground: #9d7730;
     --background: #fff;
+    --text-color: #424242;
 
     /* Fuentes */
     --font-montserrat: "Montserrat", sans-serif;
@@ -43,7 +44,8 @@ main {
 }
 .container{
     padding:20px;
-    max-width:1600px
+    max-width:1600px;
+    margin: 0 auto;
 }
 
 footer {
@@ -51,7 +53,6 @@ footer {
     color: var(--background);
     background: var(--primary-color);
     text-align: center;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1)
 }
 
 footer p {
@@ -89,32 +90,16 @@ li,
 a {
     font-size: var(--font-size-p);
     line-height: 1.6;
-    color: var(--foreground);
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 400;
     text-align: justify;
 }
 
-/* button {
-    font-size: 16px;
-    padding: 10px 15px;
-    color: #fff;
-    background-color: #D0954E;
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    text-align: center;
-}
-
-button:hover {
-    background-color: #b3783f;
-} */
-
 @media (max-width: 768px) {
 
     h1 {
         font-size: calc(var(--font-size-h1) / 2);
-        /* Ajusta el tamaño en función del tamaño base */
     }
 
     h2 {
@@ -133,6 +118,5 @@ button:hover {
     li,
     a {
         font-size: calc(var(--font-size-p) - 2px);
-        /* Reducir ligeramente */
     }
 }

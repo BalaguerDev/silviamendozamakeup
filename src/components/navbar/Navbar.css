@@ -8,6 +8,15 @@
   padding: 10px 20px;
 }
 
+.linkYes{
+  border: 2px solid var(--primary-color);
+  border-radius: 100px;
+}
+.linkNo{
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+
 .navbar__container {
   max-width: 1200px;
   margin: 0 auto;
@@ -24,7 +33,10 @@
 }
 
 .noviaLink{
-  color:var(--primary-color) !important;
+  color:var(--text-color) !important;
+  background: var(--primary-color);
+  padding:5px 20px;
+  border-radius: 100px;
   font-weight: 600 !important;
 }
 
@@ -50,8 +62,9 @@
 }
 
 .navbar__link {
+  font-size: 12px;
   text-decoration: none;
-  color: #333;
+  color:var(--text-color);
   transition: color 0.3s ease;
 }
 
@@ -82,7 +95,7 @@
 /* Opened state */
 .navbar__links--open {
   opacity: 1;
-  max-height: 300px;
+  max-height: 350px;
 }
 
 /* Navbar links items */
