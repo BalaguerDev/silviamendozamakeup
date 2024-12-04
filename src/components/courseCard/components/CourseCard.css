@@ -1,0 +1,36 @@
+.courseCard {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.courseCard:hover {
+    transform: scale(1.05);
+}
+
+.courseCard img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.courseCardContent {
+    padding: 15px;
+    text-align: center;
+}
+
+.courseCardContent h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.courseCardContent p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}

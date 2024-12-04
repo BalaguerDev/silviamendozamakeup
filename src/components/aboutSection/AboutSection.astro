@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { reasonsToChoose, additionalServices } from "../../constants/aboutSection";
+import { reasonsToChoose } from "../../constants/aboutSection";
 import './AboutSection.css';
 ---
 
@@ -13,7 +13,7 @@ import './AboutSection.css';
             class="sobre-mi-image"
         />
     <div class="content-sobre-mi">
-        <h2 class="title-about">Tu maquilladora y asesora de imagen en Barcelona</h2>
+        <h2 class="title-about">Tu maquilladora y asesora de imagen en Barcelona especializada en novias</h2>
         <p>Encantada de darte la bienvenida. 👋😊</p>
         <p>
             ¿Buscas un <span>maquillaje de novia a medida</span> y un 
@@ -32,23 +32,14 @@ import './AboutSection.css';
             ))}
         </ul>
 
-        <h3 class="subtitle">¿Qué más puedo ofrecerte?</h3>
-        <ul class="additional-services">
-            {additionalServices.map(({ title, description }) => (
-                <li>
-                    <span>{title}</span> {description}
-                </li>
-            ))}
-        </ul>
-
-        <h3 class="subtitle">¿Hablamos de tu próximo evento?</h3>
+        <h3 class="subtitle">¿Hablamos del dia de tu boda?</h3>
         <p>
-            Reserva tu cita ahora y déjame ayudarte a lucir radiante en tu próximo evento.
+            Reserva tu cita ahora y déjame ayudarte a lucir radiante en uno de los días más importantes que vivirás.
         </p>
         <div class="button-group">
             <a href="https://wa.me/601532809" class="button primary">Reservar cita</a>
             <a href="https://silviamendozamakeup.com/collections/cursos" class="button secondary">
-                Ver cursos
+                Más información
             </a>
         </div>
     </div>

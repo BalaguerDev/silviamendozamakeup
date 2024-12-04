@@ -1,0 +1,13 @@
+---
+import './CourseCard.css'
+const { link, title, shortDescription, imageSrc } = Astro.props
+
+---
+
+<a href={link} class="courseCard">
+    <img src={imageSrc} alt={title}>
+    <div class="courseCardContent">
+        <h3>{title}</h3>
+        <p>{shortDescription}</p>
+    </div>
+</a>

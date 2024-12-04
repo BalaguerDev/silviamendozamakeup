@@ -1,0 +1,52 @@
+.courseContainerBackground {
+    background: #fff7ef;
+    padding: 20px 0;
+}
+
+.courseContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.courseContainer h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.courseCarousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    padding: 10px 0;
+    scrollbar-width: none; 
+}
+
+.courseCarousel::-webkit-scrollbar {
+    display: none; 
+}
+
+.courseCard {
+    flex: 0 0 calc(100% - 20px); 
+    scroll-snap-align: center; 
+    transition: transform 0.3s ease;
+}
+
+.courseCard:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .courseCarousel {
+        overflow-x: unset; 
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .courseCard {
+        flex: 0 0 calc(30% - 20px); 
+    }
+}

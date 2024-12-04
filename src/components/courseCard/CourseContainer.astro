@@ -1,0 +1,26 @@
+---
+import CourseCard from "./components/CourseCard.astro";
+import { courses } from "../../constants/courses";
+
+import "./CourseContainer.css";
+---
+
+.<div class="courseContainerBackground">
+    <div class="container courseContainer">
+        <h2>
+            Realiza nuestros cursos de automaquillaje y peinado pensados para
+            cualquier nivel
+        </h2>
+        <div class="courseCarousel">            {
+                courses.map(({ link, title, shortDescription, imageSrc }) => (
+                    <CourseCard
+                        link={link}
+                        title={title}
+                        shortDescription={shortDescription}
+                        imageSrc={imageSrc}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</div>

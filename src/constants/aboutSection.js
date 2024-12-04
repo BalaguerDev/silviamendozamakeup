@@ -19,23 +19,3 @@ export const reasonsToChoose = [
         description: "Duradero para que brilles en la pista de baile.",
     },
 ];
-
-
-
-export const additionalServices = [
-    {
-        title: "Cursos de automaquillaje y autopeinado:",
-        description:
-            "Aprende las técnicas profesionales para maquillarte y peinarte como una experta en cualquier ocasión.",
-    },
-    {
-        title: "Asesoría de imagen integral:",
-        description:
-            "Descubre tu estilo personal y potencia tu imagen en todas las ocasiones.",
-    },
-    {
-        title: "Cursos de formación profesional:",
-        description:
-            "¿Quieres convertir tu pasión por la belleza en tu profesión? Ofrecemos cursos especializados para maquilladores y estilistas.",
-    },
-];
