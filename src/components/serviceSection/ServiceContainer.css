@@ -1,0 +1,21 @@
+.service-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.cardGrid {
+display: flex;
+justify-content: center;
+gap:20px;
+}
+
+/* Estilo de tarjetas en móviles y tabletas */
+@media (max-width: 768px) {
+  .cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+}
+

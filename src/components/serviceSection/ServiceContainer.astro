@@ -1,0 +1,23 @@
+---
+import ServiceCard from "./components/ServiceCard.astro";
+const { services, title } = Astro.props; 
+
+import "./ServiceContainer.css";
+---
+
+<div class="service-container container">
+    <h2>{title}</h2>
+    <div class="cardGrid">
+        {
+            services.map(({imageSrc, titleCard,price,link}) => (
+                <a href={link}>
+                    <ServiceCard
+                        imageSrc={imageSrc}
+                        titleCard={titleCard}
+                        price={price}
+                    />
+                </a>
+            ))
+        }
+    </div>
+</div>

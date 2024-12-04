@@ -1,26 +1,22 @@
 ---
-import CourseCard from "./components/CourseCard.astro";
-import { courses } from "../../constants/courses";
+import CourseCard from "./components/CourseCard.astro"; 
+const { courses, title } = Astro.props; 
 
 import "./CourseContainer.css";
 ---
 
-.<div class="courseContainerBackground">
+<div class="courseContainerBackground">
     <div class="container courseContainer">
-        <h2>
-            Realiza nuestros cursos de automaquillaje y peinado pensados para
-            cualquier nivel
-        </h2>
-        <div class="courseCarousel">            {
-                courses.map(({ link, title, shortDescription, imageSrc }) => (
-                    <CourseCard
-                        link={link}
-                        title={title}
-                        shortDescription={shortDescription}
-                        imageSrc={imageSrc}
-                    />
-                ))
-            }
+        <h2>{title}</h2>
+        <div class="courseCarousel">
+            {courses.map(({ link, title, description, imageSrc }) => (
+                <CourseCard
+                    link={link}
+                    title={title}
+                    description={description}
+                    imageSrc={imageSrc}
+                />
+            ))}
         </div>
     </div>
 </div>
