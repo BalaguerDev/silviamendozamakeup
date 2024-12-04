@@ -1,0 +1,81 @@
+---
+// Importación de componentes y datos
+import BaseLayout from "../layout/BaseLayout.astro";
+import ServiceContainer from "../components/serviceSection/ServiceContainer.astro";
+import { serviceList } from "../constants/serviceList";
+import "../styles/Servicios.css";
+
+export async function getStaticPaths() {
+    return serviceList.map((service) => ({
+        params: { services: service.link.replace("/", "") },
+    }));
+}
+
+const { services } = Astro.params;
+const service = serviceList.find(
+    (service) => service.link.replace("/", "") === services,
+);
+
+if (!service) {
+    throw new Error(`Curso con link ${services} no encontrado.`);
+}
+
+const filteredService = serviceList.filter(
+    (c) => c.link.replace("/", "") !== services,
+);
+---
+
+<BaseLayout>
+    <article class="service-detail-container container">
+        <section class="service-header">
+            <h1>{service.titleCard}</h1>
+            <h2>{service.subtitle}</h2>
+        </section>
+
+        <div class="service-grid">
+            <section class="service-image">
+                <img
+                    src={service.imageSrc}
+                    alt={service.titleCard}
+                    loading="lazy"
+                    transition:name={service.titleCard}
+                />
+                <p class="short-description">{service.shortDescription}</p>
+            </section>
+            <div>
+                <section class="service-description">
+                    <p>{service.fullDescription[0]}</p>
+                    <p>{service.fullDescription[1]}</p>
+                </section>
+                <section class="service-includes">
+                    <h2>¿Qué incluye?</h2>
+                    <ul>
+                        {service.include.map((item) => <li>{item}</li>)}
+                    </ul>
+                </section>
+
+                <section class="service-location">
+                    <h2>Ubicación y contacto</h2>
+                    <p><strong>Dirección:</strong> {service.location}</p>
+                    <p><strong>Plazas disponibles:</strong> {service.places}</p>
+                    <a
+                        href={`https://wa.me/1234567890`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cta-link">Contacta por WhatsApp</a
+                    >
+                    <p><span>Precio:</span> {service.price}</p>
+                </section>
+            </div>
+        </div>
+        <a href={service.link} class="button primary">¡Apúntate ahora!</a>
+    </article>
+    {
+        filteredService.length > 0 && (
+            <ServiceContainer
+                services={filteredService}
+                title="Podrian interesarte estos otros productos"
+            />
+        )
+    }
+</BaseLayout>

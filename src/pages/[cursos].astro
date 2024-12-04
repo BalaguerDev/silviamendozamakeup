@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { courseList } from "../constants/courseList";
+import CourseContainer from "../components/courseCard/CourseContainer.astro";
+import "../styles/Cursos.css";
+// Obtenemos las rutas dinámicas para prerenderizar
+export async function getStaticPaths() {
+    return courseList.map((course) => ({
+        params: { cursos: course.link.replace("/", "") },
+    }));
+}
+
+const { cursos } = Astro.params;
+const course = courseList.find(
+    (course) => course.link.replace("/", "") === cursos,
+);
+
+if (!course) {
+    throw new Error(`Curso con link ${cursos} no encontrado.`);
+}
+
+// Filtra los cursos para excluir el actual
+const filteredCourses = courseList.filter(
+    (c) => c.link.replace("/", "") !== cursos,
+);
+---
+
+<BaseLayout>
+    <div class="container courseHeader">
+        <img
+            src={course.imageSrc}
+            alt={course.titlePage}
+            class="courseImage"
+            transition:name={course.title}
+        />
+        <div class="courseText">
+            <h1 class="courseTitle">{course.titlePage}</h1>
+            <h2>{course.subtitle}</h2>
+
+            <div class="longDescription">
+                <p>{course.overview}</p>
+                <p>
+                    {
+                        typeof course.longDescription === "string"
+                            ? course.longDescription
+                            : ""
+                    }
+                </p>
+                <h3>Lo que aprenderás</h3>
+                {
+                    Array.isArray(course.whatYouWillLearn) && (
+                        <ul>
+                            {course.whatYouWillLearn.map((item) => (
+                                <li>{item}</li>
+                            ))}
+                        </ul>
+                    )
+                }
+
+                <h3>Para quién es este curso</h3>
+                <p>{course.forWhom}</p>
+
+                <h3>Duración y Precio</h3>
+                {
+                    Array.isArray(course.durationPrice) && (
+                        <ul class="durationPrice">
+                            {course.durationPrice.map((item) => (
+                                <li>{item}</li>
+                            ))}
+                        </ul>
+                    )
+                }
+
+                <h3>Materiales incluidos</h3>
+                <p class="materials">{course.materials}</p>
+            </div>
+            <a href="https://wa.me/601532809" class="button primary"
+                >Solicitar más información</a
+            >
+        </div>
+    </div>
+
+    {
+        filteredCourses.length > 0 && (
+            <CourseContainer
+                courses={filteredCourses}
+                title="También te interesarán estos otros cursos"
+            />
+        )
+    }
+</BaseLayout>

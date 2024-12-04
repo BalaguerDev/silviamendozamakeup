@@ -1,0 +1,15 @@
+---
+import './ServiceCard.css'
+
+const { titleCard, imageSrc, price } = Astro.props;
+
+
+---
+
+<div class="card">
+    <img src={imageSrc} alt={titleCard} transition:name={titleCard}/>
+    <div class="card-content">
+        <h2>{titleCard}</h2>
+        <p>{price}</p>
+    </div>
+</div>

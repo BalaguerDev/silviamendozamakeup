@@ -2,11 +2,21 @@
 import AboutSection from "../components/aboutSection/AboutSection.astro";
 import CourseContainer from "../components/courseCard/CourseContainer.astro";
 import Hero from "../components/hero/Hero.astro";
+import ServiceContainer from "../components/serviceSection/ServiceContainer.astro";
+import { courseList } from "../constants/courseList";
+import { serviceList } from "../constants/serviceList";
 import BaseLayout from "../layout/BaseLayout.astro";
 ---
 
 <BaseLayout>
     <Hero />
     <AboutSection />
-    <CourseContainer/>
+    <CourseContainer
+        courses={courseList}
+        title="Descubre los cursos de belleza y de formación profesional"
+    />
+    <ServiceContainer
+    services={serviceList}
+    title="Descubre los cursos de belleza y de formación profesional"
+/>
 </BaseLayout>
