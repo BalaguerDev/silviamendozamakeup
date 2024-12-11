@@ -1,80 +1,85 @@
 ---
-// Importación de componentes y datos
 import BaseLayout from "../layout/BaseLayout.astro";
 import ServiceContainer from "../components/serviceSection/ServiceContainer.astro";
 import { serviceList } from "../constants/serviceList";
+import { cleanLink } from "../utils/helpers";
+
 import "../styles/Servicios.css";
 
+// Obtener los paths de manera optimizada
 export async function getStaticPaths() {
     return serviceList.map((service) => ({
-        params: { services: service.link.replace("/", "") },
+        params: { services: cleanLink(service.link) },
     }));
 }
 
 const { services } = Astro.params;
-const service = serviceList.find(
-    (service) => service.link.replace("/", "") === services,
-);
+const cleanedServices = cleanLink(services); // Limpiamos la URL solo una vez
+
+// Buscar el servicio directamente y filtrar los servicios restantes
+const service = serviceList.find((service) => cleanLink(service.link) === cleanedServices);
+const filteredService = serviceList.filter((service) => cleanLink(service.link) !== cleanedServices);
 
 if (!service) {
     throw new Error(`Curso con link ${services} no encontrado.`);
 }
 
-const filteredService = serviceList.filter(
-    (c) => c.link.replace("/", "") !== services,
-);
+const { titleCard, subtitle, imageSrc, shortDescription, fullDescription, include, location, places, price } = service;
+// Metadata
+const title = `${titleCard} - Silvia Mendoza Makeup`;
+const description = service.overview || "Descubre más sobre el servicio.";
+
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description} image={imageSrc}>
     <article class="service-detail-container container">
         <section class="service-header">
-            <h1>{service.titleCard}</h1>
-            <h2>{service.subtitle}</h2>
+            <h1>{titleCard}</h1>
+            <h2>{subtitle}</h2>
         </section>
 
         <div class="service-grid">
             <section class="service-image">
                 <img
-                    src={service.imageSrc}
-                    alt={service.titleCard}
+                    src={imageSrc}
+                    alt={titleCard}
                     loading="lazy"
-                    transition:name={service.titleCard}
+                    transition:name={titleCard}
                 />
-                <p class="short-description">{service.shortDescription}</p>
+                <p class="short-description">{shortDescription}</p>
             </section>
             <div>
                 <section class="service-description">
-                    <p>{service.fullDescription[0]}</p>
-                    <p>{service.fullDescription[1]}</p>
+                    <p>{fullDescription[0]}</p>
+                    <p>{fullDescription[1]}</p>
                 </section>
                 <section class="service-includes">
                     <h2>¿Qué incluye?</h2>
                     <ul>
-                        {service.include.map((item) => <li>{item}</li>)}
+                        {include.map(item => <li>{item}</li>)}
                     </ul>
                 </section>
 
                 <section class="service-location">
                     <h2>Ubicación y contacto</h2>
-                    <p><strong>Dirección:</strong> {service.location}</p>
-                    <p><strong>Plazas disponibles:</strong> {service.places}</p>
+                    <p><strong>Dirección:</strong> {location}</p>
+                    <p><strong>Plazas disponibles:</strong> {places}</p>
                     <a
-                        href={`https://wa.me/1234567890`}
+                        href={`https://wa.me/601532809`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cta-link">Contacta por WhatsApp</a
+                        class="button primary">Contacta por WhatsApp</a
                     >
-                    <p><span>Precio:</span> {service.price}</p>
+                    <p><span>Precio:</span> {price}</p>
                 </section>
             </div>
         </div>
-        <a href={service.link} class="button primary">¡Apúntate ahora!</a>
     </article>
     {
         filteredService.length > 0 && (
             <ServiceContainer
                 services={filteredService}
-                title="Podrian interesarte estos otros productos"
+                title="Podrían interesarte estos otros productos"
             />
         )
     }

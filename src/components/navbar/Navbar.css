@@ -9,11 +9,11 @@
 }
 
 .linkYes{
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 100px;
 }
 .linkNo{
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 100px;
 }
 
@@ -96,6 +96,8 @@
 .navbar__links--open {
   opacity: 1;
   max-height: 350px;
+  transition: all 0.3s ease-in-out;
+
 }
 
 /* Navbar links items */
@@ -105,7 +107,7 @@
 }
 
 .navbar__link {
-  color: #333;
+  color: var(--text-color);
   font-size: 1rem;
 }
 

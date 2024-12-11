@@ -45,18 +45,10 @@
 
 .short-description {
   text-align: center;
-  font-size: 1.1rem;
-  color: #555;
   margin-top: 15px;
 }
 
-/* Descripción Completa */
-.service-description p {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  margin-top:0;
-}
+
 
 /* Lista de Servicios Incluidos */
 .service-includes {
@@ -64,7 +56,6 @@
 }
 
 .service-includes h2 {
-  font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 15px;
 }
@@ -100,16 +91,9 @@
 .service-location p {
   margin: 10px 0;
 }
-
-.cta-link {
+.service-location a {
   display: inline-block;
-  font-size: 1.1rem;
-  color: white;
-  background-color: var(--primary-color);
-  padding: 10px 20px;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+  margin: 10px 0; 
 }
 
 
@@ -119,23 +103,7 @@
   margin-top: 20px;
 }
 
-.service-footer p {
-  font-size: 1.2rem;
-  color: var(--text-color);
-}
 
-.button.primary {
-  display: inline-block;
-  margin: 20px auto;
-  padding: 12px 30px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: var(--secondary-color);
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  text-align: center;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -154,15 +122,5 @@
 
   .short-description {
     font-size: 1rem;
-  }
-
-  .service-description p {
-    font-size: 1rem;
-  }
-
-  .cta-link,
-  .button.primary {
-    font-size: 1rem;
-    padding: 10px 15px;
   }
 }

@@ -1,0 +1,72 @@
+/* Estilos generales de la tarjeta */
+.workshop-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  width: 100%; 
+  max-width: 150px;
+}
+
+.workshop-card:hover {
+  transform: scale(1.03);
+}
+
+.workshop-image {
+  width: 100%; 
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.workshop-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.workshop-title {
+  font-size: 0.8rem;
+  margin: 0;
+  height: 50px;
+  display: grid;
+  place-content: center;
+}
+
+.workshop-date {
+  font-size: 0.7rem;
+  text-align: center;
+  color: #777777;
+}
+
+/* Carrousel - Vista móvil */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  width: 100%; 
+  max-width: 300px;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 769px) {
+  .carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .carousel-card {
+    flex: 0 0 auto;
+    max-width: 300px; 
+    margin: 10px;
+  }
+}

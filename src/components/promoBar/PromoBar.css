@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     color: var(--text-color);
+    font-weight: 600;
 }
 
 .promoBar p img{
@@ -28,7 +29,6 @@
     .promoBar p{
         margin-left: 0;
         margin-right: 0;
-        font-size: 12px !important;
         display: flex;
         align-items: center;
         color: #333;

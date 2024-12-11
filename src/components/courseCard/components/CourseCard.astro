@@ -1,12 +1,15 @@
 ---
 import './CourseCard.css'
-const { link, title, description, imageSrc } = Astro.props
+const { link, titleCard, description, imageSrc, isStatic } = Astro.props
 ---
 
-<a href={link} class="courseCard">
-    <img transition:name={title} src={imageSrc} alt={title}>
+<a href={isStatic ? "/cursos-automaquillaje-barcelona" : link}
+class="courseCard">
+    <img transition:name={titleCard} src={imageSrc} alt={titleCard}>
     <div class="courseCardContent">
-        <h3>{title}</h3>
+        <h3>{titleCard}</h3>
         <p>{description}</p>
     </div>
 </a>
+
+

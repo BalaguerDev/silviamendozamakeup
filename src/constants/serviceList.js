@@ -1,7 +1,7 @@
 export const serviceList = [
     {
-      titleCard: "Clase de Automaquillaje",
-      titlePage: "Clase de Automaquillaje en Barcelona",
+      titleCard: "Clase de automaquillaje",
+      titlePage: "Clase de automaquillaje en Barcelona",
       subtitle: "Descubre los secretos para un maquillaje natural en tu día a día",
       shortDescription:
         "Aprende a realzar tu belleza natural con nuestras clases de automaquillaje personalizadas. Técnicas profesionales y consejos prácticos",
@@ -21,7 +21,7 @@ export const serviceList = [
       places: "4 (consulta por Whatsapp para grupos de hasta 6 personas)",
     },
     {
-      titleCard: "Clase de Autopeinado",
+      titleCard: "Clase de autopeinado",
       titlePage: "Clase de autopeinado en Barcelona",
       subtitle: "Formate y haz de tu hobie un trabajo",
       subtitle:

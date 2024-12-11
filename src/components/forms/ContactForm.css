@@ -15,12 +15,6 @@
   .contact-form input,
   .contact-form textarea {
     padding: 8px;
-    font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  .contact-form button {
-
-    border-radius: 5px;
-
   }

@@ -49,9 +49,7 @@
     border: 2px solid #fff;
     color: #fff ;
     padding: 12px 30px;
-    font-size: 1rem;
     text-decoration: none;
-    border-radius: 30px;
     display: inline-block;
     transition: background-color 0.3s ease;
   }
@@ -59,7 +57,7 @@
   .button:hover {
     background-color: #b3783f;
     border: 2px solid #b3783f;
-    color:#2c2c2c ;
+    color:#fff ;
   }
   
   @media (max-width: 768px) {
@@ -69,7 +67,6 @@
   
     .button {
       padding: 10px 20px;
-      font-size: 0.9rem;
     }
   }
   
