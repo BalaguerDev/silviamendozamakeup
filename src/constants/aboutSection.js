@@ -2,7 +2,7 @@ export const reasonsToChoose = [
     {
         title: "Maquillaje nupcial personalizado:",
         description:
-            "Creamos looks atemporales que realzan tu belleza natural y se adaptan perfectamente a tu estilo personal.",
+            "Creamos looks atemporales que realzan tu belleza natural y se adaptan perfectamente a tu estilo personal, utilizando productos de alta calidad y siguiendo las últimas tendencias.",
     },
     {
         title: "Peinados de ensueño:",

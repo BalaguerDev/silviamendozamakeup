@@ -1,6 +1,19 @@
 export const courseList = [
     {
-        title: "Curso de Automaquillaje",
+        titleCard: "Talleres de formación de automaquillaje 2025",
+        titlePage: "Cursos intensivos de automaquillaje en Barcelona",
+        subtitle: "Domina el arte del automaquillaje en nuestro tallere exclusivos",
+        description: "Participa en nuestros talleres intensivos de automaquillaje en Barcelona, ideales para grupos reducidos de 10-15 personas. Aprende técnicas profesionales que potenciarán tu estilo personal.",
+        longDescription: `
+        Únete a nuestros talleres exclusivos de automaquillaje, donde aprenderás de la mano de profesionales del maquillaje.
+        Diseñados tanto para principiantes como para quienes desean perfeccionar su técnica, estos talleres te ofrecerán las herramientas necesarias 
+        para crear looks espectaculares. Además, cada sesión está pensada para disfrutar en un ambiente cercano y práctico.`,
+        imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
+        link: "/cursos-intensivos-automaquillaje-barcelona-2025",
+        isStatic: true, 
+    },
+    {
+        titleCard: "Curso de automaquillaje",
         titlePage: "Curso de Automaquillaje en Barcelona",
         subtitle: "Realza tu belleza natural",
         description: "Aprende a maquillarte como una profesional. Descubre técnicas y trucos para lucir radiante en cualquier ocasión.",
@@ -22,7 +35,7 @@ export const courseList = [
         link: "/curso-de-automaquillaje-en-barcelona",
     },
     {
-        title: "Curso profesional de maquillaje y peluquería",
+        titleCard: "Curso de autopeinado",
         titlePage: "Curso profesional de maquillaje y peluquería en Barcelona",
         subtitle: "Conviértete en un experto en belleza",
         description: "Descubre un mundo de oportunidades en la industria de la belleza. Nuestro curso te proporcionará las herramientas y conocimientos necesarios para triunfar.",
@@ -45,7 +58,7 @@ export const courseList = [
         link: "/formacion-profesional-maquillaje-peluqueria",
     },
     {
-        title: "Curso de Peinados y Recogidos",
+        titleCard: "Beauty Partys",
         titlePage: "Curso de Peinados y Recogidos en Barcelona",
         subtitle: "¡Crea looks de ensueño para cualquier ocasión!",
         description: "Aprende a realizar peinados elegantes y sofisticados como un profesional. Domina las técnicas para recrearlas contigo misma o a tus amigas",

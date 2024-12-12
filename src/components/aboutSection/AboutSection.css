@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     gap: 2rem;
     padding: 2rem;
-    border-radius: 10px;
     align-items: center;
     justify-content: center;
 }
@@ -37,48 +36,6 @@
     list-style: none;
 }
 
-
-.button-group {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.button {
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-}
-
-.button.primary {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    border: none;
-    transition: background-color 0.3s ease;
-    border: 2px solid var(--primary-color);
-}
-
-.button.primary:hover {
-    background-color: #fff;
-    border: 2px solid var(--primary-color);
-}
-
-.button.secondary {
-    background-color: #fff;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.button.secondary:hover {
-    background-color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    ;
-    color: var(--text-color);
-}
-
 span {
     font-weight: 600;
 }
@@ -99,15 +56,6 @@ span {
         text-align: center !important;
     }
 
-    .reasons-list li,
-    .additional-services li, .sobre-mi-container p {
-        font-size: 12px;
-    }
 
-    .button.primary,
-    .button.secondary {
-        width: 50%;
-        height: auto;
-    }
 
 }

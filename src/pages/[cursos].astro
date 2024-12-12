@@ -2,90 +2,94 @@
 import BaseLayout from "../layout/BaseLayout.astro";
 import { courseList } from "../constants/courseList";
 import CourseContainer from "../components/courseCard/CourseContainer.astro";
+import { cleanLink } from "../utils/helpers"; // Importa la función
 import "../styles/Cursos.css";
-// Obtenemos las rutas dinámicas para prerenderizar
+
+// Genera rutas dinámicas excluyendo cursos estáticos
 export async function getStaticPaths() {
-    return courseList.map((course) => ({
-        params: { cursos: course.link.replace("/", "") },
-    }));
+    return courseList
+        .filter((course) => !course.isStatic)
+        .map((course) => ({
+            params: { cursos: cleanLink(course.link) },
+        }));
 }
 
+// Obtiene parámetros de la ruta dinámica
 const { cursos } = Astro.params;
+
+// Encuentra el curso actual excluyendo cursos estáticos
 const course = courseList.find(
-    (course) => course.link.replace("/", "") === cursos,
+    (course) => cleanLink(course.link) === cursos && !course.isStatic
 );
 
 if (!course) {
-    throw new Error(`Curso con link ${cursos} no encontrado.`);
+    throw new Error(`Curso con link "${cursos}" no encontrado.`);
 }
 
-// Filtra los cursos para excluir el actual
+// Filtra otros cursos excluyendo el actual y los estáticos
 const filteredCourses = courseList.filter(
-    (c) => c.link.replace("/", "") !== cursos,
+    (c) => cleanLink(c.link) !== cursos && !c.isStatic
 );
+const { titlePage, subtitle, imageSrc, overview, longDescription, whatYouWillLearn, durationPrice, materials, forWhom } = course;
+
+// Metadata
+const title = `${titlePage} - Silvia Mendoza Makeup`;
+const description = overview || "Descubre más sobre este curso.";
+const image = imageSrc;
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description} image={image}>
     <div class="container courseHeader">
         <img
-            src={course.imageSrc}
-            alt={course.titlePage}
+            src={imageSrc}
+            alt={titlePage}
             class="courseImage"
-            transition:name={course.title}
+            transition:name={titlePage}
         />
         <div class="courseText">
-            <h1 class="courseTitle">{course.titlePage}</h1>
-            <h2>{course.subtitle}</h2>
+            <h1 class="courseTitle">{titlePage}</h1>
+            <h2>{subtitle}</h2>
 
             <div class="longDescription">
-                <p>{course.overview}</p>
-                <p>
-                    {
-                        typeof course.longDescription === "string"
-                            ? course.longDescription
-                            : ""
-                    }
-                </p>
+                <p>{overview}</p>
+                {typeof longDescription === "string" && (
+                    <p>{longDescription}</p>
+                )}
+
                 <h3>Lo que aprenderás</h3>
-                {
-                    Array.isArray(course.whatYouWillLearn) && (
-                        <ul>
-                            {course.whatYouWillLearn.map((item) => (
-                                <li>{item}</li>
-                            ))}
-                        </ul>
-                    )
-                }
+                {Array.isArray(whatYouWillLearn) && (
+                    <ul>
+                        {whatYouWillLearn.map((item) => (
+                            <li>{item}</li>
+                        ))}
+                    </ul>
+                )}
 
                 <h3>Para quién es este curso</h3>
-                <p>{course.forWhom}</p>
+                <p>{forWhom}</p>
 
                 <h3>Duración y Precio</h3>
-                {
-                    Array.isArray(course.durationPrice) && (
-                        <ul class="durationPrice">
-                            {course.durationPrice.map((item) => (
-                                <li>{item}</li>
-                            ))}
-                        </ul>
-                    )
-                }
+                {Array.isArray(durationPrice) && (
+                    <ul class="durationPrice">
+                        {durationPrice.map((item) => (
+                            <li>{item}</li>
+                        ))}
+                    </ul>
+                )}
 
                 <h3>Materiales incluidos</h3>
-                <p class="materials">{course.materials}</p>
+                <p class="materials">{materials}</p>
             </div>
-            <a href="https://wa.me/601532809" class="button primary"
-                >Solicitar más información</a
-            >
+            <a href="https://wa.me/601532809" class="button primary">
+                Solicitar más información
+            </a>
         </div>
     </div>
 
-    {
-        filteredCourses.length > 0 && (
-            <CourseContainer
-                courses={filteredCourses}
-                title="También te interesarán estos otros cursos"
-            />
-        )
-    }
+    {filteredCourses.length > 0 && (
+        <CourseContainer
+            courses={filteredCourses}
+            title="También te interesarán estos otros cursos"
+        />
+    )}
 </BaseLayout>

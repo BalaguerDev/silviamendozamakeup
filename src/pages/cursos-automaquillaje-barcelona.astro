@@ -1,0 +1,32 @@
+---
+import WorkShopCard from "../components/workshopSection/workshopCard/WorkShopCard.astro";
+import BaseLayout from "../layout/BaseLayout.astro";
+import { workshopList } from "../constants/workshopList";
+import "../styles/Cursos-automaquillaje-barcelona.css";
+---
+
+<BaseLayout
+    title="Cursos de Automaquillaje en Barcelona - Silvia Mendoza Makeup"
+    description="Calendario de talleres intensivos de automaquillaje en Barcelona"
+>
+  <section class="container">
+    <h1 class="courseTitle">Calendario de Talleres de Automaquillaje en Barcelona</h1>
+    <p class="courseDescription">
+      Explora nuestro calendario de cursos intensivos para realzar tu belleza natural.
+    </p>
+
+    <!-- Carrousel responsivo -->
+    <div class="carousel">
+      {workshopList.map(workshop => (
+        <div class="carousel-card">
+          <WorkShopCard
+            title={workshop.title}
+            date={workshop.date}
+            price={workshop.price}
+            imageSrc={workshop.imageSrc}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

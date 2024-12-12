@@ -9,12 +9,13 @@ import "./CourseContainer.css";
     <div class="container courseContainer">
         <h2>{title}</h2>
         <div class="courseCarousel">
-            {courses.map(({ link, title, description, imageSrc }) => (
+            {courses.map(({ link, titleCard, description, imageSrc, isStatic }) => (
                 <CourseCard
                     link={link}
-                    title={title}
+                    titleCard={titleCard}
                     description={description}
                     imageSrc={imageSrc}
+                    isStatic={isStatic}
                 />
             ))}
         </div>

@@ -24,13 +24,12 @@
 }
 
 .courseCardContent h3 {
-    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.courseCardContent p {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.4;
-}
+
