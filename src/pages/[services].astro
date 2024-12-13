@@ -1,11 +1,10 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import ServiceContainer from "../components/serviceSection/ServiceContainer.astro";
+import CardContainer from "../components/cardContainer/CardContainer.astro";
 import { serviceList } from "../data/serviceList";
 import { cleanLink } from "../utils/helpers";
 
 import "../styles/Servicios.css";
-import CardContainer from "../components/cardContainer/CardContainer.astro";
 
 // Obtener los paths de manera optimizada
 export async function getStaticPaths() {
