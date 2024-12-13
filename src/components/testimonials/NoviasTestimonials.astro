@@ -1,0 +1,71 @@
+---
+import "./NoviasTestimonials.css";
+
+const testimonials = [
+  {
+    text: "No tengo palabras para describir el trabajo de Sílvia... Me maquilló y peinó para mi boda y no puede quedar más encantada... estuvo hasta el último momento para retocarme y en todo momento tuvo presente lo que habíamos acordado en la prueba. No podría haber escogido a una profesional mejor💜 ¡¡Gracias y mil gracias!!",
+    author: "Sara Santervás Martos",
+  },
+  {
+    text: "Mi experiencia con Silvia Mendoza Make UP fue sencillamente espectacular! Silvia logró un maquillaje y peinado de boda que superaron todas mis expectativas: acabados impecables y un resultado deslumbrante. Me sentí como nunca antes, ¡realmente me sacó mi mejor versión! Ese día fui la sensación y seguí recibiendo elogios por semanas, ¡mis fotos en redes explotaron! Además, hice un curso de maquillaje con ella, y ahora gracias a Silvia, puedo maquillarme cada día con elegancia y estilo, ya sea para un look casual o para algo más glamuroso. No pierdas la oportunidad de conocer su magia, ¡te encantará! Un Millón de Gracias Silvi !!!!",
+    author: "Ana",
+  },
+  {
+    text: "Silvia, muy simpática y agradable ;) me hizo el maquillaje y peinado el dia de mi moda y a mi madre como invitada también. Las dos quedamos muy contentas y sin haber contratado prueba previa se adaptó perfectamente a lo que nos gustaba. Agradecer también que se desplazara hasta el domicilio. Todo el mundo nos dijo que estabamos espectaculares. Gracias por tu estupendo trabajo Silvia!!",
+    author: "Chipiwiki Yupii Rockalt",
+  },
+  {
+    text: "Silvia me se encargó de peinarme y maquillarme para la boda de mi hija. Además de ser una una persona atenta y profesional, hizo un trabajo maravilloso. Supo respetar mi estilo obteniendo un resultado espectacular. Me sentí guapa y especial ese día. Se la recomiendo a cualquier persona que necesite alguien que le ayude en alguna ocasión especial o a sacarse partido en el día a día. Muchas gracias Silvia.",
+    author: "Cinta Guerrero",
+  },
+];
+---
+
+<h2>¿Qué opininan mis novias?</h2>
+
+<div class="testimonials-slider-wrapper">
+  <div class="testimonials-slider">
+    {
+      testimonials.map((testimonial) => (
+        <div class="testimonial-card">
+          <blockquote>{testimonial.text}</blockquote>
+          <cite>{testimonial.author}</cite>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let currentIndex = 0;
+    const slider = document.querySelector(".testimonials-slider") as HTMLElement;
+    const testimonialCards = document.querySelectorAll(".testimonial-card");
+    const totalItems = testimonialCards.length;
+
+    // Validación de existencia del slider
+    if (!slider || totalItems === 0) return;
+
+    // Duplicamos los testimonios
+    const clonedTestimonials = slider.innerHTML;
+    slider.innerHTML += clonedTestimonials;
+
+    function moveSlider() {
+      currentIndex++;
+
+      if (currentIndex >= totalItems) {
+        currentIndex = 0;
+        slider.style.transition = "none";
+        slider.style.transform = `translateX(0%)`;
+        setTimeout(() => {
+          slider.style.transition = "transform 1s ease";
+        }, 50);
+      }
+
+      const offset = -100 * currentIndex;
+      slider.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(moveSlider, 5000);
+  });
+</script>

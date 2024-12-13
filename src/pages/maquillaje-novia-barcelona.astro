@@ -1,9 +1,43 @@
 ---
+// Importaciones
 import BaseLayout from "../layout/BaseLayout.astro";
+import { packNovia } from "../data/packNovia";
+import ContactForm from "../components/forms/ContactForm.astro";
+import Gallery from "../components/gallerySectionNovias/Gallery.astro";
+import FAQ from "../components/faq/FAQ.astro";
+import CardPackNovias from "../components/cardPackNovias/CardPackNovias.astro";
+import NoviasTestimonials from "../components/testimonials/NoviasTestimonials.astro";
+import "../styles/novia.css";
 ---
 
 <BaseLayout>
-    <div class="container">
-        <h1>Maquillaje y peinado natural para novia en Barcelona</h1>
+  <div class="container">
+    <!-- Sección de introducción -->
+    <div class="intro">
+      <img
+        src="/images/novias/maquillaje-natural-a-novia-en-barcelona-silvia-mendoza-make-up.webp"
+        alt="Maquillaje natural a novia en Barcelona"
+      />
+      <section>
+        <h1>Maquillaje y Peluquería para Novias en Barcelona</h1>
+        <p>
+          ¿Buscas un look nupcial que te haga sentir radiante y segura? En [Tu
+          nombre], te ofrecemos un servicio personalizado para que brilles en tu
+          gran día. Con mi experiencia y pasión, crearemos un estilo único que
+          refleje tu personalidad.
+        </p>
+      </section>
     </div>
+
+    <h2>¿Cómo funcionará tu servicio de novia?</h2>
+    <CardPackNovias items={packNovia} />
+
+    <NoviasTestimonials />
+
+    <Gallery />
+
+    <ContactForm />
+
+    <FAQ />
+  </div>
 </BaseLayout>

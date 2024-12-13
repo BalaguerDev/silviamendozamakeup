@@ -4,11 +4,12 @@ import Navbar from "../components/navbar/Navbar.astro";
 import PromoBar from "../components/promoBar/PromoBar.astro";
 import "../styles/global.css";
 import Footer from "../components/footer/Footer.astro";
+import { SEO } from '../constants/seo'
 
 const {
-    title = "Maquillaje y Peinados para Novias en Barcelona con Silvia Mendoza",
-    description = "¿Buscas una maquilladora para tu boda en Barcelona? Silvia Mendoza Makeup ofrece servicios de maquillaje y peinado para novias e invitadas.",
-    image = "/default-image.jpg",
+title = SEO.DEFAULT_TITLE,
+description = SEO.DEFAULT_DESCRIPTION,
+image = SEO.DEFAULT_IMAGE,
 } = Astro.props;
 ---
 

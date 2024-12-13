@@ -1,0 +1,23 @@
+---
+// CardContainer.astro
+import Card from "./components/Card.astro";
+const { items, title, showSubtitle = true } = Astro.props;
+import "./CardContainer.css";
+---
+
+<h2 class="card-container-title">{title}</h2>
+
+<div class=" container carousel">
+    {
+        items.map(({ title, subtitle, price, imageSrc, link }) => (
+            <a class="carousel-card" href={link}>
+                <Card
+                    imageSrc={imageSrc}
+                    title={title}
+                    subtitle={showSubtitle ? subtitle : null}
+                    subtitle2={price}
+                />
+            </a>
+        ))
+    }
+</div>
