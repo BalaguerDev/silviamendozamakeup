@@ -18,6 +18,12 @@
     /* Espaciado */
     --main-padding: 20px;
 }
+@font-face {
+    font-family: "Beauties";
+    src: url("public/font/La Beauties.ttf") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
 
 html,
 body,
@@ -68,11 +74,13 @@ h1 {
 }
 
 h2 {
+    
     font-family: var(--font-playfair);
     margin-top: 0;
     color: var(--primary-color);
     font-size: var(--font-size-h2);
     margin-bottom: 1.6rem;
+    font-weight: 100;
 }
 
 h3 {
@@ -81,12 +89,13 @@ h3 {
     font-family: var(--font-playfair);
     margin-top: 0;
     color: var(--text-color);
+    font-weight: 100;
 }
 
 
 p,
 li,
-a {
+a, input, textarea {
     font-size: var(--font-size-p);
     line-height: 1.6;
     color: var(--text-color);

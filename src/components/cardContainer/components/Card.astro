@@ -1,0 +1,13 @@
+---
+const { title, subtitle, subtitle2, imageSrc, link } = Astro.props;
+import "./Card.css";
+---
+
+<div class="cardGrid">
+  <img class="card-image" src={imageSrc} alt={title} transition:name={title}/>
+  <div class="card-info">
+    <h3 class="card-title">{title}</h3>
+    {subtitle && <p class="card-subtitle">{subtitle}</p>}
+    <p class="card-subtitle2">{subtitle2}</p>
+  </div>
+</div>

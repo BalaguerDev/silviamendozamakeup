@@ -1,0 +1,13 @@
+---
+const { items } = Astro.props;
+---
+
+<div class="cards-container">
+  {items.map((card) => (
+    <div class="card">
+      <img src={card.icon} alt={card.title} />
+      <h3>{card.title}</h3>
+      <p>{card.description}</p>
+    </div>
+  ))}
+</div>

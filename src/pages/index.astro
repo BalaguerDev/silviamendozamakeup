@@ -1,10 +1,10 @@
 ---
 import AboutSection from "../components/aboutSection/AboutSection.astro";
+import CardContainer from "../components/cardContainer/CardContainer.astro";
 import CourseContainer from "../components/courseCard/CourseContainer.astro";
 import Hero from "../components/hero/Hero.astro";
-import ServiceContainer from "../components/serviceSection/ServiceContainer.astro";
-import { courseList } from "../constants/courseList";
-import { serviceList } from "../constants/serviceList";
+import { courseList } from "../data/courseList";
+import { serviceList } from "../data/serviceList";
 import BaseLayout from "../layout/BaseLayout.astro";
 ---
 
@@ -15,8 +15,14 @@ import BaseLayout from "../layout/BaseLayout.astro";
         courses={courseList}
         title="Descubre los cursos de belleza y de formación profesional"
     />
-    <ServiceContainer
-    services={serviceList}
+
+    <CardContainer
     title="Descubre los cursos de belleza y de formación profesional"
-/>
+    items={serviceList}
+    showSubtitle={false}
+  />
+
+
+
+
 </BaseLayout>

@@ -1,0 +1,26 @@
+---
+import "./Gallery.css";
+
+const galleryImages = [
+  "/images/novias/galleria/danae-novia-maquillada-en-barcelona-silvia-mendoza.png",
+  "/images/novias/galleria/maquillaje-para-boda-en-barcelona.jpg",
+  "/images/novias/galleria/maquillaje-para-novia-en-barcelona.jpg",
+  "/images/novias/galleria/novia-maquillaje-natural-silvia-mendoza-maquilladora.jpg",
+  "/images/novias/galleria/novia-sara-maquillada-natural-silvia-mendoza.jpg",
+  "/images/novias/galleria/peinado-elegante-en-barcelona-silvia-mendoza-make-up.jpg",
+];
+---
+
+<div>
+  <div class="gallery">
+    <div class="gallery-images">
+      {
+        galleryImages
+          .concat(galleryImages)
+          .map((image, index) => (
+            <img src={image} alt={`Novia ${index}`} />
+          ))
+      }
+    </div>
+  </div>
+</div>
