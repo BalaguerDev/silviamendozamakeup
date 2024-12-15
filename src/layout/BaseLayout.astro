@@ -1,15 +1,18 @@
 ---
+import PromoBar from "./PromoBar.astro";
+import Navbar from "./Navbar.astro";
+import Footer from "./Footer.astro"
+import { SEO } from "../constants/seo";
+
 import { ClientRouter } from "astro:transitions";
-import Navbar from "../components/navbar/Navbar.astro";
-import PromoBar from "../components/promoBar/PromoBar.astro";
+
 import "../styles/global.css";
-import Footer from "../components/footer/Footer.astro";
-import { SEO } from '../constants/seo'
+
 
 const {
-title = SEO.DEFAULT_TITLE,
-description = SEO.DEFAULT_DESCRIPTION,
-image = SEO.DEFAULT_IMAGE,
+    title = SEO.DEFAULT_TITLE,
+    description = SEO.DEFAULT_DESCRIPTION,
+    image = SEO.DEFAULT_IMAGE,
 } = Astro.props;
 ---
 
@@ -37,6 +40,7 @@ image = SEO.DEFAULT_IMAGE,
 
     <body>
         <header>
+          
             <PromoBar />
             <Navbar />
         </header>

@@ -1,6 +1,6 @@
 export const serviceList = [
     {
-      titleCard: "Clase de automaquillaje",
+      title: "Clase de automaquillaje",
       titlePage: "Clase de automaquillaje en Barcelona",
       subtitle: "Descubre los secretos para un maquillaje natural en tu día a día",
       shortDescription:
@@ -21,7 +21,7 @@ export const serviceList = [
       places: "4 (consulta por Whatsapp para grupos de hasta 6 personas)",
     },
     {
-      titleCard: "Clase de autopeinado",
+      title: "Clase de autopeinado",
       titlePage: "Clase de autopeinado en Barcelona",
       subtitle: "Formate y haz de tu hobie un trabajo",
       subtitle:
@@ -46,7 +46,7 @@ export const serviceList = [
       places: "4 (consulta por Whatsapp para grupos de hasta 6 personas)",
     },
     {
-      titleCard: "Servicio de maquillaje",
+      title: "Servicio de maquillaje",
       titlePage: "Maquillaje para Eventos: Bodas, Fiestas y Más",
       subtitle: "Transforma tu look y brilla en tu evento",
       shortDescription:
@@ -70,7 +70,7 @@ export const serviceList = [
       places: "",
     },
     {
-      titleCard: "Asesoría de Imagen",
+      title: "Asesoría de Imagen",
       titlePage: "Asesoría de Imagen Personal en Barcelona",
       subtitle: "Potencia tu imagen y destaca tu autenticidad",
       shortDescription: "Transforma tu estilo con asesoría personalizada en moda, maquillaje y cuidado personal para reflejar tu mejor versión.",

@@ -1,0 +1,89 @@
+---
+import "../styles/ContactForm.css";
+---
+
+<h2>
+  ¿Quieres saber más? rellena el siguiente formulario y enseguida me pondré en
+  contacto contigo
+</h2>
+<form method="POST" action="http://localhost:1337/api/bride-form-contacts" class="contact-form">
+  <!-- Nombre -->
+  <input type="text" id="name" name="name" placeholder="Nombre" required />
+  <!-- Teléfono -->
+  <input type="number" id="phone" name="phone" placeholder="Teléfono" required />
+  <!-- Email -->
+  <input type="email" id="email" name="email" placeholder="Email" required />
+  
+  <!-- Fecha del enlace -->
+  <span class="date-label">Fecha y lugar de la boda</span>
+  <div class="date-container-time">
+    <input type="date" id="date" name="date" min="2025-01-01" max="2100-12-31" required />
+    <input type="time" id="hour" name="hour" placeholder="Hora de la ceremonia" required />
+  </div>
+
+  <div class="date-container-time">
+    <input type="text" id="place" name="place" placeholder="Lugar del enlace" required />
+  </div>
+
+  <!-- Cuéntanos los detalles -->
+  <textarea id="details" name="details" rows="4" placeholder="¿Quieres contarme algo que te inquiete?" required></textarea>
+
+  <!-- Botón de enviar -->
+  <button type="submit" class="button primary">Enviar</button>
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.contact-form') as HTMLFormElement | null;
+    
+    if (form) {
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Evitar el envío tradicional del formulario
+
+        const formData = new FormData(form);
+        let hour = formData.get('hour');  // Recoger la hora
+
+        // Si la hora se ingresó, asegurarse de que tenga el formato correcto (HH:mm:ss.SSS)
+        if (hour && typeof hour === 'string') {
+          hour = `${hour}:00.000`;  // Aseguramos que tenga el formato correcto
+        }
+
+        const data = {
+          data: {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            email: formData.get('email'),
+            date: formData.get('date'),
+            hour: hour,
+            place: formData.get('place'),
+            details: formData.get('details')
+          }
+        };
+
+        try {
+          const response = await fetch('http://localhost:1337/api/bride-form-contacts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), 
+          });
+
+          const result = await response.json();
+          console.log("Resultado de la respuesta del servidor:", result);
+
+          if (response.ok) {
+            alert("Formulario enviado con éxito");
+          } else {
+            alert("Error al enviar el formulario: " + (result.error?.message || "Respuesta no válida"));
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Hubo un problema al enviar el formulario.");
+        }
+      });
+    } else {
+      console.error("El formulario no se ha encontrado.");
+    }
+  });
+</script>

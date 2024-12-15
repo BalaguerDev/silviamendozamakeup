@@ -1,21 +1,19 @@
+.card-container-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
 
-  .card-container-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
- /* Carrousel - Vista móvil */
 .carousel {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 10px;
-  padding-bottom: 10px;
+  padding:20px;
 }
 
 .carousel::-webkit-scrollbar {
-  display: none; /* Oculta la barra de scroll */
+  display: none;
 }
 
 .carousel-card {
@@ -30,10 +28,10 @@
   transform: scale(1.05);
 }
 
-/* Estilo adicional para escritorio */
 @media (min-width: 769px) {
   .carousel {
     flex-wrap: wrap;
     justify-content: center;
+    padding: 20px;
   }
 }

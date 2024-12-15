@@ -1,0 +1,40 @@
+---
+import { faqs } from "../../../data/FAQ";
+import "../styles/Faq.css";
+---
+
+<h2>Preguntas frecuentes</h2>
+
+<div class="faq" id="faq-container">
+  {
+    faqs.map((faq) => (
+      <div class="faq-item">
+        <h3 class="faq-question">
+          {faq.question}
+          <span class="arrow">▼</span>
+        </h3>
+        <p class="faq-answer">{faq.answer}</p>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    const header = target.closest(".faq-question") as HTMLElement | null;
+    if (!header) return;
+
+    const answer = header.nextElementSibling as HTMLElement | null;
+    const arrow = header.querySelector(".arrow") as HTMLElement | null;
+
+    if (answer) {
+      answer.classList.toggle("active");
+    }
+    if (arrow) {
+      arrow.classList.toggle("open");
+    }
+  });
+</script>

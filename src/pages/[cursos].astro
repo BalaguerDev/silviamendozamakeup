@@ -2,8 +2,9 @@
 import BaseLayout from "../layout/BaseLayout.astro";
 import { courseList } from "../data/courseList";
 import CourseContainer from "../components/courseCard/CourseContainer.astro";
-import { cleanLink } from "../utils/helpers";
+import { cleanLink } from "../utils";
 import { SEO } from "../constants/seo";
+
 import "../styles/Cursos.css";
 
 export async function getStaticPaths() {

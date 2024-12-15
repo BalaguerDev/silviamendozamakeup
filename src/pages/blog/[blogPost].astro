@@ -1,0 +1,57 @@
+---
+import { marked } from "marked";
+import { fetchPosts, API_BASE_URL, formatDate } from "../../utils";
+import BaseLayout from "../../layout/BaseLayout.astro";
+import "./styles/blogPost.css";
+
+export async function getStaticPaths() {
+  const apiUrl = `${API_BASE_URL}/posts`;
+  const posts = await fetchPosts(apiUrl);
+
+  return posts.map((post) => ({
+    params: { blogPost: post.slug },
+  }));
+}
+
+const { blogPost } = Astro.params;
+const apiUrl = `${API_BASE_URL}/posts?filters[slug][$eq]=${blogPost}&populate=image`;
+const posts = await fetchPosts(apiUrl);
+
+if (posts.length === 0) {
+  throw new Error("Post no encontrado");
+}
+
+const post = posts[0];
+const plainContent = post.content ? post.content.trim() : "";
+const fullContentHTML = marked(plainContent);
+---
+
+<BaseLayout>
+  <img
+    src={`http://localhost:1337${post.image.url}`}
+    alt={post.title}
+    class="blog-post-img"
+    transition:name={post.titlePage}
+  />
+
+  <div class="blog-post-detail container">
+    <a href="/blog" class="buttonBack">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M19 12H5"></path>
+        <path d="M12 19l-7-7 7-7"></path>
+      </svg>
+      Volver a los posts
+    </a>
+    <h1>{post.title}</h1>
+    <p class="post-date">Publicado el: {formatDate(post.publishedAt)}</p>
+    <div class="post-content" set:html={fullContentHTML} />
+  </div>
+</BaseLayout>

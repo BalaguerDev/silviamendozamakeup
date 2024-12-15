@@ -1,18 +1,17 @@
 ---
-// Importaciones
-import BaseLayout from "../layout/BaseLayout.astro";
-import { packNovia } from "../data/packNovia";
-import ContactForm from "../components/forms/ContactForm.astro";
-import Gallery from "../components/gallerySectionNovias/Gallery.astro";
-import FAQ from "../components/faq/FAQ.astro";
-import CardPackNovias from "../components/cardPackNovias/CardPackNovias.astro";
-import NoviasTestimonials from "../components/testimonials/NoviasTestimonials.astro";
-import "../styles/novia.css";
+import BaseLayout from "../../layout/BaseLayout.astro";
+import CardPackNovias from "./components/CardPackNovias.astro";
+import { packNovia } from "../../data/packNovia";
+import Testimonials from './components/Testimonials.astro'
+import Gallery from './components/Gallery.astro'
+import BrideForm from './components/BrideForm.astro'
+import FAQ from './components/FAQ.astro'
+
+import "./novias.css"
 ---
 
 <BaseLayout>
   <div class="container">
-    <!-- Sección de introducción -->
     <div class="intro">
       <img
         src="/images/novias/maquillaje-natural-a-novia-en-barcelona-silvia-mendoza-make-up.webp"
@@ -29,14 +28,14 @@ import "../styles/novia.css";
       </section>
     </div>
 
-    <h2>¿Cómo funcionará tu servicio de novia?</h2>
+    <h2>¿Cómo funcionará mi servicio de novia?</h2>
     <CardPackNovias items={packNovia} />
 
-    <NoviasTestimonials />
+    <Testimonials />
 
     <Gallery />
 
-    <ContactForm />
+    <BrideForm />
 
     <FAQ />
   </div>

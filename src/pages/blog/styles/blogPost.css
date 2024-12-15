@@ -1,0 +1,101 @@
+.blog-post-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.blog-post-detail.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+}
+
+.buttonBack {
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+.buttonBack svg {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+.buttonBack:hover {
+    color: #775434;
+    text-decoration: underline;
+}
+
+.post-content {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.8;
+}
+
+.post-content p {
+    margin-bottom: 20px;
+}
+
+.post-content a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.post-content a:hover {
+    color: #775434;
+    text-decoration: none;
+}
+
+/* LISTAS */
+.post-content ul, .post-content ol {
+    margin: 20px 0;
+    padding-left: 30px;
+}
+
+.post-content ul li, .post-content ol li {
+    margin-bottom: 10px;
+}
+
+.post-content ul {
+    list-style-type: disc;
+}
+
+.post-content ol {
+    list-style-type: decimal;
+}
+
+/* TEXTO EN NEGRITA */
+.post-content strong {
+    font-weight: bold;
+    color: #222;
+}
+
+/* CITAS */
+.post-content blockquote {
+    margin: 20px 0;
+    padding: 15px 20px;
+    border-left: 4px solid #007bff;
+    background-color: #f1f5f9;
+    color: #555;
+    font-style: italic;
+}
+
+.post-content blockquote p {
+    margin: 0;
+}
+
+/* IMÁGENES DENTRO DEL CONTENIDO */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

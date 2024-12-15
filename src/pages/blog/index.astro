@@ -1,0 +1,45 @@
+---
+import { fetchPosts, formatDate, API_BASE_URL } from '../../utils'; 
+import { marked } from 'marked';
+import BaseLayout from "../../layout/BaseLayout.astro";
+
+import './styles/blog.css';
+
+const apiUrl = `${API_BASE_URL}/posts?populate=image`
+const posts = await fetchPosts(apiUrl);
+
+posts.forEach(post => {
+    const plainContent = post.content ? post.content.trim() : "";
+    const shortContent = plainContent.length > 200 ? `${plainContent.slice(0, 200)}...` : plainContent;
+
+    post.shortContentHTML = marked(shortContent);
+});
+---
+
+<BaseLayout>
+    <div class="blog-list">
+        {posts.length > 0 ? (
+            posts.map((post) => (
+                <article class="blog-post">
+                    <img 
+                        src={`http://localhost:1337${post.image.url}`} 
+                        alt={post.title} 
+                        transition:name={post.title}
+                    />
+                    <div class="blog-content">
+                        <h2>{post.title}</h2>
+                        <p class="post-date">Publicado el: {formatDate(post.publishedAt)}</p>
+
+                        <div class="post-content" set:html={post.shortContentHTML}></div>
+
+                    <a href={`/blog/${post.slug}`} class="read-more-button">
+                            Leer más...
+                    </div>
+                        </a>
+                </article>
+            ))
+        ) : (
+            <p>No se encontraron entradas.</p>
+        )}
+    </div>
+</BaseLayout>
