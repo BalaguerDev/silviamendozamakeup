@@ -68,11 +68,7 @@
 .date-container-time{
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
-#place {
-  width:74%;
-}
-#time {
-  width:24%;
-}
+
 

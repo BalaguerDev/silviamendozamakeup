@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../layout/BaseLayout.astro";
 import CardContainer from "../components/cardContainer/CardContainer.astro";
 import { serviceList } from "../data/serviceList";
-import { cleanLink } from "../utils/helpers";
+import { cleanLink } from "../utils";
 
 import "../styles/Servicios.css";
+import BaseLayout from "../layout/BaseLayout.astro";
 
 // Obtener los paths de manera optimizada
 export async function getStaticPaths() {
@@ -29,7 +29,7 @@ if (!service) {
 }
 
 const {
-    titleCard,
+    titlePage,
     subtitle,
     imageSrc,
     shortDescription,
@@ -40,14 +40,14 @@ const {
     price,
 } = service;
 // Metadata
-const title = `${titleCard} - Silvia Mendoza Makeup`;
+const title = `${titlePage} - Silvia Mendoza Makeup`;
 const description = service.overview || "Descubre más sobre el servicio.";
 ---
 
 <BaseLayout title={title} description={description} image={imageSrc}>
     <article class="service-detail-container container">
         <section class="service-header">
-            <h1>{titleCard}</h1>
+            <h1>{titlePage}</h1>
             <h2>{subtitle}</h2>
         </section>
 
@@ -55,9 +55,9 @@ const description = service.overview || "Descubre más sobre el servicio.";
             <section class="service-image">
                 <img
                     src={imageSrc}
-                    alt={titleCard}
+                    alt={titlePage}
                     loading="lazy"
-                    transition:name={titleCard}
+                    transition:name={titlePage}
                 />
                 <p class="short-description">{shortDescription}</p>
             </section>
@@ -88,16 +88,13 @@ const description = service.overview || "Descubre más sobre el servicio.";
             </div>
         </div>
     </article>
-    <div class="container">
-
-        {
-            filteredService.length > 0 && (
-                <CardContainer
+    {
+        filteredService.length > 0 && (
+            <CardContainer
                 title="Podrían interesarte estos otros productos"
                 items={filteredService}
                 showSubtitle={false}
-                />
-            )
-        }
-        </div>
+            />
+        )
+    }
 </BaseLayout>

@@ -1,0 +1,11 @@
+---
+const { titlePage, titleCard, imageSrc, price } = Astro.props;
+---
+
+<div class="card">
+    <img src={imageSrc} alt={titleCard} transition:name={titlePage}/>
+    <div class="card-content">
+        <h3>{titleCard}</h3>
+        <p>{price}</p>
+    </div>
+</div>
