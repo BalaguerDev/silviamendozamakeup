@@ -1,0 +1,115 @@
+ /* Footer Styles */
+ .footer-container {
+    background-color: var(--primary-color);
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    padding: 20px 20px 0;
+  }
+
+  .footer-content {
+    color: var(--text-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-info p{
+    color: var(--text-color);
+  }
+  .footer-info,
+  .footer-bodasnet,
+  .footer-newsletter {
+    flex: 1;
+    min-width: 250px;
+     color: var(--text-color);
+  }
+
+  .footer-info h3,
+  .footer-bodasnet h3,
+  .footer-newsletter h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+
+  .footer-info p {
+    margin: 0.5rem 0;
+  }
+
+  .footer-bodasnet img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+  }
+  .footer-bodasnet a{
+    display: grid;
+    place-content: center;
+  }
+
+
+
+  /* Formulario de Newsletter */
+  .footer-newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-newsletter input[type="email"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .footer-newsletter button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+
+  .footer-newsletter button:hover {
+    background-color: #555;
+  }
+
+  .copyright{
+    border-top: 0.5px solid var(--text-color);
+    text-align: center;
+    padding:20px;
+    margin:0;
+    color: var(--text-color);
+    font-size: 12px;
+  }
+
+  .btnSubmit{
+    margin-bottom:20px;
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-bodasnet img {
+      margin: 0 auto;
+    }
+
+    .footer-newsletter{
+        padding-top:20px;
+        border-top: 1px solid var(--text-color);
+    }
+    .footer-info{
+        padding-bottom:20px;
+        border-bottom: 1px solid var(--text-color);
+    }
+    .footer-info p{
+       text-align: center;
+    }
+  }

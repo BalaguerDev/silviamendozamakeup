@@ -1,0 +1,33 @@
+---
+import "../../pages/maquillaje-para-novias-en-barcelona/styles/ContactForm.css";
+---
+
+<form
+    method="POST"
+    action="http://localhost:1337/api/contact-form"
+    class="contact-form"
+>
+    <!-- Nombre -->
+    <input type="text" id="name" name="name" placeholder="Nombre" required />
+    <!-- Teléfono -->
+    <input
+        type="number"
+        id="phone"
+        name="phone"
+        placeholder="Teléfono"
+        required
+    />
+    <!-- Email -->
+    <input type="email" id="email" name="email" placeholder="Email" />
+
+    <!-- Cuéntanos los detalles -->
+    <textarea
+        id="details"
+        name="details"
+        rows="4"
+        placeholder="¿Quieres contarme algo que te inquiete?"
+        required></textarea>
+
+    <!-- Botón de enviar -->
+    <button type="submit" class="button primary">Enviar</button>
+</form>

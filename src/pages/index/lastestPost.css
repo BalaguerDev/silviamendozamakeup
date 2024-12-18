@@ -1,6 +1,6 @@
 div.latest-post{
   padding:40px 20px;
-
+  max-width: 1600px;
 }
 
 .latest-post h2 {
