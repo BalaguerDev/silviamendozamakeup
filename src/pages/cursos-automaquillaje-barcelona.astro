@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import Card from "../components/cardContainer/components/Card.astro";
+import Card from "../components/cardContainer/Card.astro";
 import { workshopList } from "../data/courseList";
 
 import "../styles/Cursos-automaquillaje-barcelona.css";
@@ -16,7 +16,6 @@ import "../styles/Cursos-automaquillaje-barcelona.css";
       Explora nuestro calendario de cursos intensivos para realzar tu belleza natural.
     </p>
 
-    <!-- Carrousel responsivo -->
     <div class="carousel">
       {workshopList.map(({title, date,price,imageSrc}) => (
         <div class="carousel-card">

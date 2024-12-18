@@ -1,0 +1,74 @@
+.testimonios-carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    
+  }
+  
+  .testimonios-carousel-track {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .testimonio-item {
+    flex: 0 0 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+  
+  .testimonio-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .testimonio-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .stars {
+    color: #ffcc00;
+  }
+  
+  .testimonio-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .testimonio-time {
+    font-size: 12px;
+    color: gray;
+    margin-top: 8px;
+  }
+  
+  /* Estilo para los botones de navegación */
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .carousel-prev {
+    left: 10px;
+  }
+  
+  .carousel-next {
+    right: 10px;
+  }
+
+  blockquote{
+    margin:0;
+  }

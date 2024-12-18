@@ -1,45 +1,38 @@
 ---
-import { fetchPosts, formatDate, API_BASE_URL } from '../../utils'; 
-import { marked } from 'marked';
+// Importaciones
 import BaseLayout from "../../layout/BaseLayout.astro";
+import { fetchAllPosts, API_BASE_URL } from "../../utils";
+import BlogPostCard from "./BlogPostCard.astro";
+import Pagination from './Pagination.astro';
+import './styles/blog.css'
 
-import './styles/blog.css';
+// Obtención de los posts y parámetros de paginación
+const posts = await fetchAllPosts(`${API_BASE_URL}/Blogs?populate=image`);
+const pageSize = 6;
+const totalPages = Math.ceil(posts.length / pageSize);
 
-const apiUrl = `${API_BASE_URL}/posts?populate=image`
-const posts = await fetchPosts(apiUrl);
+const postsToDisplay = posts.slice(0, pageSize);
 
-posts.forEach(post => {
-    const plainContent = post.content ? post.content.trim() : "";
-    const shortContent = plainContent.length > 200 ? `${plainContent.slice(0, 200)}...` : plainContent;
-
-    post.shortContentHTML = marked(shortContent);
-});
+const prevPage = null;
+const nextPage = totalPages > 1 ? 2 : null;
 ---
 
 <BaseLayout>
+  <section class=" listBlog container">
+    <h1>El blog de belleza de Silvia Mendoza: Tips y tutoriales</h1>
     <div class="blog-list">
-        {posts.length > 0 ? (
-            posts.map((post) => (
-                <article class="blog-post">
-                    <img 
-                        src={`http://localhost:1337${post.image.url}`} 
-                        alt={post.title} 
-                        transition:name={post.title}
-                    />
-                    <div class="blog-content">
-                        <h2>{post.title}</h2>
-                        <p class="post-date">Publicado el: {formatDate(post.publishedAt)}</p>
-
-                        <div class="post-content" set:html={post.shortContentHTML}></div>
-
-                    <a href={`/blog/${post.slug}`} class="read-more-button">
-                            Leer más...
-                    </div>
-                        </a>
-                </article>
-            ))
-        ) : (
-            <p>No se encontraron entradas.</p>
-        )}
+      {postsToDisplay.length > 0 ? (
+        postsToDisplay.map((blog) => <BlogPostCard blog={blog} />)
+      ) : (
+        <p>No se encontraron entradas.</p>
+      )}
     </div>
+  </section>
+
+  <Pagination
+    currentPage={1}
+    totalPages={totalPages}
+    prevPage={prevPage}
+    nextPage={nextPage}
+  />
 </BaseLayout>

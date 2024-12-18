@@ -1,0 +1,58 @@
+---
+const { currentPage, totalPages, prevPage, nextPage } = Astro.props;
+---
+
+<section class="pagination">
+  <div class="pagination-controls">
+    <a
+      class:list={['btn', { disabled: !prevPage }]}
+      href={prevPage ? `/blog/${prevPage}` : '#'}
+      aria-label="Página anterior"
+    >
+      &laquo;
+    </a>
+
+    <span class="page-info text-xl font-bold">Página {currentPage} de {totalPages}</span>
+
+    <a
+      class:list={['btn', { disabled: !nextPage }]}
+      href={nextPage ? `/blog/${nextPage}` : '#'}
+      aria-label="Página siguiente"
+    >
+      &raquo;
+    </a>
+  </div>
+</section>
+
+<style>
+  .btn {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .disabled {
+color:rgb(196, 196, 196);
+
+  }
+
+  .pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .page-info {
+    margin: 0 1rem;
+  }
+</style>

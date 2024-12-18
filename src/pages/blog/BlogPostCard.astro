@@ -1,0 +1,52 @@
+---
+const { blog, showShortContent = true } = Astro.props;
+import { formatDate } from "../../utils";
+import { marked } from "marked";
+import "./styles/blogPostCard.css";
+
+const truncateText = (text, maxLength) => {
+  return text.length > maxLength
+    ? text.slice(0, maxLength).trimEnd() + "..."
+    : text;
+};
+
+const plainContent = blog.content
+  ? blog.content
+      .map((paragraph) =>
+        paragraph.children.map((child) => child.text).join(""),
+      )
+      .join("\n\n")
+  : "";
+
+const contentHTML = showShortContent
+  ? marked(
+      plainContent.slice(0, 100) + (plainContent.length > 200 ? "..." : ""),
+    )
+  : marked(plainContent);
+
+const truncatedTitle = truncateText(blog.title, 60);
+---
+
+<a href={`/blog/${blog.slug}`} class="blog-post">
+  {
+    blog.image && (
+      <div class="image-container">
+        <img
+          src={`http://localhost:1337${blog.image.url}`}
+          alt={blog.title}
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+
+  <div class="blog-content">
+    <h2>{truncatedTitle}</h2>
+    <p class="post-date">
+      Publicado el: {
+        formatDate(blog.published ? blog.published : blog.publishedAt)
+      }
+    </p>
+    <div class="post-content" set:html={contentHTML} />
+  </div>
+</a>

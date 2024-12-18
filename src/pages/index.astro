@@ -6,6 +6,7 @@ import CourseContainer from "../components/courseCard/CourseContainer.astro";
 import CardContainer from "../components/cardContainer/CardContainer.astro";
 import { courseList } from "../data/courseList";
 import { serviceList } from "../data/serviceList";
+import LatestPost from "./index/LatestPost.astro";
 ---
 
 <BaseLayout>
@@ -21,5 +22,5 @@ import { serviceList } from "../data/serviceList";
     items={serviceList}
     showSubtitle={false}
   />
-
+  <LatestPost />
 </BaseLayout>

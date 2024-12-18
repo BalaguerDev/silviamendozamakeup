@@ -1,0 +1,87 @@
+---
+import { reviews } from "../../data/reviewsGoogle";
+import "./reviewGoogle.css";
+---
+
+<section class="testimonios">
+  <h2>Lo que dicen mis clientas</h2>
+  <div class="testimonios-carousel">
+    <div class="testimonios-carousel-track" id="carouselTrack">
+      {
+        reviews.map((review, ) => (
+          <div class="testimonio-item">
+            <a
+              href="https://www.google.com/search?sca_esv=f03bab0fa4fcd579&rlz=1C1CHBF_esES926ES926&tbm=lcl&sxsrf=ADLYWIKcN-Q2kRb8iZ_ZeSv4uP012sbPVg:1734500556196&q=Silvia%20Mendoza%20Make%20Up%20Rese%C3%B1as"
+              class="testimonio-link"
+              target="_blank"
+            >
+              <div class="testimonio-header">
+                <div class="testimonio-author">
+                  <strong>{review.author_name}</strong>
+                </div>
+                <div class="testimonio-rating">
+                  <span class="stars">
+                    {Array(review.rating).fill("★").join("")}
+                  </span>
+                </div>
+              </div>
+
+              <blockquote class="testimonio-text">{review.text}</blockquote>
+              <small class="testimonio-time">{review.time}</small>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  const track = document.getElementById('carouselTrack');
+  let index = 0;
+  const reviewsLength = track.children.length;
+
+  // Función para cambiar la posición del carrusel
+  const updateCarousel = () => {
+    track.style.transition = 'transform 1s ease-in-out';
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  // Mover al siguiente
+  const goNext = () => {
+    index = (index + 1) % reviewsLength;
+    updateCarousel();
+  };
+
+  // Mover al anterior
+  const goPrev = () => {
+    index = (index - 1 + reviewsLength) % reviewsLength;
+    updateCarousel();
+  };
+
+  const interval = setInterval(goNext, 7000);
+
+  window.addEventListener('beforeunload', () => {
+    clearInterval(interval);
+  });
+
+  track.addEventListener('wheel', (event) => {
+    if (event.deltaY > 0) {
+      goNext(); 
+    } else {
+      goPrev()
+    }
+  });
+
+  const toggleText = (index) => {
+    const textElement = document.getElementById(`text-${index}`);
+    textElement.classList.toggle('expanded');
+    
+    const leerMasButton = textElement.querySelector('.leer-mas');
+    if (textElement.classList.contains('expanded')) {
+      leerMasButton.textContent = 'Leer menos';
+    } else {
+      leerMasButton.textContent = 'Leer más';
+    }
+  };
+</script>

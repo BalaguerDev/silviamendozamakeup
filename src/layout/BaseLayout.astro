@@ -1,10 +1,10 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import PromoBar from "./PromoBar.astro";
 import Navbar from "./Navbar.astro";
 import Footer from "./Footer.astro"
 import { SEO } from "../constants/seo";
 
-import { ClientRouter } from "astro:transitions";
 
 import "../styles/global.css";
 
@@ -36,6 +36,7 @@ const {
             rel="stylesheet"
         />
         <ClientRouter />
+
     </head>
 
     <body>

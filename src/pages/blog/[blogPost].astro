@@ -1,37 +1,79 @@
 ---
-import { marked } from "marked";
+// Importaciones
 import { fetchPosts, API_BASE_URL, formatDate } from "../../utils";
+import { marked } from "marked";
 import BaseLayout from "../../layout/BaseLayout.astro";
 import "./styles/blogPost.css";
 
+// Fetch del contenido
 export async function getStaticPaths() {
-  const apiUrl = `${API_BASE_URL}/posts`;
-  const posts = await fetchPosts(apiUrl);
+  const apiUrl = `${API_BASE_URL}/blogs`;
+  const { data: blogs } = await fetchPosts(apiUrl);  // Asegúrate de acceder a 'data'
 
-  return posts.map((post) => ({
-    params: { blogPost: post.slug },
+  return blogs.map((blog) => ({
+    params: { blogPost: blog.slug },
   }));
 }
 
 const { blogPost } = Astro.params;
-const apiUrl = `${API_BASE_URL}/posts?filters[slug][$eq]=${blogPost}&populate=image`;
-const posts = await fetchPosts(apiUrl);
+const apiUrl = `${API_BASE_URL}/blogs?filters[slug][$eq]=${blogPost}&populate=image`;
+const { data: blogs } = await fetchPosts(apiUrl);  // Asegúrate de acceder a 'data'
 
-if (posts.length === 0) {
-  throw new Error("Post no encontrado");
+if (blogs.length === 0) {
+  throw new Error("Blog no encontrado");
 }
 
-const post = posts[0];
-const plainContent = post.content ? post.content.trim() : "";
-const fullContentHTML = marked(plainContent);
+const blog = blogs[0];
+
+// Convertir JSON a Markdown y luego a HTML
+function parseContentToMarkdown(contentArray) {
+  return contentArray
+    .map((block) => {
+      // Procesar párrafos
+      if (block.type === "paragraph") {
+        return block.children
+          .map((child) => {
+            if (child.type === "text") return child.text;
+            if (child.type === "strong") return `**${child.text}**`; // Convertir a negrita (Markdown)
+            if (child.type === "link") return `[${child.text}](${child.url})`; // Enlaces
+            return "";
+          })
+          .join(""); // Unir el texto de todos los hijos
+      }
+
+      // Procesar citas
+      if (block.type === "quote") {
+        return `> ${block.children.map(child => child.text).join("")}`; // Convertir citas a Markdown
+      }
+
+      // Procesar listas desordenadas
+      if (block.type === "list" && block.format === "unordered") {
+        return block.children
+          .map((item) => {
+            return `- ${item.children.map(child => child.text).join("")}`; // Crear items de lista
+          })
+          .join("\n");
+      }
+
+      // Otros tipos de bloques pueden añadirse según sea necesario
+
+      return "";
+    })
+    .join("\n\n");
+}
+
+// Convertir el contenido JSON a Markdown
+const markdownContent = parseContentToMarkdown(blog.content);
+// Convertir Markdown a HTML
+const fullContentHTML = marked(markdownContent);
+
 ---
 
 <BaseLayout>
   <img
-    src={`http://localhost:1337${post.image.url}`}
-    alt={post.title}
+    src={`http://localhost:1337${blog.image.url}`}  
+    alt={blog.title}
     class="blog-post-img"
-    transition:name={post.titlePage}
   />
 
   <div class="blog-post-detail container">
@@ -48,10 +90,10 @@ const fullContentHTML = marked(plainContent);
         <path d="M19 12H5"></path>
         <path d="M12 19l-7-7 7-7"></path>
       </svg>
-      Volver a los posts
+      Volver a los blogs
     </a>
-    <h1>{post.title}</h1>
-    <p class="post-date">Publicado el: {formatDate(post.publishedAt)}</p>
-    <div class="post-content" set:html={fullContentHTML} />
+    <h1>{blog.title}</h1>
+    <p class="blog-date">Publicado el: {formatDate(blog.publishedAt)}</p>
+    <div class="blog-content" set:html={fullContentHTML} />
   </div>
 </BaseLayout>

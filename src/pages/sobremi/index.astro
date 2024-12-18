@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import {reviews} from '../../data/reviewsGoogle'
+import "./styles/sobreMi.css";
+import ReviewGoogle from "../../components/reviewGoogle/ReviewGoogle.astro";
+const metaDescription =
+  "Conoce a Sílvia Mendoza, maquilladora profesional en Barcelona especializada en novias y eventos. Descubre su trayectoria y pasión por el maquillaje.";
+---
+
+<BaseLayout
+  title="Sílvia Mendoza - Maquilladora en Barcelona"
+  description={metaDescription}
+>
+  <main class="sobre-mi-container container">
+    <!-- Sección Hero Principal -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <!-- Columna del texto -->
+        <div class="hero-text">
+          <h1>Conoce a tu próxima maquilladora en Barcelona</h1>
+          <p>
+            De la asesoría de imagen a las bodas de ensueño: descubre mi viaje
+            profesional y pasión por el maquillaje.
+          </p>
+          <h2>Un poco sobre mí</h2>
+          <p>
+            Soy Sílvia Mendoza, una apasionada de la belleza con amplia
+            experiencia en el sector nupcial. Mi formación en <strong
+              >Asesoría de Imagen Personal y Corporativa</strong
+            >, junto con mi especialización en peluquería y maquillaje, me
+            permite ofrecerte un servicio <em>integral</em> y <em
+              >personalizado</em
+            >.
+          </p>
+          <h2>Mi trayectoria profesional</h2>
+          <ul>
+            <li>
+              💍 Maquillaje y peinado de <strong>novias en Barcelona</strong> y alrededores.
+            </li>
+            <li>
+              🎬 Maquillaje y peluquería en <strong>“Mai es el moment”</strong> en
+              3cat.
+            </li>
+            <li>
+              📺 Maquilladora y peluquera en <strong>Aruseros</strong> (La Sexta).
+            </li>
+            <li>
+              🏫 Profesora de Maquillaje y peluqueria en la escuela <strong
+                >Sole Cester</strong
+              >.
+            </li>
+            <li>
+              🛍 Experiencia en <strong>Kiko</strong> y <strong
+                >The Body Shop</strong
+              >.
+            </li>
+          </ul>
+        </div>
+        <!-- Columna de la imagen -->
+        <div class="hero-image">
+          <img
+            src="/images/sobremi/Silvia-mendoza-make-up-maquilladora-novias-barcelona.webp"
+            alt="Silvia Mendoza maquilladora profesional"
+            loading="lazy"
+            width="600"
+            height="800"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Colaboradores -->
+    <section class="colaboradores">
+      <h2>Colaboradores</h2>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <img
+            src="public/images/sobremi/colaboradores/wedding-planner-madrid-logo4.png"
+            alt="Imagina tu boda"
+          />
+
+          <img
+            src="public/images/sobremi/colaboradores/unic-moments.png"
+            alt="únic moments"
+          />
+          <img
+            src="public/images/sobremi/colaboradores/su-jardin-secreto.jpg"
+            alt="Su jardín secreto"
+          />
+          <img
+            src="public/images/sobremi/colaboradores/Virago-lights.png"
+            alt="Virago Lights"
+          />
+          <!-- Repetimos para efecto infinito -->
+          <img
+            src="public/images/sobremi/colaboradores/wedding-planner-madrid-logo4.png"
+            alt="Imagina tu boda"
+          />
+
+          <img
+            src="public/images/sobremi/colaboradores/unic-moments.png"
+            alt="únic moments"
+          />
+          <img
+            src="public/images/sobremi/colaboradores/su-jardin-secreto.jpg"
+            alt="Su jardín secreto"
+          />
+          <img
+            src="public/images/sobremi/colaboradores/Virago-lights.png"
+            alt="Virago Lights"
+          />
+        </div>
+      </div>
+    </section>
+
+   <ReviewGoogle/>
+
+    <!-- Contacto -->
+    <section class="contacto">
+      <h2>¿Necesitas más información?</h2>
+      <p>
+        ¡No dudes en <a href="/contacto" class="cta-button">contactarme</a>!
+        Estaré encantada de ayudarte a hacer realidad tu look ideal.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

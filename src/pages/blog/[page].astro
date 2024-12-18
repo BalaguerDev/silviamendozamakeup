@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import { fetchAllPosts, API_BASE_URL } from "../../utils";
+import BlogPostCard from "./BlogPostCard.astro";
+import Pagination from "./Pagination.astro";
+import './styles/blog.css'
+
+
+
+const { page } = Astro.params;
+const currentPage = page ? parseInt(page) : 1; 
+
+const pageSize = 6;
+
+const posts = await fetchAllPosts(`${API_BASE_URL}/Blogs?populate=image`);
+const totalPages = Math.ceil(posts.length / pageSize);
+
+const postsToDisplay = posts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+const prevPage = currentPage > 1 ? currentPage - 1 : null;
+const nextPage = currentPage < totalPages ? currentPage + 1 : null;
+
+export async function getStaticPaths() {
+  const posts = await fetchAllPosts(`${API_BASE_URL}/Blogs?populate=image`);
+  const pageSize = 6;
+  const totalPages = Math.ceil(posts.length / pageSize);
+
+  const paths: { params: { page: string } }[] = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    paths.push({ params: { page: i.toString() } });
+  }
+
+  return paths; 
+}
+
+---
+
+<BaseLayout>
+  <section class="listBlog container">
+    <h1>El blog de belleza de Silvia Mendoza: Tips y tutoriales</h1>
+    <div class="blog-list">
+      {postsToDisplay.length > 0 ? (
+        postsToDisplay.map((blog) => <BlogPostCard blog={blog} />)
+      ) : (
+        <p>No se encontraron entradas.</p>
+      )}
+    </div>
+  </section>
+
+  <Pagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    prevPage={prevPage}
+    nextPage={nextPage}
+  />
+</BaseLayout>
