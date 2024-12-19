@@ -1,0 +1,127 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../layout/BaseLayout.astro";
+import { courseList } from "../data/courseList";
+import { serviceList } from "../data/serviceList";
+import { cleanLink } from "../utils";
+
+import "../styles/productDetails.css";
+
+export async function getStaticPaths() {
+    const combinedPaths = [
+        ...courseList.map((course) => ({
+            params: { productDetail: cleanLink(course.link) },
+        })),
+        ...serviceList.map((service) => ({
+            params: { productDetail: cleanLink(service.link) },
+        })),
+    ];
+    return combinedPaths;
+}
+
+const { productDetail } = Astro.params;
+const cleanedLink = cleanLink(productDetail);
+
+const product =
+    courseList.find((item) => cleanLink(item.link) === cleanedLink) ||
+    serviceList.find((item) => cleanLink(item.link) === cleanedLink);
+
+if (!product) {
+    throw new Error(`Producto con link "${productDetail}" no encontrado.`);
+}
+
+const isCourse = courseList.some(
+    (item) => cleanLink(item.link) === cleanedLink,
+);
+
+const {
+    titlePage,
+    subtitle,
+    imageSrc,
+    shortDescription,
+    longDescription,
+    whatYouWillLearn,
+    durationPrice,
+    materials,
+    forWhom,
+    fullDescription,
+    include,
+    location,
+    places,
+    price,
+} = product;
+
+//METADATA
+const title = `${titlePage} - Sílvia Mendoza Make Up`;
+const description = `${shortDescription} || "Descubre más detalles sobre este producto.`;
+---
+
+<BaseLayout title={title} description={description} image={imageSrc}>
+    <article class="content-detail-container">
+        <section class="content-header">
+            <h1>{titlePage}</h1>
+            <h2>{subtitle}</h2>
+        </section>
+
+        <div class="content-grid">
+            <section class="content-image">
+                <img src={imageSrc} alt={titlePage} loading="lazy" />
+            </section>
+
+            <section class="content-text">
+                {
+                    isCourse ? (
+                        <>
+                            <p>{longDescription}</p>
+                            <h3>Lo que aprenderás</h3>
+                            <ul>
+                                {whatYouWillLearn.map((item) => (
+                                    <li>{item}</li>
+                                ))}
+                            </ul>
+
+                            <h3>Duración y Precio</h3>
+                            <ul>
+                                {durationPrice.map((item) => (
+                                    <li>{item}</li>
+                                ))}
+                            </ul>
+
+                            <h3>Materiales incluidos</h3>
+                            <p>{materials}</p>
+                            <p>
+                                <strong>Para quién:</strong> {forWhom}
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <p>{fullDescription[0]}</p>
+                            <p>{fullDescription[1]}</p>
+
+                            <h3>¿Qué incluye?</h3>
+                            <ul>
+                                {include.map((item) => (
+                                    <li>{item}</li>
+                                ))}
+                            </ul>
+
+                            <h3>Ubicación y contacto</h3>
+                            <p>
+                                <strong>Dirección:</strong> {location}
+                            </p>
+                            <p>
+                                <strong>Plazas disponibles:</strong> {places}
+                            </p>
+                            <p>
+                                <span>Precio:</span> {price}
+                            </p>
+                        </>
+                    )
+                }
+                <a href="https://wa.me/601532809" class="button primary">
+                    Solicitar más información
+                </a>
+            </section>
+        </div>
+    </article>
+</BaseLayout>
