@@ -1,7 +1,7 @@
 .h2ContactFormNovias {
   font-size: 120px;
-  margin:0;
-  color:var(--primary-color);
+  margin: 0;
+  color: var(--primary-color);
   text-align: center;
   display: grid;
 }
@@ -14,9 +14,9 @@
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--second-background)
 }
 
 .contact-form input,
@@ -44,11 +44,6 @@
   gap: 0.5rem;
 }
 
-.date-label {
-  font-weight: bold;
-  color: #555;
-}
-
 .date-container {
   display: flex;
   gap: 10px;
@@ -65,10 +60,8 @@
   resize: vertical;
 }
 
-.date-container-time{
+.date-container-time {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
-
-

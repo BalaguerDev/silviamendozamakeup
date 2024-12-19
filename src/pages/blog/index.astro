@@ -8,6 +8,13 @@ import './styles/blog.css'
 
 // Obtención de los posts y parámetros de paginación
 const posts = await fetchAllPosts(`${API_BASE_URL}/Blogs?populate=image`);
+
+posts.sort((a, b) => {
+  const dateA = new Date(a.published || a.publishedAt).getTime();
+  const dateB = new Date(b.published || b.publishedAt).getTime();
+  return dateB - dateA;  // Orden descendente
+});
+
 const pageSize = 6;
 const totalPages = Math.ceil(posts.length / pageSize);
 

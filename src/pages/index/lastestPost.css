@@ -28,12 +28,12 @@ div.latest-post{
 
 .blog-content h3 {
   font-size: 20px;
-  color: var(--text-color);
+  color: var(--dark-color);
 }
 
 .blog-content .post-date {
   font-size: 14px;
-  color: #777;
+  color: var(--grey-color);
   margin-top: 10px;
 }
 

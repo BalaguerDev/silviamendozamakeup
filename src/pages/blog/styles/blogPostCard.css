@@ -2,13 +2,13 @@
 .blog-post {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  overflow: hidden;  /* Asegura que la imagen no se desborde fuera de la tarjeta */
+  background-color: var(--background);
+  overflow: hidden; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 350px;
   margin: 20px auto;
-  position: relative; /* Asegura que los elementos hijos se mantengan dentro del contenedor */
-  height: 380px;  /* Fija una altura para la tarjeta */
+  position: relative; 
+  height: 380px;
 }
 
 .blog-post:hover {
@@ -24,9 +24,8 @@
 .blog-post img {
   width: 100%;
   height: 150px;
-  object-fit: cover;  /* Asegura que la imagen no se deforme */
-  border-bottom: 1px solid #eaeaea;
-  transition: transform 0.1s ease-out;  /* Transición rápida para el movimiento de la imagen */
+  object-fit: cover;
+  transition: transform 0.1s ease-out; 
 }
 
 .blog-content {
@@ -41,7 +40,7 @@
   place-content: center;
   font-size: 1.3rem;
   height: 80px;
-  color: var(--text-color);
+  color: var(--dark-color);
   margin: 0;
 }
 
@@ -51,15 +50,15 @@
 
 .post-date {
   text-align: center;
-  font-size: 0.9rem;
-  color: #888;
+  font-size: 0.8rem;
+  color: var(--grey-color);
   margin: 0;
 }
 
 .post-content {
   font-size: 1rem;
   line-height: 1.6;
-  color: #555;
+  color: var(--dark-color);
   flex-grow: 1;
 }
 

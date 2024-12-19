@@ -34,7 +34,7 @@
 .card-subtitle {
   font-size: 0.7rem;
   text-align: center;
-  color: #777777;
+  color: var(--grey-color);
 }
 .card-subtitle2 {
 text-align: center;

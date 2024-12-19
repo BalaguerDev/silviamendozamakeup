@@ -15,8 +15,14 @@ const pageSize = 6;
 const posts = await fetchAllPosts(`${API_BASE_URL}/Blogs?populate=image`);
 const totalPages = Math.ceil(posts.length / pageSize);
 
-const postsToDisplay = posts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-
+const postsToDisplay = posts
+.sort((a, b) => {
+  const dateA = new Date(a.published || a.publishedAt).getTime();
+  const dateB = new Date(b.published || b.publishedAt).getTime();
+  return dateB - dateA;  // Orden descendente (más reciente primero)
+})
+  .slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  
 const prevPage = currentPage > 1 ? currentPage - 1 : null;
 const nextPage = currentPage < totalPages ? currentPage + 1 : null;
 

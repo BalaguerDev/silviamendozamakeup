@@ -29,7 +29,7 @@
   .testimonial-card cite {
     font-size: 1rem;
     font-style: normal;
-    color: var(--text-color);
+    color: var(--dark-color);
   }
   
   blockquote, blockquote cite {

@@ -2,24 +2,13 @@
 import "../../pages/maquillaje-para-novias-en-barcelona/styles/ContactForm.css";
 ---
 
-<form
-    method="POST"
-    action="http://localhost:1337/api/contact-form"
-    class="contact-form"
->
+<form id="contact-form" class="contact-form">
     <!-- Nombre -->
     <input type="text" id="name" name="name" placeholder="Nombre" required />
     <!-- Teléfono -->
-    <input
-        type="number"
-        id="phone"
-        name="phone"
-        placeholder="Teléfono"
-        required
-    />
+    <input type="number" id="phone" name="phone" placeholder="Teléfono" required />
     <!-- Email -->
     <input type="email" id="email" name="email" placeholder="Email" />
-
     <!-- Cuéntanos los detalles -->
     <textarea
         id="details"
@@ -31,3 +20,48 @@ import "../../pages/maquillaje-para-novias-en-barcelona/styles/ContactForm.css";
     <!-- Botón de enviar -->
     <button type="submit" class="button primary">Enviar</button>
 </form>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+
+    if (!contactForm) {
+        console.error('Formulario no encontrado en el DOM');
+        return;
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Evita el envío tradicional del formulario
+
+        // Recolecta los datos del formulario con Type Assertion
+        const name = (document.getElementById('name') as HTMLInputElement)?.value || '';
+        const phone = (document.getElementById('phone') as HTMLInputElement)?.value || '';
+        const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
+        const details = (document.getElementById('details') as HTMLTextAreaElement)?.value || '';
+
+        const formData = { name, phone, email, details };
+
+        try {
+            const response = await fetch('http://localhost:1337/api/contact-forms', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: formData }),
+            });
+
+            if (response.ok) {
+                alert('Formulario enviado correctamente');
+                contactForm.reset(); // Limpia el formulario
+            } else {
+                const errorData = await response.json();
+                console.error('Error en la respuesta del servidor:', errorData);
+                alert('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+            alert('Hubo un problema al enviar el formulario');
+        }
+    });
+});
+</script>

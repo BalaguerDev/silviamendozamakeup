@@ -12,13 +12,17 @@
 }
 
 .buttonBack {
+    width: 100%;
+   display: block;
+   justify-content: center;
     display: inline-flex;
     align-items: center;
     font-weight: bold;
     color: var(--primary-color);
     text-decoration: none;
-    margin-bottom: 20px;
+    margin-top: 20px;
     transition: color 0.3s ease-in-out;
+    text-align: center;
 }
 
 .buttonBack svg {
@@ -28,13 +32,13 @@
 }
 
 .buttonBack:hover {
-    color: #775434;
+    color: var(--dark-color);
     text-decoration: underline;
 }
 
 .post-content {
     font-size: 1.1rem;
-    color: #444;
+    color: var(--dark-color);
     line-height: 1.8;
 }
 
@@ -49,7 +53,7 @@
 }
 
 .post-content a:hover {
-    color: #775434;
+    color: var(--grey-color);
     text-decoration: none;
 }
 
@@ -74,16 +78,15 @@
 /* TEXTO EN NEGRITA */
 .post-content strong {
     font-weight: bold;
-    color: #222;
 }
 
 /* CITAS */
 .post-content blockquote {
     margin: 20px 0;
     padding: 15px 20px;
-    border-left: 4px solid #007bff;
-    background-color: #f1f5f9;
-    color: #555;
+    border-left: 4px solid var(--primary-color);
+    background-color: var(--second-background);
+    color: var(--dark-color);
     font-style: italic;
 }
 

@@ -1,5 +1,5 @@
 .courseCard {
-    background: #fff;
+    background: var(--background);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -33,7 +33,7 @@
 }
 .courseCardContent p {
     font-size: 12px;
-    color: #777;
+    color: var(--grey-color);
 }
 
 

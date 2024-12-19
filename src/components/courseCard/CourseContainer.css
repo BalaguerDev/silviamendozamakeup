@@ -1,5 +1,5 @@
 .courseContainerBackground {
-    background: #f9f9f9;
+    background: var(--second-background);
     padding: 20px 0;
 }
 
