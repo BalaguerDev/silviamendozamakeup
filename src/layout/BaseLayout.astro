@@ -2,17 +2,16 @@
 import { ClientRouter } from "astro:transitions";
 import PromoBar from "./PromoBar.astro";
 import Navbar from "./Navbar.astro";
-import Footer from "./Footer.astro"
+import Footer from "./Footer.astro";
 import { SEO } from "../constants/seo";
 
-
 import "../styles/global.css";
-
 
 const {
     title = SEO.DEFAULT_TITLE,
     description = SEO.DEFAULT_DESCRIPTION,
     image = SEO.DEFAULT_IMAGE,
+    noindex = false,
 } = Astro.props;
 ---
 
@@ -28,22 +27,31 @@ const {
         <meta property="og:image" content={image} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url.pathname} />
+        <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
         <title>{title}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
         <link
             href="https://fonts.googleapis.com/css2?family=Ephesis&family=Montserrat:wght@200;400;600&family=Playfair+Display:wght@400;900&display=swap"
             rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.0/build/cookieconsent.min.css"
+        />
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.0/build/cookieconsent.min.js"
+        ></script>
         <ClientRouter />
-
     </head>
 
     <body>
         <header>
-          
             <PromoBar />
             <Navbar />
         </header>
@@ -53,5 +61,26 @@ const {
         </main>
 
         <Footer />
+
+        <!-- Script de Cookie Consent -->
+        <script>
+            window.addEventListener("load", function () {
+                window.cookieconsent.initialise({
+                    palette: {
+                        popup: { background: "#171717db" },
+                        button: { background: "#d0954e", text: "#fff" },
+                    },
+                    theme: "classic",
+                    position: "bottom-right",
+                    content: {
+                        message:
+                            "Este sitio web utiliza cookies para mejorar tu experiencia.",
+                        dismiss: "Aceptar",
+                        link: "Leer más",
+                        href: "/politica-de-cookies",
+                    },
+                });
+            });
+        </script>
     </body>
 </html>

@@ -1,1 +1,1 @@
-export const cleanLink = (link) => link.replace("/", "");
+export const cleanLink = (link) => link ? link.replace(/^\/+|\/+$/g, "") : "";
