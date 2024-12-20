@@ -1,3 +1,4 @@
+
 .promoBar {
     background-color: var(--primary-color);
     display: flex;
@@ -40,7 +41,6 @@
     text-align: center;
 }
 
-/* Responsive */
 .mobileInvisible {
     display: block;
 }
@@ -51,11 +51,11 @@
         text-align: center;
         gap: 1rem;
     }
-
+    
     .promoBar-text {
         font-size: 0.8rem;
     }
-
+    
     .mobileInvisible {
         display: none;
     }
