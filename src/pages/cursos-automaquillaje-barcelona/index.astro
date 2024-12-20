@@ -7,26 +7,28 @@ import "./styles/cursos.css";
 ---
 
 <BaseLayout
-    title="Cursos de Automaquillaje en Barcelona - Silvia Mendoza Makeup"
-    description="Calendario de talleres intensivos de automaquillaje en Barcelona"
+  title="Cursos de Automaquillaje en Barcelona | Regala Belleza"
+  description="Descubre nuestros cursos de maquillaje y peluquería en Barcelona, ideales para regalar, aprender y divertirse. ¡Consulta fechas y apúntate!"
 >
   <section class="container">
     <h1 class="courseTitle">Calendario de Talleres de Automaquillaje en Barcelona</h1>
+
     <p class="courseDescription">
       Explora nuestro calendario de cursos intensivos para realzar tu belleza natural.
     </p>
-
     <div class="carousel">
-      {workshopList.map(({title, date,price,imageSrc}) => (
-        <div class="carousel-card">
-          <Card
-            title={title}
-            subtitle={date}
-            subtitle2={price}
-            imageSrc={imageSrc}
-          />
-        </div>
-      ))}
+      {
+        workshopList.map(({ title, date, price, imageSrc }) => (
+          <div class="carousel-card">
+            <Card
+              title={title}
+              subtitle={date}
+              subtitle2={price}
+              imageSrc={imageSrc}
+            />
+          </div>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>
