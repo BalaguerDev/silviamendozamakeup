@@ -1,48 +1,59 @@
 ---
 import './styles/footer.css'
 ---
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Columna 1: Información de contacto -->
+    <section class="footer-column contact-info">
+      <h3>Contacto</h3>
+      <ul>
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Carrer de Pere IV, 8, Sant Martí, 08005 Barcelona</p>
+        </li>
+        <li>
+          <i class="fab fa-whatsapp"></i>
+          <a href="tel:601532809">601 532 809</a>
+        </li>
+        <li>
+          <i class="fab fa-instagram"></i>
+          <a href="https://www.instagram.com/silviamendozamakeup" target="_blank">
+            @ silviamendozamakeup
+          </a>
+        </li>
+      </ul>
+    </section>
 
-<!-- Derechos de autor -->
 
-<footer class="footer-container">
-  <div class="footer-content">
-    <!-- Información general -->
-    <div class="footer-info">
-      <h3>Información</h3>
-      <p><i class="fas fa-map-marker-alt"></i> Carrer de Pere IV, 8, Sant Martí, 08005 Barcelona</p>
-      <p><i class="fab fa-whatsapp"></i> Móvil 601 532 809</p>    
-      <p><i class="fab fa-instagram"></i> @silviamendozamakeup</p>  
-  </div>
-
-    <!-- Enlace a bodas.net -->
-    <div class="footer-bodasnet">
-      <h3>Si eres la novia y te casas, visitame en:</h3>
-      <a href="https://www.bodas.net" target="_blank" rel="noopener noreferrer">
-        <img
-          src="public/images/footer/badge-rated-10.avif"
-          alt="Bodas.net - Silvia Mendoza"
-          loading="lazy"
-          width="150"
-          height="50"
-        />
-      </a>
-    </div>
-
-    <!-- Formulario de Newsletter -->
-    <div class="footer-newsletter">
-      <h3>Suscríbete a nuestra Newsletter</h3>
-      <form action="#" method="POST" class="newsletter-form">
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="tuemail@example.com"
-          required
-        />
-        <button type="submit" class="btnSubmit">Suscribirme</button>
+    <!-- Columna 3: Newsletter -->
+    <section class="footer-column newsletter">
+      <h3>Únete a mi comunidad y entérate la primera de tips y consejos </h3>
+      <form action="#" method="POST">
+        <input type="email" name="email" placeholder="tuemail@ejemplo.com" required />
+        <button type="submit">Suscribirme</button>
       </form>
-    </div>
-  </div>
-  <p class="copyright">&copy; 2024 Silvia Mendoza Makeup</p>
+    </section>
 
+
+    <!-- Columna 2: Bodas.net -->
+    <section class="footer-column bodas-net">
+      <h3>¿Eres la novia? Visitame en:</h3>
+      <a href="https://www.bodas.net" target="_blank">
+        <img src="/images/footer/badge-rated-10.avif" alt="Bodas.net Silvia Mendoza" />
+      </a>
+    </section>
+
+  </div>
+
+  <!-- Sección inferior: Enlaces legales y derechos de autor -->
+  <div class="footer-bottom">
+    <div class="footer-legal">
+      <a href="/politica-de-privacidad">Política de Privacidad</a>
+      <a href="/politica-de-cookies">Política de Cookies</a>
+    </div>
+    <p class="footer-copyright">
+      &copy; 2024 Silvia Mendoza Makeup. Todos los derechos reservados.
+    </p>
+  </div>
 </footer>

@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+
+const metaTags = {
+    title: "Política de Cookies",
+    description:"En esta página explicamos nuestra política sobre cookies.",
+    noindex: true,
+};
+
+---
+
+<BaseLayout
+    title={metaTags.title}
+    description={metaTags.description}
+    noindex={metaTags.noindex}
+>
+    <head>
+        <meta name="robots" content="noindex, nofollow" />
+    </head>
+
+    <main class="container">
+        <h2>Política de Cookies</h2>
+
+        <h3>1. ¿Qué son las cookies?</h3>
+        <p>
+            Las cookies son pequeños archivos de texto que se almacenan en tu
+            dispositivo cuando visitas nuestro sitio web. Permiten que el sitio
+            web recuerde tus acciones y preferencias durante un tiempo
+            determinado, de manera que no tengas que volver a introducirlos cada
+            vez que vuelvas a visitar el sitio o navegues entre las distintas
+            páginas.
+        </p>
+
+        <h3>2. ¿Quién es el responsable del tratamiento de las cookies?</h3>
+        <p>
+            El responsable del tratamiento de los datos recabados a través de
+            las cookies es:
+        </p>
+        <p><strong>Silvia Mendoza Make Up</strong></p>
+        <p>
+            Carrer de Pere IV, 8, Sant Martí, 08005 Barcelona<br />
+            Móvil: 601 532 809<br />
+            Correo electrónico: <a href="mailto:artilismo.makeup@gmail.com"
+                >artilismo.makeup@gmail.com</a
+            >
+        </p>
+
+        <h3>3. ¿Qué cookies utilizamos?</h3>
+        <p>
+            Este sitio web utiliza <strong>cookies propias</strong> que son colocadas
+            directamente por el mismo para mejorar la experiencia del usuario y permitir
+            la correcta funcionalidad del sitio. Las cookies propias son necesarias
+            para el funcionamiento de ciertas características de la web, como la
+            autenticación o la gestión de preferencias de usuario.
+        </p>
+        <p>Las categorías de cookies utilizadas en este sitio son:</p>
+        <ul>
+            <li>
+                <strong>Cookies esenciales:</strong> Son necesarias para que el sitio
+                web funcione correctamente, permitiendo la navegación por el sitio
+                y el uso de sus funciones básicas.
+            </li>
+            <li>
+                <strong>Cookies de funcionalidad:</strong> Estas cookies permiten
+                que el sitio web recuerde las opciones que el usuario selecciona,
+                como el idioma o la región.
+            </li>
+        </ul>
+
+        <h3>4. ¿Cómo gestionar las cookies?</h3>
+        <p>
+            El usuario puede gestionar y controlar el uso de las cookies a
+            través de la configuración de su navegador. A continuación se
+            describen las instrucciones para administrar las cookies en los
+            navegadores más comunes:
+        </p>
+        <ul>
+            <li>
+                <a
+                    href="https://support.google.com/chrome/answer/95647"
+                    target="_blank">Configurar cookies en Google Chrome</a>
+            </li>
+            <li>
+                <a
+                    href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences"
+                    target="_blank">Configurar cookies en Mozilla Firefox</a
+                >
+            </li>
+            <li>
+                <a
+                    href="https://support.apple.com/es-es/guide/safari/sfri11471/mac"
+                    target="_blank">Configurar cookies en Safari</a>
+            </li>
+        </ul>
+        <p>
+            Si decides desactivar las cookies, algunas partes del sitio web
+            pueden no funcionar correctamente.
+        </p>
+
+        <h3>5. Consentimiento</h3>
+        <p>
+            Al continuar navegando por este sitio web, aceptas el uso de cookies
+            según lo descrito en esta política. Si no estás de acuerdo con el
+            uso de cookies, puedes desactivarlas en tu navegador en cualquier
+            momento.
+        </p>
+
+        <h3>6. Derechos del Usuario</h3>
+        <p>
+            Puedes revocar tu consentimiento al uso de cookies en cualquier
+            momento, y puedes configurar tu navegador para que te avise cuando
+            se intenten colocar cookies en tu dispositivo. Ten en cuenta que
+            desactivar las cookies puede afectar a la funcionalidad de ciertas
+            partes de este sitio web.
+        </p>
+
+        <h3>7. Actualizaciones de la Política de Cookies</h3>
+        <p>
+            Nos reservamos el derecho de actualizar esta Política de Cookies en
+            cualquier momento. Cualquier cambio será publicado en esta página y,
+            si es necesario, se te notificará sobre los cambios más importantes.
+            La fecha de la última actualización se muestra al final de esta
+            política.
+        </p>
+
+        <h3>8. Más información</h3>
+        <p>
+            Si tienes alguna pregunta sobre nuestra Política de Cookies, no
+            dudes en contactarnos a través de la siguiente dirección de correo
+            electrónico: <a href="mailto:artilismo.makeup@gmail.com"
+                >artilismo.makeup@gmail.com</a
+            >.
+        </p>
+    </main>
+</BaseLayout>

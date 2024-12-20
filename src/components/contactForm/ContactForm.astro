@@ -3,65 +3,65 @@ import "../../pages/maquillaje-para-novias-en-barcelona/styles/ContactForm.css";
 ---
 
 <form id="contact-form" class="contact-form">
-    <!-- Nombre -->
     <input type="text" id="name" name="name" placeholder="Nombre" required />
-    <!-- Teléfono -->
     <input type="number" id="phone" name="phone" placeholder="Teléfono" required />
-    <!-- Email -->
-    <input type="email" id="email" name="email" placeholder="Email" />
-    <!-- Cuéntanos los detalles -->
-    <textarea
-        id="details"
-        name="details"
-        rows="4"
-        placeholder="¿Quieres contarme algo que te inquiete?"
-        required></textarea>
+    <input type="email" id="email" name="email" placeholder="Email" required />
+    <textarea id="details" name="details" rows="4" placeholder="¿Quieres contarme algo que te inquiete?" required></textarea>
 
-    <!-- Botón de enviar -->
+    <label>
+        <input type="checkbox" name="privacy_policy" required />
+        <p>He leído y acepto la <a href="/politica-de-privacidad" target="_blank">Política de Privacidad</a>.</p>
+    </label>
     <button type="submit" class="button primary">Enviar</button>
+    <p id="form-message" style="display: none;"></p>
 </form>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contact-form') as HTMLFormElement;
-
-    if (!contactForm) {
-        console.error('Formulario no encontrado en el DOM');
-        return;
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form')! as HTMLFormElement;
+    const formMessage = document.getElementById('form-message')! as HTMLParagraphElement;
 
     contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Evita el envío tradicional del formulario
+        e.preventDefault();
 
-        // Recolecta los datos del formulario con Type Assertion
-        const name = (document.getElementById('name') as HTMLInputElement)?.value || '';
-        const phone = (document.getElementById('phone') as HTMLInputElement)?.value || '';
-        const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
-        const details = (document.getElementById('details') as HTMLTextAreaElement)?.value || '';
+        const name = (document.getElementById('name')! as HTMLInputElement).value.trim();
+        const phone = (document.getElementById('phone')! as HTMLInputElement).value.trim();
+        const email = (document.getElementById('email')! as HTMLInputElement).value.trim();
+        const details = (document.getElementById('details')! as HTMLTextAreaElement).value.trim();
+        const consent = (document.querySelector('input[name="privacy_policy"]')! as HTMLInputElement).checked;
 
-        const formData = { name, phone, email, details };
+        // Validaciones
+        if (!/^[0-9]{9}$/.test(phone)) {
+            alert("El teléfono debe contener 9 dígitos.");
+            return;
+        }
+
+        const formData = { name, phone, email, details, consent };
 
         try {
-            const response = await fetch('http://localhost:1337/api/contact-forms', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+            const response = await fetch("http://localhost:1337/api/contact-forms", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ data: formData }),
             });
 
             if (response.ok) {
-                alert('Formulario enviado correctamente');
-                contactForm.reset(); // Limpia el formulario
+                formMessage.textContent = "Muchas gracias por contactarnos ❤️, nos pondremos en contacto contigo en las próximas 24h";
+                formMessage.style.color = "green";
+                formMessage.style.display = "block";
+                contactForm.reset();
             } else {
                 const errorData = await response.json();
-                console.error('Error en la respuesta del servidor:', errorData);
-                alert('Error al enviar el formulario');
+                formMessage.textContent = `Error: ${errorData.error.message || "Error al enviar el formulario"}`;
+                formMessage.style.color = "red";
+                formMessage.style.display = "block";
             }
         } catch (error) {
-            console.error('Error en la solicitud:', error);
-            alert('Hubo un problema al enviar el formulario');
+            formMessage.textContent = "Error en la conexión con el servidor.";
+            formMessage.style.color = "red";
+            formMessage.style.display = "block";
         }
     });
 });
-</script>
+
+    </script>

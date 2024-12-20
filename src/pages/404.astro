@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const metaTags = {
+    title: "Página no encontrada",
+    description:
+        "Lo sentimos, pero la página que buscas no existe o ha sido movida.",
+    noindex: true, // Marcamos como noindex
+};
+---
+
+<BaseLayout title={metaTags.title} description={metaTags.description} noindex={metaTags.noindex}>
+    <div class="container page-404">
+        <h1>¡Vaya! Página no encontrada</h1>
+        <a href="/" class="button primary">Volver a la página principal</a>
+    </div>
+
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+        .page-404 {
+            height: 50vh;
+        }
+    </style>
+</BaseLayout>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const metaTags = {    
+  title :"Política de Privacidad",
+    description :"En esta página explicamos cómo gestionamos y protegemos tus datos personales.",
+    noindex: true,
+  };
+
+---
+
+<BaseLayout
+    title={metaTags.title}
+    description={metaTags.description}
+    noindex={metaTags.noindex}
+>  <!-- Metaetiqueta para evitar la indexación por los motores de búsqueda -->
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+
+  <main class="container">
+
+    <h2>Política de Privacidad</h2>
+
+    <h3>1. Responsable del Tratamiento</h3>
+    <p>
+      El responsable del tratamiento de tus datos personales es:
+    </p>
+    <p><strong>Silvia Mendoza Make Up</strong></p>
+    <p>
+      Carrer de Pere IV, 8, Sant Martí, 08005 Barcelona<br>
+      Móvil: 601 532 809<br>
+      Correo electrónico: <a href="mailto:artilismo.makeup@gmail.com">artilismo.makeup@gmail.com</a>
+    </p>
+
+    <h3>2. Información que Recopilamos</h3>
+    <p>Recopilamos diferentes tipos de información personal, según la interacción que tengas con nuestro sitio web:</p>
+    <ul>
+      <li><strong>Información proporcionada directamente:</strong> Nombre, correo electrónico, dirección, número de teléfono, detalles relacionados con los servicios solicitados.</li>
+      <li><strong>Información recopilada automáticamente:</strong> Datos de navegación, dirección IP, dispositivo utilizado y cookies.</li>
+    </ul>
+
+    <h3>3. Finalidad del Tratamiento de los Datos</h3>
+    <p>Utilizamos tus datos personales para:</p>
+    <ul>
+      <li>Gestionar tu reserva de servicios o cursos.</li>
+      <li>Responder consultas o solicitudes de atención al cliente.</li>
+      <li>Enviar comunicaciones relacionadas con los servicios de maquillaje y peluquería (si has dado tu consentimiento).</li>
+      <li>Mejorar la experiencia de usuario en el sitio web.</li>
+      <li>Cumplir con obligaciones legales.</li>
+    </ul>
+
+    <h3>4. Uso de Cookies</h3>
+    <p>
+      Este sitio web utiliza cookies para recopilar información sobre tu navegación. Para más detalles, consulta nuestra <a href="/politica-cookies">Política de Cookies</a>.
+    </p>
+
+    <h3>5. Compartición de Datos Personales</h3>
+    <p>Podemos compartir tus datos con:</p>
+    <ul>
+      <li><strong>Proveedores de servicios:</strong> Para la gestión de los servicios ofrecidos (ej. herramientas de contacto y soporte).</li>
+      <li><strong>Autoridades competentes:</strong> En cumplimiento de obligaciones legales.</li>
+    </ul>
+    <p>
+      Garantizamos que tus datos no serán vendidos ni compartidos para fines distintos a los especificados en esta política.
+    </p>
+
+    <h3>6. Seguridad de los Datos</h3>
+    <p>
+      Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales. No obstante, recuerda que ningún sistema es completamente seguro.
+    </p>
+
+    <h3>7. Conservación de los Datos</h3>
+    <p>
+      Conservaremos tus datos personales únicamente durante el tiempo necesario para cumplir con las finalidades descritas o con las exigencias legales aplicables.
+    </p>
+
+    <h3>8. Derechos del Usuario</h3>
+    <p>
+      Como usuario, tienes derecho a:
+    </p>
+    <ul>
+      <li>Acceder a tus datos personales.</li>
+      <li>Solicitar la rectificación de datos inexactos.</li>
+      <li>Solicitar la supresión de tus datos personales.</li>
+      <li>Oponerte al tratamiento de tus datos.</li>
+      <li>Solicitar la portabilidad de tus datos.</li>
+    </ul>
+    <p>
+      Para ejercer estos derechos, puedes escribirnos a <a href="mailto:artilismo.makeup@gmail.com">artilismo.makeup@gmail.com</a>.
+    </p>
+
+    <h3>9. Cambios en la Política de Privacidad</h3>
+    <p>
+      Nos reservamos el derecho de modificar esta Política de Privacidad. Cualquier actualización será publicada en esta página con la fecha de última actualización al inicio del documento.
+    </p>
+
+    <h3>10. Contacto</h3>
+    <p>
+      Si tienes alguna pregunta sobre nuestra Política de Privacidad o el tratamiento de tus datos, puedes contactarnos a través del correo electrónico:  
+      <a href="mailto:artilismo.makeup@gmail.com">artilismo.makeup@gmail.com</a>.
+    </p>
+  </main>
+</BaseLayout>
