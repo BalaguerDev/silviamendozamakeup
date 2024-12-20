@@ -1,9 +1,16 @@
 ---
+import NewsletterForm from '../components/contactForm/Newsletter.astro'
 import './styles/footer.css'
 ---
-<!-- Footer -->
+
 <footer class="footer">
   <div class="footer-container">
+
+        <!-- Columna 3: Newsletter -->
+        <section class="footer-column newsletter">
+          <h3>Únete a mi comunidad y entérate la primera de tips y consejos </h3>
+          <NewsletterForm />
+        </section>
     <!-- Columna 1: Información de contacto -->
     <section class="footer-column contact-info">
       <h3>Contacto</h3>
@@ -26,15 +33,6 @@ import './styles/footer.css'
     </section>
 
 
-    <!-- Columna 3: Newsletter -->
-    <section class="footer-column newsletter">
-      <h3>Únete a mi comunidad y entérate la primera de tips y consejos </h3>
-      <form action="#" method="POST">
-        <input type="email" name="email" placeholder="tuemail@ejemplo.com" required />
-        <button type="submit">Suscribirme</button>
-      </form>
-    </section>
-
 
     <!-- Columna 2: Bodas.net -->
     <section class="footer-column bodas-net">
@@ -43,9 +41,9 @@ import './styles/footer.css'
         <img src="/images/footer/badge-rated-10.avif" alt="Bodas.net Silvia Mendoza" />
       </a>
     </section>
-
   </div>
 
+  <hr/>
   <!-- Sección inferior: Enlaces legales y derechos de autor -->
   <div class="footer-bottom">
     <div class="footer-legal">

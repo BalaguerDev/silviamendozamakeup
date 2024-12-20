@@ -1,37 +1,38 @@
 /* Carrusel */
 .gallery {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    width: 100%;
-    margin: 20px 0;
-    position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+}
+
+.gallery-images {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+.gallery img {
+  width: 150px; 
+  height: 250px;
+  margin-right: 20px; 
+  object-fit: cover;
+}
+
+/* Animación de desplazamiento */
+@keyframes scroll {
+  0% {
+    transform: translateX(0); 
   }
-  
-  .gallery-images {
-    display: flex;
-    animation: scroll 20s linear infinite;
+  100% {
+    transform: translateX(-50%); 
   }
-  
+}
+
+/* Estilo para adaptarse a pantallas pequeñas */
+@media (max-width: 768px) {
   .gallery img {
-    width: 150px; 
-    height: 250px;
-    margin-right: 20px; 
-    object-fit: cover;
+    width: 250px; 
   }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(0); 
-    }
-    100% {
-      transform: translateX(-50%); 
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .gallery img {
-      width: 250px; 
-    }
-  }
-  
+}

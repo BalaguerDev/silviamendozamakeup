@@ -1,14 +1,12 @@
 ---
-// Importaciones
 import { fetchPosts, API_BASE_URL, formatDate } from "../../utils";
 import { marked } from "marked";
 import BaseLayout from "../../layout/BaseLayout.astro";
 import "./styles/blogPost.css";
 
-// Fetch del contenido
 export async function getStaticPaths() {
   const apiUrl = `${API_BASE_URL}/blogs`;
-  const { data: blogs } = await fetchPosts(apiUrl);  // Asegúrate de acceder a 'data'
+  const { data: blogs } = await fetchPosts(apiUrl);
 
   return blogs.map((blog) => ({
     params: { blogPost: blog.slug },
@@ -17,7 +15,7 @@ export async function getStaticPaths() {
 
 const { blogPost } = Astro.params;
 const apiUrl = `${API_BASE_URL}/blogs?filters[slug][$eq]=${blogPost}&populate=image`;
-const { data: blogs } = await fetchPosts(apiUrl);  // Asegúrate de acceder a 'data'
+const { data: blogs } = await fetchPosts(apiUrl);
 
 if (blogs.length === 0) {
   throw new Error("Blog no encontrado");
@@ -25,51 +23,46 @@ if (blogs.length === 0) {
 
 const blog = blogs[0];
 
-// Convertir JSON a Markdown y luego a HTML
 function parseContentToMarkdown(contentArray) {
   return contentArray
     .map((block) => {
-      // Procesar párrafos
       if (block.type === "paragraph") {
         return block.children
           .map((child) => {
             if (child.type === "text") return child.text;
-            if (child.type === "strong") return `**${child.text}**`; // Convertir a negrita (Markdown)
-            if (child.type === "link") return `[${child.text}](${child.url})`; // Enlaces
+            if (child.type === "strong") return `**${child.text}**`;
+            if (child.type === "link") return `[${child.text}](${child.url})`;
             return "";
           })
-          .join(""); // Unir el texto de todos los hijos
+          .join("");
       }
 
-      // Procesar citas
       if (block.type === "quote") {
-        return `> ${block.children.map(child => child.text).join("")}`; // Convertir citas a Markdown
+        return `> ${block.children.map((child) => child.text).join("")}`;
       }
 
-      // Procesar listas desordenadas
       if (block.type === "list" && block.format === "unordered") {
         return block.children
           .map((item) => {
-            return `- ${item.children.map(child => child.text).join("")}`; // Crear items de lista
+            return `- ${item.children.map((child) => child.text).join("")}`;
           })
           .join("\n");
       }
-
-      // Otros tipos de bloques pueden añadirse según sea necesario
 
       return "";
     })
     .join("\n\n");
 }
 
-// Convertir el contenido JSON a Markdown
 const markdownContent = parseContentToMarkdown(blog.content);
-// Convertir Markdown a HTML
-const fullContentHTML = marked(markdownContent);
+const fullContentHTML = await marked.parse(markdownContent); 
+const excerpt = fullContentHTML.substring(0, 150);
+const plainTextExcerpt = excerpt.replace(/<[^>]*>/g, '');
+const metaDescription = plainTextExcerpt.length > 150 ? `${plainTextExcerpt}...` : plainTextExcerpt;
 
 ---
 
-<BaseLayout>
+<BaseLayout title={blog.title} description={metaDescription}>
   <img
     src={`http://localhost:1337${blog.image.url}`}  
     alt={blog.title}

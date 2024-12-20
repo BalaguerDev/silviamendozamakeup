@@ -83,13 +83,14 @@ import "../styles/ContactForm.css";
         document.getElementById("email")! as HTMLInputElement
       ).value.trim();
       const date = (
-        document.getElementById("date")! as HTMLTextAreaElement
+        document.getElementById("date")! as HTMLInputElement
       ).value.trim();
       let hour = (
-        document.getElementById("hour")! as HTMLTextAreaElement
+        document.getElementById("hour")! as HTMLInputElement
       ).value.trim();
+
       const place = (
-        document.getElementById("place")! as HTMLTextAreaElement
+        document.getElementById("place")! as HTMLInputElement
       ).value.trim();
       const details = (
         document.getElementById("details")! as HTMLTextAreaElement
@@ -107,8 +108,8 @@ import "../styles/ContactForm.css";
       }
 
       if (hour) {
-      hour = `${hour}:00.000`; 
-    }
+        hour = `${hour}:00.000`; // Aquí la reasignación debería funcionar correctamente si 'hour' es 'let'
+      }
 
       const formData = {
         name,
