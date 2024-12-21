@@ -62,9 +62,13 @@ const {
 
         <Footer />
 
-        <!-- Script de Cookie Consent -->
-        <script>
-            window.addEventListener("load", function () {
+  
+        <script defer>
+            document.addEventListener("DOMContentLoaded", function () {
+                if (!window.cookieconsent) {
+                    console.error("CookieConsent script not loaded.");
+                    return;
+                }
                 window.cookieconsent.initialise({
                     palette: {
                         popup: { background: "#171717db" },
@@ -73,8 +77,7 @@ const {
                     theme: "classic",
                     position: "bottom-right",
                     content: {
-                        message:
-                            "Este sitio web utiliza cookies para mejorar tu experiencia.",
+                        message: "Este sitio web utiliza cookies para mejorar tu experiencia.",
                         dismiss: "Aceptar",
                         link: "Leer más",
                         href: "/politica-de-cookies",

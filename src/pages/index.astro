@@ -4,15 +4,13 @@ import Hero from "./index/Hero.astro";
 import AboutSection from "./index/AboutSection.astro";
 import CourseContainer from "../components/courseCard/CourseContainer.astro";
 import CardContainer from "../components/cardContainer/CardContainer.astro";
-import { courseList } from "../data/courseList";
-import { serviceList } from "../data/serviceList";
+import { courseList } from "../data";
+import { serviceList } from "../data";
 import LatestPost from "./index/LatestPost.astro";
 
 ---
 
-<BaseLayout
-
->
+<BaseLayout>
   <Hero />
   <AboutSection />
   <CourseContainer

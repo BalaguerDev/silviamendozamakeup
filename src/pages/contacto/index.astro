@@ -1,60 +1,61 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
-import './styles/contacto.css'
-import ContactForm from '../../components/contactForm/ContactForm.astro'
+import ContactForm from "../../components/contactForm/ContactForm.astro";
 
-
+import "./styles/contacto.css";
 ---
 
 <BaseLayout
-    title="Estudio de Maquillaje y Peluqueria en Barcelona | Sílvia Mendoza"
-    description="Contáctame en mi estudio de maquillaje en Barcelona para más información o reservar una cita. Llama al 601 532 809 o visita nuestra dirección."
+  title="Estudio de Maquillaje y Peluquería en Barcelona | Sílvia Mendoza"
+  description="Contáctame en mi estudio de maquillaje en Barcelona para más información o reservar una cita. Llama al 601 532 809 o visita nuestra dirección."
 >
-    <main class="contacto-container container">
-        <h1>Contáctame en mi estudio de maquillaje de Barcelona</h1>
-
-        <!-- Dirección, Información y Mapa pequeño -->
-        <section class="contacto-info">
-            <div class="contacto-layout">
-                <!-- Información del estudio y mapa -->
-                <div class="contacto-contenido">
-                    <div class="contacto-texto">
-                        <p>
-                            <strong>Dirección:</strong> Carrer de Pere IV, 8, Sant
-                            Martí, 08005 Barcelona<br />
-                            <strong>Teléfono:</strong> 933 00 12 94<br />
-                            <strong>Móvil (prioritario):</strong> 601 532 809
-                        </p>
-                     
-                        <div class="contacto-imagen">
-                            <img
-                                src="public/images/homepage/aboutme/Maquilladora-profesional-para-novias-en-barcelona.webp"
-                                alt="Imagen del estudio de Silvia Mendoza Makeup"
-                                loading="lazy"
-                                width="400"
-                                height="200"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <!-- Imagen del estudio -->
-                <div class="contacto-mapa-pequeno">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2207049488874!2d2.1909814764440434!3d41.39586677128701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3e91c7d8911%3A0x69a6f462e767f7b3!2sCarrer%20de%20Pere%20IV%2C%208%2C%2008005%20Barcelona!5e0!3m2!1ses!2ses!4v1702981234567"
-                        style="border: 0"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                </div>
-              
+  <main class="contacto-container">
+    <!-- Contenedor principal de dos columnas -->
+    <div class="contacto-grid">
+      <!-- Columna izquierda: Información y mapa -->
+      <section class="contacto-info">
+        <h1>Contáctame o visítame en mi estudio de maquillaje en Barcelona</h1>
+        <div class="contacto-layout">
+          <div class="contacto-texto">
+            <ul class="contacto-lista">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <p>
+                  Carrer de Pere IV, 8, Sant Martí, 08005 Barcelona
+                </p>
+              </li>
+              <li>
+                <i class="fab fa-whatsapp"></i>
+                <a href="tel:601532809">601 532 809</a>
+              </li>
+              <li>
+                <i class="fab fa-instagram"></i>
+                <a
+                  href="https://www.instagram.com/silviamendozamakeup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @silviamendozamakeup
+                </a>
+              </li>
+            </ul>
+            <div class="contacto-mapa">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2207049488874!2d2.1909814764440434!3d41.39586677128701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3e91c7d8911%3A0x69a6f462e767f7b3!2sCarrer%20de%20Pere%20IV%2C%208%2C%2008005%20Barcelona!5e0!3m2!1ses!2ses!4v1702981234567"
+                loading="lazy"
+                style="border: 0"
+                allowfullscreen=""
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Formulario de contacto -->
-        <section id="contact-formulario" class="contacto-formulario">
-            <h2>Formulario de contacto</h2>
-            <ContactForm/>
-        </section>
-    </main>
+      <!-- Columna derecha: Formulario -->
+      <section id="contacto-formulario" class="contacto-formulario">
+        <ContactForm />
+      </section>
+    </div>
+  </main>
 </BaseLayout>

@@ -1,8 +1,7 @@
 ---
-import type { GetStaticPaths } from "astro";
 import BaseLayout from "../layout/BaseLayout.astro";
-import { courseList } from "../data/courseList";
-import { serviceList } from "../data/serviceList";
+import { courseList, workshopList } from "../data";
+import { serviceList } from "../data";
 import { cleanLink } from "../utils";
 
 import "../styles/productDetails.css";
@@ -15,6 +14,9 @@ export async function getStaticPaths() {
         ...serviceList.map((service) => ({
             params: { productDetail: cleanLink(service.link) },
         })),
+        ...workshopList.map((workshop) => ({
+            params: { productDetail: cleanLink(workshop.link) },
+        })),
     ];
     return combinedPaths;
 }
@@ -24,7 +26,8 @@ const cleanedLink = cleanLink(productDetail);
 
 const product =
     courseList.find((item) => cleanLink(item.link) === cleanedLink) ||
-    serviceList.find((item) => cleanLink(item.link) === cleanedLink);
+    serviceList.find((item) => cleanLink(item.link) === cleanedLink) ||
+    workshopList.find((item) => cleanLink(item.link) === cleanedLink);
 
 if (!product) {
     throw new Error(`Producto con link "${productDetail}" no encontrado.`);
@@ -38,7 +41,7 @@ const {
     titlePage,
     subtitle,
     imageSrc,
-    shortDescription,
+    description: shortDescription,
     longDescription,
     whatYouWillLearn,
     durationPrice,
@@ -54,6 +57,7 @@ const {
 //METADATA
 const title = `${titlePage} - Sílvia Mendoza Make Up`;
 const description = `${shortDescription} || "Descubre más detalles sobre este producto.`;
+
 ---
 
 <BaseLayout title={title} description={description} image={imageSrc}>
@@ -75,14 +79,14 @@ const description = `${shortDescription} || "Descubre más detalles sobre este p
                             <p>{longDescription}</p>
                             <h3>Lo que aprenderás</h3>
                             <ul>
-                                {whatYouWillLearn.map((item) => (
+                                {whatYouWillLearn?.map((item) => (
                                     <li>{item}</li>
                                 ))}
                             </ul>
 
                             <h3>Duración y Precio</h3>
                             <ul>
-                                {durationPrice.map((item) => (
+                                {durationPrice?.map((item) => (
                                     <li>{item}</li>
                                 ))}
                             </ul>
@@ -95,12 +99,12 @@ const description = `${shortDescription} || "Descubre más detalles sobre este p
                         </>
                     ) : (
                         <>
-                            <p>{fullDescription[0]}</p>
-                            <p>{fullDescription[1]}</p>
+                            <p>{fullDescription?.[0]}</p>
+                            <p>{fullDescription?.[1]}</p>
 
                             <h3>¿Qué incluye?</h3>
                             <ul>
-                                {include.map((item) => (
+                                {include?.map((item) => (
                                     <li>{item}</li>
                                 ))}
                             </ul>

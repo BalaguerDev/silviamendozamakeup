@@ -1,87 +1,70 @@
 ---
-import { reviews } from "../../data/reviewsGoogle";
+import { reviews } from "../../data";
 import "./reviewGoogle.css";
 ---
 
 <section class="testimonios">
-  <h2>Lo que dicen mis clientas</h2>
+  <h2 class="testimonios-title">Lo que dicen mis clientas</h2>
   <div class="testimonios-carousel">
     <div class="testimonios-carousel-track" id="carouselTrack">
-      {
-        reviews.map((review, ) => (
-          <div class="testimonio-item">
-            <a
-              href="https://www.google.com/search?sca_esv=f03bab0fa4fcd579&rlz=1C1CHBF_esES926ES926&tbm=lcl&sxsrf=ADLYWIKcN-Q2kRb8iZ_ZeSv4uP012sbPVg:1734500556196&q=Silvia%20Mendoza%20Make%20Up%20Rese%C3%B1as"
-              class="testimonio-link"
-              target="_blank"
-            >
-              <div class="testimonio-header">
-                <div class="testimonio-author">
-                  <strong>{review.author_name}</strong>
-                </div>
-                <div class="testimonio-rating">
-                  <span class="stars">
-                    {Array(review.rating).fill("★").join("")}
-                  </span>
-                </div>
+      {reviews.map(review => (
+        <div class="testimonio-item">
+          <a
+            href="https://www.google.com/search?sca_esv=f03bab0fa4fcd579&rlz=1C1CHBF_esES926ES926&tbm=lcl&sxsrf=ADLYWIKcN-Q2kRb8iZ_ZeSv4uP012sbPVg:1734500556196&q=Silvia%20Mendoza%20Make%20Up%20Rese%C3%B1as"
+            class="testimonio-link"
+            target="_blank"
+          >
+            <div class="testimonio-header">
+              <div class="testimonio-author">{review.author_name}</div>
+              <div class="testimonio-rating">
+                {Array(review.rating)
+                  .fill("★")
+                  .join("")}
               </div>
-
-              <blockquote class="testimonio-text">{review.text}</blockquote>
+            </div>
+            <blockquote class="testimonio-text">{review.text}</blockquote>
+            <div class="testimonio-footer">
               <small class="testimonio-time">{review.time}</small>
-            </a>
-          </div>
-        ))
-      }
+            </div>
+          </a>
+        </div>
+      ))}
     </div>
   </div>
+  <!-- Botones de navegación -->
+  <button class="carousel-btn carousel-prev" id="carouselPrev">❮</button>
+  <button class="carousel-btn carousel-next" id="carouselNext">❯</button>
 </section>
 
 <script type="module">
-  const track = document.getElementById('carouselTrack');
-  let index = 0;
-  const reviewsLength = track.children.length;
+const track = document.getElementById('carouselTrack');
+const prevButton = document.getElementById('carouselPrev');
+const nextButton = document.getElementById('carouselNext');
+const items = track.children;
+let index = 0;
 
-  // Función para cambiar la posición del carrusel
-  const updateCarousel = () => {
-    track.style.transition = 'transform 1s ease-in-out';
-    track.style.transform = `translateX(-${index * 100}%)`;
-  };
+const updateCarousel = () => {
+  track.style.transition = 'transform 0.7s ease-in-out';
+  track.style.transform = `translateX(-${index * 100}%)`;
+};
 
-  // Mover al siguiente
-  const goNext = () => {
-    index = (index + 1) % reviewsLength;
-    updateCarousel();
-  };
+const goNext = () => {
+  index = (index + 1) % items.length;
+  updateCarousel();
+};
 
-  // Mover al anterior
-  const goPrev = () => {
-    index = (index - 1 + reviewsLength) % reviewsLength;
-    updateCarousel();
-  };
+const goPrev = () => {
+  index = (index - 1 + items.length) % items.length;
+  updateCarousel();
+};
 
-  const interval = setInterval(goNext, 7000);
+prevButton.addEventListener('click', goPrev);
+nextButton.addEventListener('click', goNext);
 
-  window.addEventListener('beforeunload', () => {
-    clearInterval(interval);
-  });
-
-  track.addEventListener('wheel', (event) => {
-    if (event.deltaY > 0) {
-      goNext(); 
-    } else {
-      goPrev()
-    }
-  });
-
-  const toggleText = (index) => {
-    const textElement = document.getElementById(`text-${index}`);
-    textElement.classList.toggle('expanded');
-    
-    const leerMasButton = textElement.querySelector('.leer-mas');
-    if (textElement.classList.contains('expanded')) {
-      leerMasButton.textContent = 'Leer menos';
-    } else {
-      leerMasButton.textContent = 'Leer más';
-    }
-  };
+// Auto-scroll ajustado a móviles
+if (window.innerWidth <= 768) {
+  setInterval(goNext, 5000); // Auto-scroll más rápido para dispositivos móviles
+} else {
+  setInterval(goNext, 7000); // Auto-scroll normal para desktop
+}
 </script>

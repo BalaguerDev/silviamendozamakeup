@@ -11,6 +11,12 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.contact-info .logoSilviaMendozamua {
+  width: 80%; 
+  margin: 20px auto; 
+  display: block; 
+  text-align: center;
+}
 
 
 /* Columnas */

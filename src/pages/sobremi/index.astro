@@ -1,18 +1,23 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
 import ReviewGoogle from "../../components/reviewGoogle/ReviewGoogle.astro";
+import { galleriesList } from "../../data";
+
+const galleryImages = galleriesList.colaboradores;
 
 import "./styles/sobreMi.css";
 ---
 
-<BaseLayout title="Sílvia Mendoza Maquilladora y Peluquera de Novias en Barcelona" description="Descubre la trayectoria de Sílvia Mendoza, maquilladora y peluquera en Barcelona, especializada en novias y en impartir cursos de automaquillaje y peinado. Un servicio integral para realzar tu belleza.">
-
+<BaseLayout
+  title="Sílvia Mendoza Maquilladora y Peluquera de Novias en Barcelona"
+  description="Descubre la trayectoria de Sílvia Mendoza, maquilladora y peluquera en Barcelona, especializada en novias y en impartir cursos de automaquillaje y peinado. Un servicio integral para realzar tu belleza."
+>
   <main class="sobre-mi-container container">
     <!-- Sección Hero Principal -->
     <section class="hero-section">
       <div class="hero-content">
-        <!-- Columna del texto -->
-        <div class="hero-text">
+        <!-- Columna del texto con animación -->
+        <div class="hero-text animate-fade-in">
           <h1>Conoce a tu próxima maquilladora en Barcelona</h1>
           <p>
             De la asesoría de imagen a las bodas de ensueño: descubre mi viaje
@@ -29,7 +34,7 @@ import "./styles/sobreMi.css";
             >.
           </p>
           <h2>Mi trayectoria profesional</h2>
-          <ul>
+          <ul class="animate-slide-in">
             <li>
               💍 Maquillaje y peinado de <strong>novias en Barcelona</strong> y alrededores.
             </li>
@@ -52,8 +57,8 @@ import "./styles/sobreMi.css";
             </li>
           </ul>
         </div>
-        <!-- Columna de la imagen -->
-        <div class="hero-image">
+        <!-- Imagen con efecto parallax -->
+        <div class="hero-image parallax">
           <img
             src="/images/sobremi/Silvia-mendoza-make-up-maquilladora-novias-barcelona.webp"
             alt="Silvia Mendoza maquilladora profesional"
@@ -65,59 +70,37 @@ import "./styles/sobreMi.css";
       </div>
     </section>
 
-    <!-- Colaboradores -->
+    <!-- Colaboradores con carrusel mejorado -->
     <section class="colaboradores">
       <h2>Colaboradores</h2>
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <img
-            src="public/images/sobremi/colaboradores/wedding-planner-madrid-logo4.png"
-            alt="Imagina tu boda"
-          />
-
-          <img
-            src="public/images/sobremi/colaboradores/unic-moments.png"
-            alt="únic moments"
-          />
-          <img
-            src="public/images/sobremi/colaboradores/su-jardin-secreto.jpg"
-            alt="Su jardín secreto"
-          />
-          <img
-            src="public/images/sobremi/colaboradores/Virago-lights.png"
-            alt="Virago Lights"
-          />
-          <!-- Repetimos para efecto infinito -->
-          <img
-            src="public/images/sobremi/colaboradores/wedding-planner-madrid-logo4.png"
-            alt="Imagina tu boda"
-          />
-
-          <img
-            src="public/images/sobremi/colaboradores/unic-moments.png"
-            alt="únic moments"
-          />
-          <img
-            src="public/images/sobremi/colaboradores/su-jardin-secreto.jpg"
-            alt="Su jardín secreto"
-          />
-          <img
-            src="public/images/sobremi/colaboradores/Virago-lights.png"
-            alt="Virago Lights"
-          />
+      <div class="gallery">
+        <div class="gallery-images">
+          {
+            galleryImages
+              .concat(galleryImages)
+              .map((image) => <img src={image.src} alt={image.alt} />)
+          }
         </div>
       </div>
-    </section>
 
-   <ReviewGoogle/>
+      <!-- Contacto con botón animado -->
+      <section class="contacto">
+        <h2>¿Listos para crear tu look ideal?</h2>
+        <p>
+          Me encantaría conocer los detalles de tu boda, tu evento o el estilo
+          de maquillaje y peinado que tienes en mente. Cuéntame lo que necesitas
+          y juntas encontraremos la mejor opción para que te sientas más
+          increíble.
+        </p>
+        <a href="/contacto#contacto-formulario" class="button primary"
+          >Hablemos sobre tu proyecto</a
+        >
+      </section>
 
-    <!-- Contacto -->
-    <section class="contacto">
-      <h2>¿Necesitas más información?</h2>
-      <p>
-        ¡No dudes en <a  href="/contacto#contact-formulario" class="cta-button">contactarme</a>!
-        Estaré encantada de ayudarte a hacer realidad tu look ideal.
-      </p>
+      <!-- Reseñas con efecto Card Flip -->
+      <section class="reviews">
+        <ReviewGoogle />
+      </section>
     </section>
   </main>
 </BaseLayout>

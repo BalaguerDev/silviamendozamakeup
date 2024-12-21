@@ -1,9 +1,8 @@
 ---
-import { faqs } from "../../../data/FAQ";
-import "../styles/Faq.css";
----
+import "./faq.css";
 
-<h2>Preguntas frecuentes</h2>
+const { faqs } = Astro.props
+---
 
 <div class="faq" id="faq-container">
   {
