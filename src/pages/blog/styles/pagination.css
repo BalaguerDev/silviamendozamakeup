@@ -1,0 +1,41 @@
+
+  .pagination {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn:hover:not(.disabled) {
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btn.disabled {
+    color: #c4c4c4;
+    background-color: #f1f1f1;
+    border-color: #ddd;
+    pointer-events: none; /* Deshabilita interacciones */
+  }

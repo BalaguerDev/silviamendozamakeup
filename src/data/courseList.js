@@ -78,10 +78,9 @@ export const courseList = [
     }
 
 ];
-
 export const workshopList = [
     {
-        title: "Curso de Maquillaje Natural para Todos los Días",
+        titleCard: "Curso de Maquillaje Natural para Todos los Días",
         titlePage: "Curso de Maquillaje Natural en Barcelona",
         subtitle: "Aprende a realzar tu belleza natural con técnicas sencillas",
         description: "Este curso está diseñado para enseñar las bases del maquillaje natural, ideal para personas que desean un look fresco y luminoso para el día a día.",
@@ -99,12 +98,9 @@ export const workshopList = [
         targetAudience: "Principiantes, personas que buscan un look natural y profesionales del maquillaje básico.",
         imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
         link: "/curso-maquillaje-natural-barcelona",
-        date: "15 de febrero de 2025",
-        price: '20,00 €',
-
     },
     {
-        title: "Curso de Maquillaje Natural para Profesionales",
+        titleCard: "Curso de Maquillaje Natural para Profesionales",
         titlePage: "Curso de Maquillaje Natural Profesional en Barcelona",
         subtitle: "Perfecciona tu técnica de maquillaje natural para clientes",
         description: "Este curso está enfocado a maquilladores que desean perfeccionar sus técnicas de maquillaje natural para clientes, ya sea para sesiones fotográficas, novias o cualquier ocasión especial.",
@@ -122,12 +118,9 @@ export const workshopList = [
         targetAudience: "Maquilladores profesionales, personas que desean trabajar en el ámbito del maquillaje natural.",
         imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
         link: "/curso-maquillaje-natural-profesional-barcelona",
-        date: "28 de febrero de 2025",
-        price: '20,00 €',
-
     },
     {
-        title: "Taller de Maquillaje para el Día a Día",
+        titleCard: "Taller de Maquillaje para el Día a Día",
         titlePage: "Taller de Maquillaje para el Día a Día en Barcelona",
         subtitle: "Crea looks frescos y naturales para cualquier ocasión",
         description: "En este taller aprenderás a crear un maquillaje sencillo y rápido para el día a día. Perfecto para quienes buscan un look natural sin complicaciones.",
@@ -145,12 +138,9 @@ export const workshopList = [
         targetAudience: "Principiantes y personas que buscan un maquillaje sencillo para su rutina diaria.",
         imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
         link: "/taller-maquillaje-dia-a-dia-barcelona",
-        date: "10 de marzo de 2025",
-        price: '20,00 €',
-
     },
     {
-        title: "Curso de Maquillaje Natural para Novias",
+        titleCard: "Curso de Maquillaje Natural para Novias",
         titlePage: "Curso de Maquillaje Natural para Novias en Barcelona",
         subtitle: "Realza la belleza de las novias con un look natural y elegante",
         description: "En este curso aprenderás a crear el maquillaje perfecto para novias, con un estilo natural que realza su belleza sin recargar el rostro.",
@@ -168,12 +158,9 @@ export const workshopList = [
         targetAudience: "Maquilladores, novias y futuras artistas del maquillaje para bodas.",
         imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
         link: "/curso-maquillaje-natural-novias-barcelona",
-        date: "22 de abril de 2025",
-        price: '20,00 €',
-
     },
     {
-        title: "Taller de Maquillaje Natural de Noche",
+        titleCard: "Taller de Maquillaje Natural de Noche",
         titlePage: "Taller de Maquillaje Natural de Noche en Barcelona",
         subtitle: "Transforma tu look diurno en un maquillaje nocturno natural",
         description: "Este taller está diseñado para enseñar cómo transformar un maquillaje de día en un look más sofisticado y elegante para la noche, sin perder la naturalidad.",
@@ -190,8 +177,5 @@ export const workshopList = [
         targetAudience: "Personas que buscan crear un maquillaje de noche elegante pero natural.",
         imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
         link: "/taller-maquillaje-natural-noche-barcelona",
-        date: "8 de mayo de 2025",
-        price: '20,00 €',
-
     }
 ];

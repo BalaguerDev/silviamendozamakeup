@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
 import CardPackNovias from "./components/CardPackNovias.astro";
-import { packNovia } from "../../data";
+import { faqsNovias, packNovia } from "../../data";
 import Testimonials from './components/Testimonials.astro'
 import Gallery from './components/Gallery.astro'
 import BrideForm from './components/BrideForm.astro'
-import FAQ from './components/FAQ.astro'
 
 import "./styles/novias.css"
+import FAQ from "../../components/faqs/FAQ.astro";
+import ReviewGoogle from "../../components/reviewGoogle/ReviewGoogle.astro";
 
 
 ---
@@ -33,12 +34,11 @@ import "./styles/novias.css"
     <h2>¿Cómo funcionará mi servicio de novia?</h2>
     <CardPackNovias items={packNovia} />
 
-    <Testimonials />
-
+      <ReviewGoogle />
     <Gallery />
 
     <BrideForm />
 
-    <FAQ />
+    <FAQ faqs={faqsNovias}/>
   </div>
 </BaseLayout>

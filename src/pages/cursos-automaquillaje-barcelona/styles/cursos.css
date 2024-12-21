@@ -76,6 +76,10 @@
     font-weight: 400;
 }
 
+.cursosSection h2{
+  text-align: center;
+}
+
 /* Media queries para hacer la página responsive */
 @media (max-width: 768px) {
     .courseHeader {

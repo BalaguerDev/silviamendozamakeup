@@ -2,9 +2,13 @@
 .testimonios {
   position: relative;
   padding: 2rem 1.5rem;
+  margin:2rem auto;
   background-color: #f9f9f9;
   text-align: center;
   font-family: 'Poppins', sans-serif;
+}
+.testimonios-title{
+  margin-top:0;
 }
 
 .testimonios-carousel {

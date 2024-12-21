@@ -1,16 +1,17 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
 import Card from "../../components/cardContainer/Card.astro";
-import { workshopList } from "../../data";
+import { faqsCursos, workshopList } from "../../data";
 
 import "./styles/cursos.css";
+import FAQ from "../../components/faqs/FAQ.astro";
 ---
 
 <BaseLayout
   title="Cursos de Automaquillaje en Barcelona | Regala Belleza"
   description="Descubre nuestros cursos de maquillaje y peluquería en Barcelona, ideales para regalar, aprender y divertirse. ¡Consulta fechas y apúntate!"
 >
-  <section class="container">
+  <section class="container cursosSection">
     <h1 class="courseTitle">Calendario de Talleres de Automaquillaje en Barcelona</h1>
 
     <p class="courseDescription">
@@ -18,17 +19,20 @@ import "./styles/cursos.css";
     </p>
     <div class="carousel">
       {
-        workshopList.map(({ title, date, price, imageSrc }) => (
-          <div class="carousel-card">
+        workshopList.map(({ titleCard, date, durationPrice, imageSrc, link}) => (
+          <a class="carousel-card" href={link}>
             <Card
-              title={title}
-              subtitle={date}
-              subtitle2={price}
               imageSrc={imageSrc}
+              title={titleCard}
+              subtitle={date}
+              subtitle2={durationPrice}
             />
-          </div>
+          </a>
         ))
       }
     </div>
+
+    <h2>Preguntas frecuentes</h2>
+    <FAQ faqs={faqsCursos}/>
   </section>
 </BaseLayout>
