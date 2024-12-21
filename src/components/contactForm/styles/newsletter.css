@@ -12,6 +12,7 @@
     font-size: 1rem;
     box-sizing: border-box;
   }
+
  
   label{
     display: grid;
@@ -22,6 +23,7 @@
 
   .newsletter-form span{
     display: flex;
+    justify-content: baseline;
   }
   /* Personalizar el checkbox */
   .newsletter-form input[type="checkbox"] {
@@ -59,11 +61,17 @@
   .newsletter-form  a, .newsletter-form span {
     color: #ffffff;
     font-size: 12px;
+    text-align: left;
     text-decoration: none;
   }
   
   .newsletter-form label a:hover {
     text-decoration: underline;
+  }
+
+  .newsletter-form label span {
+    display: inline; 
+    color: #ffffff;
   }
   
   /* Estilo del botón */
@@ -105,7 +113,7 @@
   }
   
   /* Ajustes para pantallas pequeñas */
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     .newsletter-form {
       padding: 15px;
       max-width: 100%;
@@ -115,39 +123,41 @@
     .newsletter-form button {
       font-size: 14px;
     }
+    .newsletter-form label span {
+      display: ruby; 
+      color: #ffffff;
+    }
   }
-  * Estilo general para el label con el checkbox */
+  
   .contact-form label {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espacio entre el checkbox y el texto */
+    gap: 0.5rem;
     font-size: 0.9rem;
     color: var(--text-color);
-    cursor: pointer; /* Hace clicable toda la etiqueta */
+    cursor: pointer;
     user-select: none;
-    margin-bottom: 1rem; /* Espacio inferior */
+    margin-bottom: 1rem; 
   }
   
   /* Personalizar el checkbox */
   .contact-form input[type="checkbox"] {
-    appearance: none; /* Quita el estilo predeterminado */
+    appearance: none; 
     width: 18px;
     height: 18px;
     border: 2px solid var(--primary-color);
-    border-radius: 4px; /* Bordes redondeados */
+    border-radius: 4px; 
     outline: none;
     cursor: pointer;
     position: relative;
     transition: background-color 0.2s, border-color 0.2s;
   }
   
-  /* Estilo cuando está marcado */
   .contact-form input[type="checkbox"]:checked {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
   }
   
-  /* Efecto visual de "tick" cuando está marcado */
   .contact-form input[type="checkbox"]:checked::after {
     content: "";
     position: absolute;
