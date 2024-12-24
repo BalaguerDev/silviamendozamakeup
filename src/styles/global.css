@@ -96,7 +96,7 @@ h3 {
 
 p,
 li,
-a, input, textarea {
+a, input, textarea, button {
     font-size: var(--font-size-p);
     line-height: 1.6;
     color: var(--dark-color);

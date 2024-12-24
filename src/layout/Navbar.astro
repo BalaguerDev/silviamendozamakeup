@@ -1,5 +1,5 @@
 ---
-import {navLinks} from '../constants/navLinks'
+import { navLinks } from "../constants/navLinks";
 import { Image } from "astro:assets";
 import "./Navbar.css";
 
@@ -10,12 +10,12 @@ const currentPath = Astro.url.pathname;
   <div class="navbar__container">
     <a href="/" class="navbar__logo">
       <Image
-      src="/images/logo/logo-silvia-mendoza.svg"
-      alt="Silvia Mendoza Make Up and Barcelona"
-      width={200} 
-      height={50}
-      class="navbar__logo-img"
-    />
+        src="/images/logo/logo-silvia-mendoza.svg"
+        alt="Silvia Mendoza Make Up and Barcelona"
+        width={200}
+        height={50}
+        class="navbar__logo-img"
+      />
     </a>
 
     <button
@@ -30,57 +30,92 @@ const currentPath = Astro.url.pathname;
     </button>
 
     <ul class="navbar__links" id="navbar-links">
-      {navLinks.map(({ href, name }) => (
-        <li class="navbar__item">
-          <a
-            href={href}
-            class="navbar__link"
-          >
-            {name}
-          </a>
-
-          {currentPath === href ? (
-            <div
-              class="linkYes "
-              transition:name="menu-line"
-
-            ></div>
-          ) : (
-            <div
-              class="linkNo"
-            ></div>
-          )}
-        </li>
-      ))}
+      {
+        navLinks.map(({ href, name, submenu }) => (
+          <li class="navbar__item">
+            {/* Cambiar 'Cursos' a un botón con submenú */}
+            {name === "Cursos" ? (
+              <div class="submenu-container">
+                <button
+                  class="submenu-toggle"
+                  aria-expanded="false"
+                  style="width: 100%; display: flex; justify-content: space-between; align-items: center;"
+                >
+                  <span>{name}</span>
+                  <span class="chevron-icon">
+                    <i class="fas fa-chevron-down" />
+                  </span>
+                </button>
+                <ul class="submenu">
+                  {submenu?.map(({ href, name }) => (
+                    <li class="submenu__item">
+                      <a href={href} class="navbar__link">
+                        {name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a href={href} class="navbar__link">
+                {name}
+              </a>
+            )}
+            {currentPath === href ? (
+              <div class="linkYes" />
+            ) : (
+              <div class="linkNo" />
+            )}
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
 
 <script>
-const addMenuToggleLogic = () => {
-  const menuToggle = document.getElementById('menu-toggle');
-  const navbarLinks = document.getElementById('navbar-links');
+  const addMenuToggleLogic = () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbarLinks = document.getElementById("navbar-links");
 
-  if(!menuToggle || !navbarLinks) return;
+    if (!menuToggle || !navbarLinks) return;
 
-  menuToggle.addEventListener('click', () => {
-    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-    navbarLinks.classList.toggle("navbar__links--open");
-  })
-}
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+      navbarLinks.classList.toggle("navbar__links--open");
+    });
 
-document.addEventListener("astro:after-swap", () => {
-  const menuToggle = document.getElementById("menu-toggle");
-  const navbarLinks = document.getElementById("navbar-links");
-  
-  if (!menuToggle || !navbarLinks) return;
-  
-  menuToggle.onclick = () => {
-    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-    navbarLinks.classList.toggle("navbar__links--open");
+    const submenuToggles = document.querySelectorAll(".submenu-toggle");
+    submenuToggles.forEach((toggle) => {
+      toggle.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+
+        if (!target) return;
+
+        const submenuToggle = target.closest(
+          ".submenu-toggle",
+        ) as HTMLElement | null;
+        if (!submenuToggle) return;
+
+        const isExpanded =
+          submenuToggle.getAttribute("aria-expanded") === "true";
+        submenuToggle.setAttribute(
+          "aria-expanded",
+          isExpanded ? "false" : "true",
+        );
+
+        const submenu = submenuToggle.closest("li")?.querySelector(".submenu");
+        if (submenu) {
+          submenu.classList.toggle("submenu--open");
+        }
+      });
+    });
   };
-});
-addMenuToggleLogic();
+
+  document.addEventListener("astro:after-swap", () => {
+    addMenuToggleLogic();
+  });
+
+  addMenuToggleLogic();
 </script>

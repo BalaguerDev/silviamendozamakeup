@@ -1,6 +1,6 @@
 /* General Navbar */
 .navbar {
-  background-color:var(--background);
+  background-color: var(--background);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   width: 100%;
@@ -8,11 +8,12 @@
   padding: 10px 20px;
 }
 
-.linkYes{
+.linkYes {
   border: 1px solid var(--primary-color);
   border-radius: 100px;
 }
-.linkNo{
+
+.linkNo {
   border: 1px solid transparent;
   border-radius: 100px;
 }
@@ -28,94 +29,115 @@
 .navbar__logo img {
   width: 200px;
 }
-.navbar__logo  {
-  display:flex;
-}
 
-.noviaLink{
-  color:var(--dark-color) !important;
-  background: var(--primary-color);
-  padding:5px 20px;
-  border-radius: 100px;
-  font-weight: 600 !important;
+.navbar__logo {
+  display: flex;
 }
 
 .navbar__links {
   display: flex;
   flex-direction: row;
-  gap: 20px; 
-  position: static; 
-  opacity: 1; 
-  max-height: none; 
-  background: none;
-  padding: 0;
-  box-shadow: none;
+  gap: 20px;
 }
 
 .navbar__item {
-  text-align: left; 
+  text-align: left;
   list-style: none;
+  display: flex;
+  align-items: center;
 }
 
 .navbar__toggle {
-  display: none; 
+  display: none;
 }
 
 .navbar__link {
-  font-size: 12px;
+  font-size: 14px; /* Asegurar el mismo tamaño para todos los enlaces */
+  font-weight: 500; /* Asegurar el mismo peso de fuente */
+  font-family: 'Arial', sans-serif; /* Ajustar a la misma fuente */
   text-decoration: none;
-  color:var(--dark-color);
-  transition: color 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .navbar__logo img {
-    width: 130px;
-  }
-/* Navbar links */
-.navbar__links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: var(--background);
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  /* Initial state */
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Opened state */
-.navbar__links--open {
-  opacity: 1;
-  max-height: 350px;
-  transition: all 0.3s ease-in-out;
-
-}
-
-/* Navbar links items */
-.navbar__item {
-  text-align: center;
-
-}
-
-.navbar__link {
   color: var(--dark-color);
-  font-size: 1rem;
+  transition: color 0.3s ease;
+  padding: 10px; /* Añadir un poco de padding para igualar con los submenús */
 }
 
-.navbar__link:hover {
-  color: #d0954e;
+/* Submenu Styles */
+.submenu-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Hamburger button */
+.submenu-toggle {
+  background: none;
+  border: none;
+  color: var(--dark-color);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 10px;
+}
+
+.submenu {
+  display: none;
+  width: 150px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--background);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.submenu--open {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.submenu__item {
+  transition: background-color 0.3s ease;
+}
+
+.submenu__item a {
+  color: var(--dark-color);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  padding: 8px 15px;
+}
+
+.submenu__item a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.chevron-icon {
+  font-size: 16px;
+  color: var(--dark-color);
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.submenu-toggle[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Flecha en posición original cuando el submenú está cerrado */
+.submenu-toggle[aria-expanded="false"] .chevron-icon {
+  transform: rotate(0deg);
+}
+
+/* Mobile Button and Layout */
 .navbar__toggle {
   --width: 1.5rem;
   --thickness: 0.2rem;
@@ -169,4 +191,92 @@
   transform: rotate(-45deg);
   top: 50%;
 }
+
+.navbar__toggle {
+  display: none;
+}
+
+
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .navbar__logo img {
+    width: 130px;
+  }
+
+  .navbar__links {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    gap: 15px;
+    background-color: var(--background);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar__links--open {
+    opacity: 1;
+    max-height: 100vh;
+  }
+
+  .navbar__item {
+    text-align: center;
+  }
+
+  a.navbar__link, button.submenu-toggle {
+    padding: 0;
+    margin:0;
+    font-weight: 500;
+  }
+
+  .navbar__link:hover {
+    color: #d0954e;
+  }
+
+  .submenu-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .chevron-icon {
+    font-size: 16px;
+    color: var(--dark-color);
+    position: relative;
+    margin-left: 20px; 
+  }
+
+  .submenu-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .submenu {
+    position: static;
+    box-shadow: none;
+    margin-top: 10px;
+  }
+
+  .submenu__item {
+    text-align: center;
+  }
+
+  .navbar__toggle {
+    display: block; 
+  }
 }

@@ -1,23 +1,11 @@
 export const courseList = [
-    {
-        titleCard: "Talleres de formación de automaquillaje 2025",
-        titlePage: "Cursos intensivos de automaquillaje en Barcelona",
-        subtitle: "Domina el arte del automaquillaje en nuestro tallere exclusivos",
-        description: "Participa en nuestros talleres intensivos de automaquillaje en Barcelona, ideales para grupos reducidos de 10-15 personas. Aprende técnicas profesionales que potenciarán tu estilo personal.",
-        longDescription: `
-        Únete a nuestros talleres exclusivos de automaquillaje, donde aprenderás de la mano de profesionales del maquillaje.
-        Diseñados tanto para principiantes como para quienes desean perfeccionar su técnica, estos talleres te ofrecerán las herramientas necesarias 
-        para crear looks espectaculares. Además, cada sesión está pensada para disfrutar en un ambiente cercano y práctico.`,
-        imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
-        link: "/cursos-intensivos-automaquillaje-barcelona-2025",
-        isStatic: true, 
-    },
+
     {
         titleCard: "Curso de automaquillaje",
         titlePage: "Curso de Automaquillaje en Barcelona",
-        subtitle: "Realza tu belleza natural",
+        subtitle: "Realza tu belleza natural y aprende a mejorar tu automaquillaje",
         description: "Aprende a maquillarte como una profesional. Descubre técnicas y trucos para lucir radiante en cualquier ocasión.",
-        longDescription: "Nuestro curso te enseñará a realzar tu belleza natural y crear looks personalizados para cada ocasión. Desde un maquillaje diario hasta un look de noche, dominarás las técnicas básicas y avanzadas.",
+        longDescription: "Si quieres aprender a maquillarte de forma sencilla con tus productos acude a una clase de automaquillaje donde aprenderás las técnicas básicas para realizar un maquillaje efecto 'buena cara' para el día a día, un maquillaje de noche, o cualquier maquillaje que quieras aprender. Si quieres conocer todos los trucos para llevar a cabo un maquillaje profesional e impecable este curso es para ti.",
         whatYouWillLearn: [
             "Preparación de la piel y elección de los productos adecuados.",
             "Técnicas de aplicación de base, corrector y polvos.",
@@ -26,35 +14,123 @@ export const courseList = [
             "Maquillaje de labios y contouring.",
         ],
         forWhom: "Ideal para cualquier persona que desee mejorar sus habilidades de maquillaje, desde principiantes hasta quienes buscan perfeccionar su técnica.",
-        durationPrice: ["4 horas - 150€"],
-        materials: "Incluye un kit de brochas básicas.",
-        location: "Barcelona",
-        targetAudience: "Amantes de la belleza, novias, invitadas a eventos y cualquier persona interesada en realzar su belleza.",
+        durationPrice: [
+            {
+                type: "PRIVADO",
+                options: [
+                    { duration: "1 hora", price: "42,35€" },
+                    { duration: "2 horas", price: "72,60€" },
+                ]
+            },
+            {
+                type: "2 PERSONAS",
+                options: [
+                    { duration: "2 horas", price: "65,35€/persona" }
+                ]
+            },
+            {
+                type: "3 PERSONAS",
+                options: [
+                    { duration: "2 horas 30 min ", price: "60,50€/persona" }
+                ]
+            },
+            {
+                type:"BONO 3 CLASES DE 1H",
+                options: [
+                    {duration: "3 días / 3 looks", price: "108,90€"},
+                    {duration: "Regalo: Análisis morfológico previo de regalo"}
+                ]
+            }
+        ],
+        aditionalInfo: [
+            "Incluye: Guía de automaquillaje, guía de brochas y guía del ritual del cuidado facial.",
+            "Uso de material incluido.",
+            "Disponibilidad a concretar por Whatsapp (de Lunes a Sábados).",
+            "10% de descuento en los productos de maquillaje de nuestra tienda para utilizar el mismo día del curso.",
+        ],
+        location: "Calle Pere IV 8-10, Sant Martí, 08005 Barcelona.",
         imageSrc: "/images/homepage/courses/curso-de-maquillaje.webp",
         link: "/curso-de-automaquillaje-en-barcelona",
     },
     {
         titleCard: "Curso de autopeinado",
-        titlePage: "Curso profesional de maquillaje y peluquería en Barcelona",
-        subtitle: "Conviértete en un experto en belleza",
+        titlePage: "Curso de Autopeinado en Barcelona",
+        subtitle: "Sácale partido a tu cabello con mis autopeinados",
         description: "Descubre un mundo de oportunidades en la industria de la belleza. Nuestro curso te proporcionará las herramientas y conocimientos necesarios para triunfar.",
         longDescription: "Este curso intensivo está diseñado para aquellos que desean iniciar una carrera profesional en el mundo de la belleza. Aprenderás técnicas avanzadas de maquillaje y peluquería, desde novias y eventos hasta sesiones fotográficas.",
         whatYouWillLearn: [
-            "Maquillaje profesional: técnicas de colorimetría, visagismo, efectos especiales.",
-            "Peluquería avanzada: cortes, coloración, peinados de novia, recogidos.",
-            "Asesoramiento de imagen y tendencias.",
-            "Gestión de un negocio de belleza.",
+            "A realizar un peinado paso a paso",
+            "A colocar correctamente horquillas, gomas y todo el material necesario",
+            "A usar la plancha o tenacilla correctamente y de forma sencilla",
         ],
-        forWhom: "Este curso es ideal para quienes desean trabajar como maquilladores, estilistas, asesores de imagen o abrir su propio negocio de belleza.",
         durationPrice: [
-            "12 semanas - 500€",
-            "Incluye kit de productos profesionales"
+            {
+                type: "PRIVADO",
+                options: [
+                    { duration: "1 hora", price: "42,35€" },
+                    { duration: "2 horas", price: "72,60€" },
+                ]
+            },
+            {
+                type: "2 PERSONAS",
+                options: [
+                    { duration: "2 horas de clase", price: "65,35€/persona" },
+                ]
+            },
+            {
+                type: "3 PERSONAS",
+                options: [
+                    { duration: "2 horas de clase", price: "48,30€/persona" },
+                ]
+            }
         ],
-        location: "Barcelona",
-        targetAudience: "Personas con pasión por la belleza que desean convertirla en su profesión.",
-
-        imageSrc: "public/images/homepage/courses/trabaja-como-maquilladora.webp",
-        link: "/formacion-profesional-maquillaje-peluqueria",
+        aditionalInfo: [
+            "Uso de material incluido.",
+            "Disponibilidad a concretar por Whatsapp (de Lunes a Sábados).",
+        ],
+        location: "Calle Pere IV 8-10, Sant Martí, 08005 Barcelona.",
+        imageSrc: "/images/homepage/courses/curso-de-peinado-en-barcelona.webp",
+        link: "/cursos-de-autopeinado-y-recogidos",
+    },
+    {
+        titleCard: "Curso de autopeinado",
+        titlePage: "Curso de Autopeinado en Barcelona",
+        subtitle: "Sácale partido a tu cabello con mis autopeinados",
+        description: "Descubre un mundo de oportunidades en la industria de la belleza. Nuestro curso te proporcionará las herramientas y conocimientos necesarios para triunfar.",
+        longDescription: "Si quieres aprender a maquillarte de forma sencilla con tus productos acude a una clase de automaquillaje donde aprenderás las técnicas básicas para realizar un maquillaje efecto 'buena cara' para el día a día, un maquillaje de noche, o cualquier maquillaje que quieras aprender. Si quieres conocer todos los trucos para llevar a cabo un maquillaje profesional e impecable este curso es para ti.",
+        whatYouWillLearn: [
+            "A realizar un peinado paso a paso",
+            "A colocar correctamente horquillas, gomas y todo el material necesario",
+            "A usar la plancha o tenacilla correctamente y de forma sencilla",
+        ],
+        durationPrice: [
+            {
+                type: "PRIVADO",
+                options: [
+                    { duration: "1 hora", price: "42,35€" },
+                    { duration: "2 horas", price: "72,60€" },
+                ]
+            },
+            {
+                type: "2 PERSONAS",
+                options: [
+                    { duration: "2 horas de clase", price: "65,35€/persona" },
+                ]
+            },
+            {
+                type: "3 PERSONAS",
+                options: [
+                    { duration: "2 horas de clase", price: "48,30€/persona" },
+                ]
+            }
+        ],
+        aditionalInfo: [
+            "Uso de material incluido.",
+            "Disponibilidad a concretar por Whatsapp (de Lunes a Sábados).",
+        ],
+        location: "Calle Pere IV 8-10, Sant Martí, 08005 Barcelona.",
+        imageSrc: "/images/homepage/courses/curso-de-peinado-en-barcelona.webp",
+        link: "/cursos-de-autopeinado-y-recogidos",
     },
     {
         titleCard: "Beauty Partys",
@@ -92,7 +168,6 @@ export const workshopList = [
             "Maquillaje de cejas sutil para un acabado limpio.",
             "Labios naturales y frescos con texturas ligeras."
         ],
-        forWhom: "Este curso está pensado para cualquier persona que quiera aprender a maquillarse de manera natural y sencilla, sin complicaciones.",
         durationPrice: ["4 horas - 150€"],
         location: "Barcelona",
         targetAudience: "Principiantes, personas que buscan un look natural y profesionales del maquillaje básico.",
@@ -132,7 +207,6 @@ export const workshopList = [
             "Maquillaje de labios sutil para un acabado fresco.",
             "Consejos de cómo mantener el maquillaje intacto todo el día."
         ],
-        forWhom: "Este taller es perfecto para cualquier persona que quiera aprender a maquillarse de manera rápida y efectiva para el día a día.",
         durationPrice: ["3 horas - 120,00 €"],
         location: "Barcelona",
         targetAudience: "Principiantes y personas que buscan un maquillaje sencillo para su rutina diaria.",
@@ -152,7 +226,6 @@ export const workshopList = [
             "Consejos para un acabado perfecto que resista todo el día.",
             "Maquillaje para diferentes tipos de piel y preferencias."
         ],
-        forWhom: "Ideal para maquilladores profesionales que quieren especializarse en maquillaje para novias, o novias que quieren aprender a hacerlo ellas mismas.",
         durationPrice: ["6 horas - 250€"],
         location: "Barcelona",
         targetAudience: "Maquilladores, novias y futuras artistas del maquillaje para bodas.",
@@ -171,7 +244,6 @@ export const workshopList = [
             "Aplicación de labiales con acabados mate o gloss.",
             "Técnicas para resaltar el rostro sin sobrecargarlo."
         ],
-        forWhom: "Este taller es ideal para quienes quieren aprender a adaptar su maquillaje de día a un look de noche sin perder la naturalidad.",
         durationPrice: ["4 horas - 150€"],
         location: "Barcelona",
         targetAudience: "Personas que buscan crear un maquillaje de noche elegante pero natural.",

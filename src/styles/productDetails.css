@@ -1,108 +1,180 @@
-/* Contenedor General */
-.content-detail-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: var(--background);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+/* productDetails.css */
+
+/* General Product Card */
+.product-card {
+    margin: 2rem auto;
+    max-width: 1600px;
 }
 
-/* Encabezado */
-.content-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.content-header h1 {
+.product-header h1 {
     font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 0;
+    font-weight: bold;
 }
 
-.content-header h2 {
+.product-header h2 {
     font-size: 2rem;
     color: var(--dark-color);
     font-weight: 400;
-    font-family: 'Ephesis', cursive;
+    font-family: 'Ephesis', cursive;}
+
+/* Main Grid for Product Layout */
+.product-grid {
+    display: flex; 
+    gap: 2rem;
+    align-items: stretch; 
 }
 
-/* Diseño de la Sección de Imagen y Descripción */
-.content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-.content-image img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    margin: 0 auto;
-    display: block;
-}
-
-.content-text {
+.product-image,
+.product-details {
     flex: 1;
-    margin-bottom: 20px;
 }
 
-.content-text h3 {
-    color: var(--primary-color);
-    margin-top: 20px;
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
 }
 
-.content-text ul {
+/* Product Details Section */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.learning-list {
     list-style: none;
     padding: 0;
 }
 
-.content-text li {
-    background-color: var(--primary-light);
-    font-size: 14px;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    border-radius: var(--border-radius);
-    color: var(--dark-color);
+.learning-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--primary-light);
+    margin: 5px 0;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
 
-.content-text li::before {
-    content: "✔";
+.learning-list svg {
+    width: 24px;
+    height: 24px;
     color: var(--primary-color);
-    margin-right: 10px;
+}
+
+/* Full Width Block */
+.full-width-block {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 2rem 0;
+}
+
+/* Product Details Full Section */
+.product-details-full {
+    padding:0 3rem;
+}
+
+/* Additional Info Section */
+.aditional-info li {
+    margin-bottom: 1rem;
+}
+
+/* Duration and Price Section */
+.duration-price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 40px;
+}
+
+.price-option {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.price-option p{
+text-align: center;
+font-size: 0.9rem;
+}
+
+.price-option.highlight {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Resaltado de la oferta especial */
+.price-option.special-offer {
+    background: var(--primary-light);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-weight: bold;
 }
 
-/* Ubicación y Contacto */
-.content-location h2 {
-    font-size: 1.5rem;
+.price-option.special-offer h4 {
+    font-size: 1.2rem;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    text-align: center;
 }
 
-.content-location p {
-    margin: 10px 0;
-}
-
-.content-location a {
-    display: inline-block;
-    margin: 10px 0;
-}
 
 /* Responsive Design */
+
+/* Tablet and below */
 @media (max-width: 768px) {
-    .content-grid {
+    .product-grid {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .product-image img {
+        width: 100%;
+    }
+
+    .product-details h3, .product-details-full h3 {
+        text-align: center;
+        margin: 0 0 20px;
+    }
+
+    .duration-price {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
 
-    .content-header h1 {
+
+
+    .button.primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .product-header h1 {
         font-size: 2rem;
+        padding:0 20px;
+        text-align: center;
+    }
+    
+    .product-header h2 {
+        text-align: center;
+        padding:0 20px;
+
+    }
+    .product-header h3 {
+        text-align: center;
+        padding:0 20px;
+
     }
 
-    .content-header h2 {
-        font-size: 1.2rem;
+    .learning-list li {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+
+    .product-details-full {
+        padding: 1rem;
+    }
+    .full-width-block {
+    margin:0;
     }
 }

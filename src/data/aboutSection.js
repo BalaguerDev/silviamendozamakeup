@@ -2,7 +2,7 @@ export const reasonsToChoose = [
     {
         title: "Maquillaje nupcial personalizado:",
         description:
-            "Creamos looks atemporales que realzan tu belleza natural y se adaptan perfectamente a tu estilo personal, utilizando productos de alta calidad y siguiendo las últimas tendencias.",
+            "Creamos looks atemporales que realzan tu belleza natural y se adaptan perfectamente a tu estilo personal, a tu estilo y a tus preferencias.",
     },
     {
         title: "Peinados de ensueño:",
@@ -12,10 +12,10 @@ export const reasonsToChoose = [
     {
         title: "Asesoramiento personalizado:",
         description:
-            "Te guiaré para encontrar el look que siempre has soñado hasta el día de Sí, quiero!",
+            "Te guiaré para encontrar el look que siempre has soñado hasta el día del Sí, quiero!",
     },
     {
         title: "Maquillaje a prueba de lágrimas:",
-        description: "Duradero para que brilles en la pista de baile.",
+        description: "Duradero para que brilles desde la ceremonia hasta la pista de baile.",
     },
 ];
