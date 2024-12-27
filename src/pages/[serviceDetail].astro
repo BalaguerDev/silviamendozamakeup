@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { serviceList } from "../data";
+import { cleanLink } from "../utils";
+import ProductImages from "../components/productImage/ProductImage";
+
+import '../styles/serviceDetail.css';
+
+// Exportar getStaticPaths
+export async function getStaticPaths() {
+    // Retorna un array de objetos con params
+    return serviceList.map((item) => ({
+        params: { serviceDetail: cleanLink(item.link) }
+    }));
+}
+
+const { serviceDetail } = Astro.params;
+const cleanedLink = cleanLink(serviceDetail);
+
+const product = serviceList.find(
+    (item) => cleanLink(item.link) === cleanedLink
+);
+
+if (!product) {
+    throw new Error(`Producto con link "${serviceDetail}" no encontrado.`);
+}
+
+const {
+    titleCard,
+    titlePage,
+    description,
+    durationPrice,
+    location,
+    imageSrc,
+} = product;
+
+const title = `${titlePage} - Servicios Profesionales`;
+const metaDescription = description;
+---
+
+<BaseLayout title={title} description={metaDescription} image={imageSrc[0]}>
+    <article class="product-card">
+        <header class="product-header">
+            <h1>{titlePage}</h1>
+        </header>
+        
+        <div class="product-content">
+            <!-- Usar el componente de imágenes -->
+            <ProductImages client:load imageSrc={imageSrc} titlePage={titlePage} />
+            
+            <!-- Información del producto -->
+            <aside class="product-info">
+                <h2>Detalles del Servicio</h2>
+                <p class="product-description">{description}</p>
+                <p><strong>Servicio:</strong> {titleCard}</p>
+                <p><strong>Precio:</strong> {durationPrice}</p>
+                <p><strong>Ubicación:</strong> {location}</p>
+
+                <div class="product-action">
+                    <a href="https://api.whatsapp.com/send/?phone=34601532809" class="button primary" target="_blank">Reservar Ahora</a>
+                    <em>
+                        ¿Tienes dudas? Contáctanos a través de nuestra <a href="/contacto#contact-formh">página de contacto</a> o <a href="https://api.whatsapp.com/send/?phone=3460153280" target="_blank">Whatsapp</a>.
+                    </em>
+                </div>
+            </aside>
+        </div>
+    </article>
+</BaseLayout>

@@ -33,7 +33,6 @@ const currentPath = Astro.url.pathname;
       {
         navLinks.map(({ href, name, submenu }) => (
           <li class="navbar__item">
-            {/* Cambiar 'Cursos' a un botón con submenú */}
             {name === "Cursos" ? (
               <div class="submenu-container">
                 <button
@@ -84,18 +83,25 @@ const currentPath = Astro.url.pathname;
       const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
       menuToggle.setAttribute("aria-expanded", isExpanded ? "false" : "true");
       navbarLinks.classList.toggle("navbar__links--open");
+
+      // Bloquear o desbloquear scroll
+      if (isExpanded) {
+        document.body.classList.remove("no-scroll");
+      } else {
+        document.body.classList.add("no-scroll");
+      }
     });
 
     const submenuToggles = document.querySelectorAll(".submenu-toggle");
     submenuToggles.forEach((toggle) => {
       toggle.addEventListener("click", (event) => {
-        const target = event.target as HTMLElement;
+        const target = event.target as HTMLElement | null; 
 
         if (!target) return;
 
         const submenuToggle = target.closest(
           ".submenu-toggle",
-        ) as HTMLElement | null;
+        ) as HTMLElement | null; 
         if (!submenuToggle) return;
 
         const isExpanded =
@@ -105,7 +111,9 @@ const currentPath = Astro.url.pathname;
           isExpanded ? "false" : "true",
         );
 
-        const submenu = submenuToggle.closest("li")?.querySelector(".submenu");
+        const submenu = submenuToggle
+          .closest("li")
+          ?.querySelector(".submenu") as HTMLElement | null; 
         if (submenu) {
           submenu.classList.toggle("submenu--open");
         }

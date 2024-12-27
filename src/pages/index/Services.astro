@@ -1,0 +1,35 @@
+---
+import './services.css'
+const services = [
+  {
+    id: 1,
+    title: 'Maquillaje Social',
+    imageSrc: '/images/galleries/shooting/image-6.webp',
+    link: '/servicio-maquillaje-barcelona',
+  },
+  {
+    id: 2,
+    title: 'Shooting',
+    imageSrc: '/images/galleries/shooting/image-8.webp',
+    link: '/servicios/shooting',
+  },
+  {
+    id: 3,
+    title: 'Peinados / Recogidos',
+    imageSrc: '/images/galleries/shooting/image-11.webp',
+    link: '/servicios/peinado-recogido',
+  },
+];
+---
+
+<section class="services-section">
+    <h2 class="services-title">Descubre mis servicios más solicitados</h2>
+    <div class="services-cards">
+      {services.map(service => (
+        <a class="service-card" href={service.link} style={{ backgroundImage: `url(${service.imageSrc})` }}>
+          <h3>{service.title}</h3>
+        </a>
+      ))}
+    </div>
+    <a href="/servicios-maquillaje-belleza-barcelona" class="view-all-button">Ver todos los servicios</a>
+  </section>

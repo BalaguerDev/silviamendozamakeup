@@ -1,25 +1,22 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import { courseList, workshopList, serviceList } from "../data";
+import { courseList, workshopList } from "../data";
 import { cleanLink } from "../utils";
 import "../styles/productDetails.css";
 
 export async function getStaticPaths() {
-    const combinedPaths = [
-        ...courseList,
-        ...serviceList,
-        ...workshopList,
-    ].map(item => ({
-        params: { productDetail: cleanLink(item.link) },
-    }));
+    const combinedPaths = [...courseList, ...workshopList]
+        .filter((item) => item.link)
+        .map((item) => ({
+            params: { productDetail: cleanLink(item.link) },
+        }));
+
     return combinedPaths;
 }
 
 const { productDetail } = Astro.params;
 const cleanedLink = cleanLink(productDetail);
-
-// Encuentra el producto en las tres listas
-const product = [...courseList, ...serviceList, ...workshopList].find(
+const product = [...courseList, ...workshopList].find(
     (item) => cleanLink(item.link) === cleanedLink
 );
 
@@ -33,82 +30,88 @@ const {
     imageSrc,
     description: shortDescription,
     longDescription,
-    whatYouWillLearn,
+    whatYouWillLearn = [],
+    include = [],
     durationPrice = [],
     aditionalInfo = [],
     location,
 } = product;
 
-// METADATA
 const title = `${titlePage} - Sílvia Mendoza Make Up`;
-const description = `${shortDescription} || "Descubre más detalles sobre este producto."`;
+const description = shortDescription || "Descubre más detalles sobre este producto.";
 ---
 
 <BaseLayout title={title} description={description} image={imageSrc}>
     <article class="product-card">
-        <!-- Encabezado -->
-        <section class="product-header">
-            <h1>{titlePage}</h1>
-            <h2>{subtitle}</h2>
-        </section>
-
-        <!-- Grid principal --> 
         <div class="product-grid">
-            <!-- Imagen del producto -->
             <section class="product-image">
-                <img src={imageSrc} alt={titlePage} loading="lazy" />
+                <img src={imageSrc} alt={titlePage} loading="lazy" class="responsive-image" />
             </section>
-            
-            <!-- Detalles del producto -->
+
             <section class="product-details">
-                <p>{longDescription}</p>
-                <h3>Lo que aprenderás</h3>
-                <ul class="learning-list">
-                    {whatYouWillLearn?.map((item) => (
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </section>
-        </div>
+                <header class="product-header">
+                    <h1>{titlePage}</h1>
+                    <h2>{subtitle}</h2>
+                    <p>{longDescription}</p>
+                </header>
 
-        <!-- Bloque adicional -->
-        <div class="full-width-block">
-            <section class="product-details-full">
-                <!-- Materiales incluidos -->
-                <h3>Materiales incluidos</h3>
-                <ul class="aditional-info">
-                    {aditionalInfo?.map((info) => (
-                        <li>{info}</li>
-                    ))}
-                </ul>
-
-                <!-- Duración y precio -->
-                <h3>Duración y Precio</h3>
-                <div class="duration-price">
-                    {durationPrice?.map((item, index) => (
-                        <div class={`price-option ${item.type === "BONO 3 CLASES DE 1H" ? 'special-offer' : ''}`}>
-                            <h4>{item.type}</h4>
-                            {item.options.map((option) => (
-                                <p>
-                                    {option.duration && `${option.duration} - `}
-                                    {option.price}
-                                </p>
+                {(whatYouWillLearn.length > 0 || include.length > 0) && (
+                    <section class="product-list">
+                        <h3>{whatYouWillLearn.length > 0 ? "Lo que aprenderás" : "Qué incluye este bono"}</h3>
+                        <ul class="learning-list">
+                            {[...whatYouWillLearn, ...include].map((item) => (
+                                <li>
+                                    <i class="fas fa-check list-icon"></i>
+                                    {item}
+                                </li>
                             ))}
-                        </div>
-                    ))}
-                </div>
-
-                <!-- Ubicación -->
-                <h3 class="ubicacionClass">Ubicación</h3>
-                <p>{location}</p>
-
-                <a href="https://wa.me/601532809" class="button primary">Solicitar más información</a>
+                        </ul>
+                    </section>
+                )}
             </section>
         </div>
+
+        <section class="product-details-full">
+            {aditionalInfo.length > 0 && (
+                <div class="additional-info">
+                    <h3>Materiales incluidos</h3>
+                    <ul>
+                        {aditionalInfo.map((info) => (
+                            <li>{info}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+            <div class="duration-price">
+                <h3>Duración y Precio</h3>
+                {durationPrice.map((item) => (
+                    <div class={`price-option ${item.type === "BONO 3 CLASES DE 1H" ? "highlight" : ""}`}>
+                        <h4>{item.type}</h4>
+                        {item.options.map((option) => (
+                            <p>
+                                {option.duration && `${option.duration} - `}
+                                {option.price}
+                            </p>
+                        ))}
+                    </div>
+                ))}
+            </div>
+
+            {location && (
+                <div class="location">
+                    <h3>Ubicación</h3>
+                    <p>{location}</p>
+                </div>
+            )}
+
+            <div class="reservation">
+                <a href="https://wa.me/601532809" class="button primary">Reservar Curso</a>
+                <em>
+                    ¿Tienes dudas o quieres reservar tu curso? Contáctame por Whatsapp a través del botón o a través de nuestra <a href="/contacto">página de contacto</a>.
+                    ¡Estoy aquí para ayudarte!
+                </em>
+            </div>
+        </section>
     </article>
 </BaseLayout>

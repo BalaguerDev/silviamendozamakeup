@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro'
+import CardContainer from '../../components/card/CardContainer.astro'
+import { serviceList } from '../../data';
+import './serviceContainer.css'
+---
+
+<BaseLayout>
+        <CardContainer
+        items={serviceList}
+        title="Maquillaje, Peinados y Más: Servicios para Realzar Tu Belleza"
+      />
+</BaseLayout>

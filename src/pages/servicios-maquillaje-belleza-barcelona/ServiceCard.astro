@@ -1,0 +1,15 @@
+---
+import './serviceCard.css';
+const { imageSrc, titleCard, durationPrice, link } = Astro.props;
+
+---
+
+<a href={link} rel="noopener noreferrer" class="card">
+    <div class="card-content">
+        <img src={imageSrc} alt={titleCard} class="card-image" />
+        <div class="card-details">
+            <h3 class="card-title">{titleCard}</h3>
+            <p class="card-price">{durationPrice}</p>
+        </div>
+    </div>
+</a>

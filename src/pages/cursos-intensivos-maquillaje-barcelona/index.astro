@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import { faqsCursos, workshopList } from "../../data";
+
+import "./styles/cursos.css";
+import FAQ from "../../components/faqs/FAQ.astro";
+import CardContainer from "../../components/card/CardContainer.astro";
+---
+
+<BaseLayout
+  title="Cursos Intensivos de Automaquillaje en Barcelona - Sílvia Mendoza"
+  description="Descubre nuestros cursos de maquillaje y peluquería en Barcelona, ideales para regalar, aprender y divertirse. ¡Consulta fechas y apúntate!"
+>
+  <section class="cursosSection">
+    <h1 class="courseTitle">
+      Belleza natural con mis cursos intensivos de Automaquillaje en Barcelona
+    </h1>
+    <h2 class="courseSubtitle">Disfruta de esta experiencia de Maquillaje junto a tus amigas</h2>
+
+    <p class="courseDescription">
+      Mis cursos intensivos de automaquillaje están diseñados para brindarte una experiencia única de aprendizaje, donde cada detalle es cuidadosamente pensado para ayudarte a destacar tu belleza natural. Ya seas principiante o profesional, te enseñaré desde las técnicas básicas hasta los secretos de maquillaje más avanzados. En un ambiente relajado y profesional, aprenderás a crear looks personalizados para que puedas adaptarlos a tus características y estilo. Además, nuestros grupos pequeños garantizan atención individualizada, lo que te permitirá resolver todas tus dudas y perfeccionar tus habilidades con mi ayuda directa. ¡No te pierdas la oportunidad de transformar tu rutina de belleza y convertirte en tu propia maquilladora!
+
+    </p>
+
+      <CardContainer
+      items={workshopList}
+      title="Descubre los cursos de belleza y de formación profesional"
+      showPrice={false}
+    />
+
+    <h2>Preguntas frecuentes</h2>
+    <FAQ faqs={faqsCursos} />
+  </section>
+</BaseLayout>

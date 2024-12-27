@@ -2,27 +2,25 @@
 import BaseLayout from "../layout/BaseLayout.astro";
 import Hero from "./index/Hero.astro";
 import AboutSection from "./index/AboutSection.astro";
-import CourseContainer from "../components/courseCard/CourseContainer.astro";
-import CardContainer from "../components/cardContainer/CardContainer.astro";
+import CardContainer from "../components/card/CardContainer.astro";
 import { courseList } from "../data";
-import { serviceList } from "../data";
 import LatestPost from "./index/LatestPost.astro";
+import Services from "./index/Services.astro";
 
 ---
 
 <BaseLayout>
   <Hero />
   <AboutSection />
-  <CourseContainer
-    courses={courseList}
+  
+  <CardContainer
+    items={courseList}
     title="Descubre los cursos de belleza y de formación profesional"
+    showPrice={false}
   />
 
-  <CardContainer
-    title="Descubre los cursos de belleza y de formación profesional"
-    items={serviceList}
-    showSubtitle={false}
-  />
+  <Services  />
+
   <LatestPost />
 
 </BaseLayout>
