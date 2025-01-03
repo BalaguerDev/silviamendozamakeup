@@ -1,6 +1,4 @@
 ---
-console.log(Astro.props.blog);
-
 const { blog, showShortContent = true } = Astro.props;
 import { formatDate } from "../../utils";
 import { marked } from "marked";
@@ -12,7 +10,7 @@ const truncateText = (text, maxLength) => {
     : text;
 };
 
-const plainContent = Array.isArray(blog.content)
+const plainContent = Array.isArray(blog?.content)
   ? blog.content
       .map((paragraph) =>
         Array.isArray(paragraph.children)
