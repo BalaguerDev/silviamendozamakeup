@@ -2,7 +2,7 @@
 import { fetchPosts, API_BASE_URL, formatDate } from "../../utils";
 import { marked } from "marked";
 import BaseLayout from "../../layout/BaseLayout.astro";
-import "./styles/blogPost.css";
+import "../../styles//blogPost.css";
 
 export async function getStaticPaths() {
   const apiUrl = `${API_BASE_URL}/blogs`;

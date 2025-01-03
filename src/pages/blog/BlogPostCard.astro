@@ -1,8 +1,10 @@
 ---
+console.log(Astro.props.blog);
+
 const { blog, showShortContent = true } = Astro.props;
 import { formatDate } from "../../utils";
 import { marked } from "marked";
-import "./styles/blogPostCard.css";
+import "../../styles/blogPostCard.css";
 
 const truncateText = (text, maxLength) => {
   return text.length > maxLength

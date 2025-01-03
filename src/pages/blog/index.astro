@@ -4,7 +4,7 @@ import BaseLayout from "../../layout/BaseLayout.astro";
 import { fetchAllPosts, API_BASE_URL } from "../../utils";
 import BlogPostCard from "./BlogPostCard.astro";
 import Pagination from './Pagination.astro';
-import './styles/blog.css'
+import '../../styles/blog.css'
 
 // Obtención de los posts y parámetros de paginación
 const posts = await fetchAllPosts(`${API_BASE_URL}/Blogs?populate=image`);
