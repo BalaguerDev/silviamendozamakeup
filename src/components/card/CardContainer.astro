@@ -1,30 +1,31 @@
 ---
 import Card from "./Card.astro";
-const { items, title, showPrice = true, showDescription = true } = Astro.props;
+const { items, title, showPrice = true, showDescription = true, styleVariant = 'default', backgroundStyle = 'default' } = Astro.props; // Nueva prop
 import "./cardContainer.css";
 ---
 
-<div class="courseContainerBackground">
+<div class={`courseContainerBackground ${backgroundStyle}`}>
   <div class="container courseContainer">
     <h2>{title}</h2>
     <div class="courseCarousel">
       {items && items.length > 0 ? (
         items.map(({ link, titleCard, description, imageSrc, durationPrice }) => {
-          
           return (
             <Card
               link={link}
               titleCard={titleCard}
               description={description}
-              imageSrc={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc} 
+              imageSrc={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc}
               durationPrice={showPrice ? durationPrice : null}
               showPrice={showPrice}
               showDescription={showDescription}
+              styleCardVariant={styleVariant} 
+              backgroundStyle={backgroundStyle} // Nueva prop
             />
           );
         })
       ) : (
-        <p>No courses available.</p> 
+        <p>No courses available.</p>
       )}
     </div>
   </div>

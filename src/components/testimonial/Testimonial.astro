@@ -1,0 +1,94 @@
+---
+import "./testimonial.css";
+
+const { testimonial } = Astro.props;
+---
+
+<section class="testimonials">
+  <div class="testimonials-container">
+    <h2 class="testimonials-title">Qué opinan las novias sobre mí en bodas.net</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel">
+        {testimonial && Array.isArray(testimonial) && testimonial.length > 0 ? (
+          testimonial.map((review) => (
+            <div class="carousel-card">
+              <div class="card-content">
+                <div class="card-header">
+                  <div>
+                    <p class="card-date">{review.time}</p>
+                    <h3 class="card-author">{review.author_name}</h3>
+                    <p class="card-rating">
+                      {Array(review.rating).fill("★").join("")}
+                    </p>
+                  </div>
+                </div>
+                {review.title ? <blockquote class="card-title">{review.title}</blockquote> : null}
+                <blockquote class="card-text">"{review.text}"</blockquote>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p class="no-reviews">No hay testimonios disponibles.</p>
+        )}
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous testimonial">❮</button>
+        <button class="carousel-btn next" id="carouselNext" aria-label="Next testimonial">❯</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  const carousel = document.getElementById('carousel');
+  const prevButton = document.getElementById('carouselPrev');
+  const nextButton = document.getElementById('carouselNext');
+
+  let cards = Array.from(carousel.children);
+  let cardWidth = carousel.offsetWidth; 
+  let currentIndex = 0;
+
+  const updateCarousel = () => {
+    carousel.style.transition = "transform 0.5s ease-in-out";
+    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;  
+  };
+
+  const goNext = () => {
+    currentIndex++;
+
+    if (currentIndex >= cards.length) {
+      setTimeout(() => {
+        currentIndex = 0; 
+        carousel.style.transition = "none"; 
+        updateCarousel(); 
+      }, 500);
+    }
+
+    updateCarousel();
+  };
+
+  const goPrev = () => {
+    currentIndex--;
+
+    if (currentIndex < 0) {
+      setTimeout(() => {
+        currentIndex = cards.length - 1; 
+        carousel.style.transition = "none";
+        updateCarousel();
+      }, 500); 
+    }
+
+    updateCarousel();
+  };
+
+  prevButton.addEventListener('click', goPrev);
+  nextButton.addEventListener('click', goNext);
+
+  setInterval(goNext, 7000); 
+  window.addEventListener('resize', () => {
+    cardWidth = carousel.offsetWidth;
+    updateCarousel();
+  });
+
+  updateCarousel();
+</script>

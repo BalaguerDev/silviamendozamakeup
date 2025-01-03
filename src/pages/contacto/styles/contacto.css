@@ -24,7 +24,7 @@
 .contacto-lista li {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: 1rem 0; 
   font-size: 1.1rem;
 }
 
@@ -40,6 +40,10 @@
 
 .contacto-lista a:hover {
   text-decoration: underline;
+}
+
+.contacto-lista p{
+  margin:0;
 }
 
 /* Mapa */

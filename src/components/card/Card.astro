@@ -8,15 +8,16 @@ const {
   durationPrice, 
   link, 
   showPrice = true, 
-  showDescription = true 
+  showDescription = true, 
+  styleCardVariant = 'default'
 } = Astro.props;
 
 const shortenDescription = (description) => 
   description.length > 100 ? `${description.slice(0, 100)}...` : description;
 ---
 
-<a href={link} class="courseCard">
-  <img transition:name={titleCard} src={imageSrc} alt={titleCard} />
+<a href={link} class={`courseCard ${styleCardVariant}`}>
+  <img src={imageSrc} alt={titleCard} class={`courseCardImage ${styleCardVariant}`} />
   <div class="courseCardContent">
     <h3>{titleCard}</h3>
     {showDescription && description && <p>{shortenDescription(description)}</p>}

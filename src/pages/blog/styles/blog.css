@@ -11,3 +11,9 @@
 .listBlog h1{
   text-align: center;
 }
+.subTitle{
+  text-align: center;
+  color: var(--dark-color);
+  font-family: "Ephesis", cursive;
+  font-weight: 400;
+}

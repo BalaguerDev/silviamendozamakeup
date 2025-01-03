@@ -26,7 +26,8 @@ const nextPage = totalPages > 1 ? 2 : null;
 
 <BaseLayout title="Blog de Maquillaje y Belleza | Consejos y Tips por Sílvia Mendoza" description="Lee el blog de Sílvia Mendoza para consejos de maquillaje, belleza nupcial y más. Encuentra tips, tendencias y novedades para tu look perfecto.">
   <section class=" listBlog container">
-    <h1>El blog de belleza de Silvia Mendoza: Tips y tutoriales</h1>
+    <h1>El blog de belleza de Silvia Mendoza</h1>
+    <h2 class="subTitle">Experta en skincare, maquillaje y peinados</h2>
     <div class="blog-list">
       {postsToDisplay.length > 0 ? (
         postsToDisplay.map((blog) => <BlogPostCard blog={blog} />)

@@ -1,37 +1,42 @@
-.courseContainerBackground {
-    background: var(--second-background);
-    padding: 20px 0;
+.courseContainerBackground.default {
+    background-color: #fff;
 }
+
+.courseContainerBackground.light {
+    background-color: var(--second-background);
+}
+
+
 
 .courseContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    padding: 20px;
+    padding: 1rem;
 }
 
 .courseContainer h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .courseCarousel {
     display: flex;
-    gap: 20px;
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     padding: 10px 0;
-    scrollbar-width: none; 
+    scrollbar-width: none;
 }
 
 .courseCarousel::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 .courseCard {
-    flex: 0 0 calc(100% - 20px); 
-    scroll-snap-align: center; 
+    flex: 0 0 calc(100% - 20px);
+    scroll-snap-align: center;
     transition: transform 0.3s ease;
 }
 
@@ -40,13 +45,17 @@
 }
 
 @media (min-width: 768px) {
+    .courseContainer {
+        padding: 2rem;
+    }
     .courseCarousel {
-        overflow-x: unset; 
+        overflow-x: unset;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .courseCard {
-        flex: 0 0 calc(30% - 20px); 
+        flex: 0 0 calc(30% - 20px);
+        margin: 0;
     }
 }

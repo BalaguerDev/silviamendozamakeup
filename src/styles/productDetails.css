@@ -136,6 +136,9 @@
     background: var(--secondary-color);
 }
 
+.reservation {
+    padding-bottom:3rem;
+}
 .reservation em {
     display: block;
     margin-top: 1rem;

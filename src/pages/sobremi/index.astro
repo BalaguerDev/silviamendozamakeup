@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
-import ReviewGoogle from "../../components/reviewGoogle/ReviewGoogle.astro";
-import { galleriesList } from "../../data";
+import { galleriesList, reviews } from "../../data";
 
 const galleryImages = galleriesList.colaboradores;
 
 import "./styles/sobreMi.css";
+import Testimonial from "../../components/testimonial/Testimonial.astro";
 ---
 
 <BaseLayout
@@ -13,12 +13,10 @@ import "./styles/sobreMi.css";
   description="Descubre la trayectoria de Sílvia Mendoza, maquilladora y peluquera en Barcelona, especializada en novias y en impartir cursos de automaquillaje y peinado. Un servicio integral para realzar tu belleza."
 >
   <main class="sobre-mi-container container">
-    <!-- Sección Hero Principal -->
     <section class="hero-section">
       <div class="hero-content">
-        <!-- Columna del texto con animación -->
         <div class="hero-text animate-fade-in">
-          <h1>Conoce a tu próxima maquilladora en Barcelona</h1>
+          <h1>Conoce a Sílvia Mendoza experta en maquillaje nupcial</h1>
           <p>
             De la asesoría de imagen a las bodas de ensueño: descubre mi viaje
             profesional y pasión por el maquillaje.
@@ -101,7 +99,7 @@ import "./styles/sobreMi.css";
 
       <!-- Reseñas con efecto Card Flip -->
       <section class="reviews">
-        <ReviewGoogle />
+        <Testimonial testimonial={reviews} />
       </section>
     </section>
   </main>

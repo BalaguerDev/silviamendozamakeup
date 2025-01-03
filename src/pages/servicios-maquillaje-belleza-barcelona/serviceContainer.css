@@ -9,6 +9,13 @@
   margin: 0 auto;
   max-width: 1200px;
 }
+.headerService{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
 
 /* Ajuste para mantener todas las tarjetas del mismo tamaño */
 .service-grid > * {

@@ -3,6 +3,7 @@ import BaseLayout from "../layout/BaseLayout.astro";
 import { courseList, workshopList } from "../data";
 import { cleanLink } from "../utils";
 import "../styles/productDetails.css";
+import CardContainer from "../components/card/CardContainer.astro";
 
 export async function getStaticPaths() {
     const combinedPaths = [...courseList, ...workshopList]
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 const { productDetail } = Astro.params;
 const cleanedLink = cleanLink(productDetail);
 const product = [...courseList, ...workshopList].find(
-    (item) => cleanLink(item.link) === cleanedLink
+    (item) => cleanLink(item.link) === cleanedLink,
 );
 
 if (!product) {
@@ -37,15 +38,24 @@ const {
     location,
 } = product;
 
+const filteredItems = courseList.filter((item) => cleanLink(item.link) !== cleanedLink);
+
+
 const title = `${titlePage} - Sílvia Mendoza Make Up`;
-const description = shortDescription || "Descubre más detalles sobre este producto.";
+const description =
+    shortDescription || "Descubre más detalles sobre este producto.";
 ---
 
 <BaseLayout title={title} description={description} image={imageSrc}>
     <article class="product-card">
         <div class="product-grid">
             <section class="product-image">
-                <img src={imageSrc} alt={titlePage} loading="lazy" class="responsive-image" />
+                <img
+                    src={imageSrc}
+                    alt={titlePage}
+                    loading="lazy"
+                    class="responsive-image"
+                />
             </section>
 
             <section class="product-details">
@@ -55,63 +65,90 @@ const description = shortDescription || "Descubre más detalles sobre este produ
                     <p>{longDescription}</p>
                 </header>
 
-                {(whatYouWillLearn.length > 0 || include.length > 0) && (
-                    <section class="product-list">
-                        <h3>{whatYouWillLearn.length > 0 ? "Lo que aprenderás" : "Qué incluye este bono"}</h3>
-                        <ul class="learning-list">
-                            {[...whatYouWillLearn, ...include].map((item) => (
-                                <li>
-                                    <i class="fas fa-check list-icon"></i>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                )}
+                {
+                    (whatYouWillLearn.length > 0 || include.length > 0) && (
+                        <section class="product-list">
+                            <h3>
+                                {whatYouWillLearn.length > 0
+                                    ? "Lo que aprenderás"
+                                    : "Qué incluye este bono"}
+                            </h3>
+                            <ul class="learning-list">
+                                {[...whatYouWillLearn, ...include].map(
+                                    (item) => (
+                                        <li>
+                                            <i class="fas fa-check list-icon" />
+                                            {item}
+                                        </li>
+                                    ),
+                                )}
+                            </ul>
+                        </section>
+                    )
+                }
             </section>
         </div>
 
         <section class="product-details-full">
-            {aditionalInfo.length > 0 && (
-                <div class="additional-info">
-                    <h3>Materiales incluidos</h3>
-                    <ul>
-                        {aditionalInfo.map((info) => (
-                            <li>{info}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            {
+                aditionalInfo.length > 0 && (
+                    <div class="additional-info">
+                        <h3>Materiales incluidos</h3>
+                        <ul>
+                            {aditionalInfo.map((info) => (
+                                <li>{info}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
 
             <div class="duration-price">
                 <h3>Duración y Precio</h3>
-                {durationPrice.map((item) => (
-                    <div class={`price-option ${item.type === "BONO 3 CLASES DE 1H" ? "highlight" : ""}`}>
-                        <h4>{item.type}</h4>
-                        {item.options.map((option) => (
-                            <p>
-                                {option.duration && `${option.duration} - `}
-                                {option.price}
-                            </p>
-                        ))}
-                    </div>
-                ))}
+                {
+                    durationPrice.map((item) => (
+                        <div
+                            class={`price-option ${item.type === "BONO 3 CLASES DE 1H" ? "highlight" : ""}`}
+                        >
+                            <h4>{item.type}</h4>
+                            {item.options.map((option) => (
+                                <p>
+                                    {option.duration && `${option.duration} - `}
+                                    {option.price}
+                                </p>
+                            ))}
+                        </div>
+                    ))
+                }
             </div>
 
-            {location && (
-                <div class="location">
-                    <h3>Ubicación</h3>
-                    <p>{location}</p>
-                </div>
-            )}
+            {
+                location && (
+                    <div class="location">
+                        <h3>Ubicación</h3>
+                        <p>{location}</p>
+                    </div>
+                )
+            }
 
             <div class="reservation">
-                <a href="https://wa.me/601532809" class="button primary">Reservar Curso</a>
+                <a href="https://wa.me/601532809" class="button primary"
+                    >Reservar Curso</a
+                >
                 <em>
-                    ¿Tienes dudas o quieres reservar tu curso? Contáctame por Whatsapp a través del botón o a través de nuestra <a href="/contacto">página de contacto</a>.
-                    ¡Estoy aquí para ayudarte!
+                    ¿Tienes dudas o quieres reservar tu curso? Contáctame por
+                    Whatsapp a través del botón o a través de nuestra <a
+                        href="/contacto">página de contacto</a
+                    >. ¡Estoy aquí para ayudarte!
                 </em>
             </div>
+
         </section>
     </article>
+    <CardContainer
+        items={filteredItems}
+        title="Estos son otros cursos que te pueden interesar"
+        showPrice={false}
+        backgroundStyle="default"
+    />
 </BaseLayout>

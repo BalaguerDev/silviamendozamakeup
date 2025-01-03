@@ -41,8 +41,8 @@ export const serviceList = [
         link: "/servicio-maquillaje-peinado-barcelona",
     },
     {
-        titleCard: "Peinado",
-        titlePage: "Peinados Personalizados en Barcelona",
+        titleCard: "Shooting",
+        titlePage: "Shooting para book fotográfico en Barcelona",
         description: "Consigue unas fotos impresionantes gracias a nuestro fotógrafo Jhonny Alexander del estilo que prefieras: moda, editorial, catálogo profesional, belleza,... Tú elijes cómo deseas que sea y nosotros la llevaremos a cabo. Incluye: Servicio de maquillaje y peluquería (1 persona). Extra por persona 60€. Alquiler del espacio Nomak Studio (Badalona). 15 fotografías retocadas. Si quieres más información contacta con nosotros por Whatsapp para darte todos los detalles que necesites.",
         durationPrice: "250,00 €",
         location: "Estudio NomaklStudio (Badalona).",
@@ -50,7 +50,7 @@ export const serviceList = [
             "/images/servicios/shooting/SilviaMendoza.webp",
 
         ],
-        link: "/servicio-maquillaje-shooting-fotografico",
+        link: "/servicio-maquillaje-shooting",
     },
     {
         titleCard: "Personal Shopper",
