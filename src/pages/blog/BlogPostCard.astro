@@ -10,10 +10,12 @@ const truncateText = (text, maxLength) => {
     : text;
 };
 
-const plainContent = blog.content
+const plainContent = Array.isArray(blog.content)
   ? blog.content
       .map((paragraph) =>
-        paragraph.children.map((child) => child.text).join(""),
+        Array.isArray(paragraph.children)
+          ? paragraph.children.map((child) => child.text).join("")
+          : ""
       )
       .join("\n\n")
   : "";
